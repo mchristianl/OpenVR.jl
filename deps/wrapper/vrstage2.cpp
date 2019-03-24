@@ -31,6 +31,11 @@ namespace jlcxx
   // template<> struct IsBits<vr::Texture_t> : std::true_type {};
   // template<> struct IsBits<vr::VRTextureBounds_t> : std::true_type {};
 
+  // TODO: this holds for all Julia-isbits types
+  template<> struct IsBits<vr::HmdMatrix44_t> : std::true_type {};
+  template<> struct IsBits<vr::HmdMatrix34_t> : std::true_type {};
+
+
   // SDL_Window is defined as a forward declaration only because it should only be used as a pointer
   //  this clashed with jlcxx
   // void SDL_GL_SwapWindow(void* window){ SDL_GL_SwapWindow((SDL_Window*)window); }

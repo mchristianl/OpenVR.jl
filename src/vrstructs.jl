@@ -443,15 +443,15 @@ end
 struct RenderModel_TextureMap_t
   unWidth :: UInt16
   unHeight :: UInt16
-  rubTextureMapDataH :: UInt32 # Ptr{UInt8}
-  rubTextureMapDataL :: UInt32 # Ptr{UInt8}
+  rubTextureMapData1 :: UInt32 # Ptr{UInt8}
+  rubTextureMapData2 :: UInt32 # Ptr{UInt8}
 end
 const TextureID_t = Int32
 struct RenderModel_t
   rVertexData :: Ptr{RenderModel_Vertex_t} # const RenderModel_Vertex_t *rVertexData; // Vertex data for the mesh
   unVertexCount :: UInt32                  # uint32_t unVertexCount;                  // Number of vertices in the vertex data
-  rIndexDataH :: UInt32 # Ptr{…}
-  rIndexDataL :: UInt32 # Ptr{…}                # const uint16_t *rIndexData;              // Indices into the vertex data for each triangle
+  rIndexData1 :: UInt32 # Ptr{…}
+  rIndexData2 :: UInt32 # Ptr{…}                # const uint16_t *rIndexData;              // Indices into the vertex data for each triangle
   unTriangleCount :: UInt32                # uint32_t unTriangleCount;                // Number of triangles in the mesh. Index count is 3 * TriangleCount
   diffuseTextureId :: TextureID_t          # TextureID_t diffuseTextureId;
 end

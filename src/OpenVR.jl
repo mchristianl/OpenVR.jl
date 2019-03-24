@@ -213,11 +213,11 @@ module OpenVR
   end
 
   function GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop)::String
-    err = VR.TrackedProp_Success
-    len = VR.GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop,Cstring(C_NULL),0,err)
+    err = TrackedProp_Success
+    len = GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop,Cstring(C_NULL),0,err)
     buf = Array{UInt8,1}(undef,len)
-    VR.GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop,Cstring(pointer(buf)),len,err)
-    err != VR.TrackedProp_Success && println("Warning: GetStringTrackedDeviceProperty failed with error $(err)")
+    GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop,Cstring(pointer(buf)),len,err)
+    err != TrackedProp_Success && println("Warning: GetStringTrackedDeviceProperty failed with error $(err)")
     return unsafe_string(pointer(buf))
   end
 
