@@ -97,7 +97,7 @@ this = pMainApplication = jMainApplication
 # app = pMainApplication = unsafe_load(convert(Ptr{CMainApplicationAllocated},pointer_from_objref(Ref(pointer_from_objref(jMainApplication)))))
 app = jMainApplication
 # use C++ placement new to put the object there
-# OpenVR.placeCMainApplication(pointer_from_objref(jMainApplication))
+# VR.placeCMainApplication(pointer_from_objref(jMainApplication))
 
 using CxxWrap
 using ModernGL
@@ -180,7 +180,7 @@ function RenderScene( app :: CMainApplication, nEye :: OpenVR.Hmd_Eye  )
   for eHand = Left:Right
     m_rHand = this.m_rHand[eHand+1]
 
-    # if ( !OpenVR.get_m_bShowController(m_rHand) || !OpenVR.get_m_pRenderModel(m_rHand) )
+    # if ( !VR.get_m_bShowController(m_rHand) || !VR.get_m_pRenderModel(m_rHand) )
     if ( ~m_rHand.m_bShowController || m_rHand.m_pRenderModel == C_NULL )
       continue;
     end
@@ -190,39 +190,13 @@ function RenderScene( app :: CMainApplication, nEye :: OpenVR.Hmd_Eye  )
     mvp = GetCurrentViewProjectionMatrix( app, nEye )
     # @GC.preserve mvpAllocated mvp = unsafe_load(reinterpret(Ptr{Matrix4},mvpAllocated.cpp_object))
     matMVP = mvp.m * matDeviceToTracking.m; # Julia!
-    # println("matMVP = ")
-    # display(matMVP)
-    # matMVP =
-    # 4×4 SArray{Tuple{4,4},Float32,2,16}:
-    #  -0.546565  0.057945  -0.517612   -0.115377
-    #   0.154928  0.65361   -0.0908573   0.0428849
-    #  -0.703296  0.265281   0.664606    0.535649
-    #  -0.700951  0.264397   0.66239     0.633863
-    # matMVP =
-    # 4×4 SArray{Tuple{4,4},Float32,2,16}:
-    #  -0.470299  0.0286927  -0.593067   -0.232342
-    #   0.155731  0.65562    -0.0914356   0.0427533
-    #  -0.703296  0.265281    0.664606    0.535649
-    #  -0.700951  0.264397    0.66239     0.633863
-    # matMVP_arr = OpenVR.get(matMVP)
-    # 4×4 SArray{Tuple{4,4},Float32,2,16}:
-    #  -0.546429  0.0581639  -0.517731   -0.115242
-    #   0.155199  0.653552   -0.0908119   0.0428902
-    #  -0.703339  0.265539    0.664457    0.535495
-    #  -0.700995  0.264654    0.662242    0.63371
-    # matMVP =
-    # 4×4 SArray{Tuple{4,4},Float32,2,16}:
-    #  -0.470159  0.0288837  -0.593169   -0.23219
-    #   0.156003  0.655562   -0.0913901   0.0427586
-    #  -0.703339  0.265539    0.664457    0.535495
-    #  -0.700995  0.264654    0.662242    0.63371
     matMVP_arr = Array(matMVP[:])
     glUniformMatrix4fv( this.m_nRenderModelMatrixLocation, 1, GL_FALSE, convert(Array{Float32},matMVP_arr) );
     # glUniformMatrix4fv( this.m_nRenderModelMatrixLocation, 1, GL_FALSE, [matMVP.data...] );
 
     # m_pRenderModel = Ref(m_rHand.m_pRenderModel) # TODO
     # @GC.preserve m_pRenderModel m_pRenderModelRef = unsafe_load(reinterpret(Ptr{CGLRenderModelRef},pointer_from_objref(m_pRenderModel)))
-    # OpenVR.Draw(m_pRenderModelRef);
+    # VR.Draw(m_pRenderModelRef);
     Draw(m_rHand.m_pRenderModel);
   end
 
@@ -237,7 +211,7 @@ function RenderStereoTargets(app :: CMainApplication)
   leftEyeDesc = this.leftEyeDesc
   glBindFramebuffer( GL_FRAMEBUFFER, leftEyeDesc.m_nRenderFramebufferId );
    glViewport(0, 0, this.m_nRenderWidth, this.m_nRenderHeight );
-   # OpenVR.RenderScene(app, OpenVR.Eye_Left );
+   # VR.RenderScene(app, VR.Eye_Left );
    RenderScene(app, OpenVR.Eye_Left );
    glBindFramebuffer( GL_FRAMEBUFFER, 0 );
 
@@ -259,7 +233,7 @@ function RenderStereoTargets(app :: CMainApplication)
   rightEyeDesc = this.rightEyeDesc
   glBindFramebuffer( GL_FRAMEBUFFER, rightEyeDesc.m_nRenderFramebufferId );
    glViewport(0, 0, this.m_nRenderWidth, this.m_nRenderHeight );
-   # OpenVR.RenderScene(app, OpenVR.Eye_Right );
+   # VR.RenderScene(app, VR.Eye_Right );
    RenderScene(app, OpenVR.Eye_Right );
    glBindFramebuffer( GL_FRAMEBUFFER, 0 );
 
@@ -309,7 +283,7 @@ function UpdateHMDMatrixPose(app :: CMainApplication)
       m_strPoseClassesJ *= Char(this.m_rDevClassChar[nDevice+1]);
     end
   end
-  # OpenVR.setJuliaStringTostdstring(m_strPoseClassesJ,@voidptr this.m_strPoseClasses); # TODO
+  # VR.setJuliaStringTostdstring(m_strPoseClassesJ,@voidptr this.m_strPoseClasses); # TODO
   this.m_strPoseClasses = m_strPoseClassesJ
 
   if ( this.m_rTrackedDevicePose[OpenVR.k_unTrackedDeviceIndex_Hmd+1].bPoseIsValid )
@@ -449,9 +423,9 @@ function RenderFrame(app :: CMainApplication)
     RenderStereoTargets(app)
     RenderCompanionWindow(app)
 
-    # bounds_null = Main.OpenVR.VRTextureBounds_t()
+    # bounds_null = Main.VR.VRTextureBounds_t()
     # bounds_null.cpp_object = C_NULL
-    # bounds_null = nullptr(Main.OpenVR.VRTextureBounds_t) # like so?
+    # bounds_null = nullptr(Main.VR.VRTextureBounds_t) # like so?
 
     glFlush();
     glFinish();
@@ -502,10 +476,10 @@ function RenderFrame(app :: CMainApplication)
 end
 
 
-# OpenVR.HmdMatrix34_t is backed by a row-major, two dimensional C-array
+# VR.HmdMatrix34_t is backed by a row-major, two dimensional C-array
 #   so this is in Julia a transposed 3×4 matrix
 # Matrix4 is backed by a column-major, one dimensional C-array
-# ConvertSteamVRMatrixToMatrix4(matPose::OpenVR.HmdMatrix34_t) = Matrix4([ (r < 4 ? matPose.m[c,r] : c < 4 ? 0f0 : 1f0) for r in 1:4, c in 1:4  ],zeros(Float32,4,4))
+# ConvertSteamVRMatrixToMatrix4(matPose::VR.HmdMatrix34_t) = Matrix4([ (r < 4 ? matPose.m[c,r] : c < 4 ? 0f0 : 1f0) for r in 1:4, c in 1:4  ],zeros(Float32,4,4))
 ConvertSteamVRMatrixToMatrix4(matPose::OpenVR.HmdMatrix34_t) = Matrix4(transpose(hcat(matPose.m,[0,0,0,1])),zeros(Float32,4,4))
 
 # -----------------------------------------------------------------------------
@@ -685,10 +659,10 @@ function FindOrLoadRenderModel(app::CMainApplication, pchRenderModelName::String
   pRenderModel = Ptr{CGLRenderModel}(C_NULL);
   for i in this.m_vecRenderModels
     # r = unsafe_pointer_to_objref(i)
-    # r = unsafe_load(i)
-    r = i
-    # str = OpenVR.stdstringToJuliaString(@ptr r[].m_sModelName)
-    str = i.m_sModelName
+    r = unsafe_load(i)
+    # r = i
+    # str = VR.stdstringToJuliaString(@ptr r[].m_sModelName)
+    str = r.m_sModelName
     if ( str != pchRenderModelName )
       pRenderModel = Ref(i);
       break;
@@ -698,7 +672,7 @@ function FindOrLoadRenderModel(app::CMainApplication, pchRenderModelName::String
   # load the model if we didn't find one
   if ( pRenderModel == C_NULL )
     pModel = Ref{Ptr{OpenVR.RenderModel_t}}(C_NULL);
-    # pModel = Ref{OpenVR.RenderModel_t}();
+    # pModel = Ref{VR.RenderModel_t}();
     err = OpenVR.VRRenderModelError_None;
     vrrendermodels = OpenVR.VRRenderModels()
     while ( true )
@@ -723,7 +697,7 @@ function FindOrLoadRenderModel(app::CMainApplication, pchRenderModelName::String
     # pModel->diffuseTextureId = 0
 
     # pchRenderModelName         = vr_controller_vive_1_5
-    # pModelr[].rVertexData      = Ptr{Main.OpenVR.RenderModel_Vertex_t} @0x00007fec3411eea0
+    # pModelr[].rVertexData      = Ptr{Main.VR.RenderModel_Vertex_t} @0x00007fec3411eea0
     # pModelr[].unVertexCount    = 12199
     # pModelr[].rIndexData       = Ptr{UInt16} @0x000043ae00007fec
     # pModelr[].unTriangleCount  = 0
@@ -758,11 +732,11 @@ function FindOrLoadRenderModel(app::CMainApplication, pchRenderModelName::String
     # @mem pRenderModelr[].m_glVertArray = 0
     # @mem pRenderModelr[].m_glTexture = 0
     # @mem pRenderModelr[].m_unVertexCount = 0
-    # @mem pRenderModelr[].m_sModelName = OpenVR.std_string(C_NULL,0,0,0)
-    # OpenVR.setJuliaStringTostdstring(pchRenderModelName,@voidptr pRenderModelr[].m_sModelName)
+    # @mem pRenderModelr[].m_sModelName = VR.std_string(C_NULL,0,0,0)
+    # VR.setJuliaStringTostdstring(pchRenderModelName,@voidptr pRenderModelr[].m_sModelName)
     # pRenderModelr[].m_sModelName = pchRenderModelName
     # @mem pRenderModelr[].m_sModelNameJ = pchRenderModelName
-    # if ( ~OpenVR.BInit(pRenderModelr2, pModelr[], unsafe_load(pTexture[]) ) )
+    # if ( ~VR.BInit(pRenderModelr2, pModelr[], unsafe_load(pTexture[]) ) )
     if ( ~BInit(pRenderModelr, pModelr[], unsafe_load(pTexture[]) ) )
       println( "Unable to create GL model from render model $(pchRenderModelName)" );
       # delete pRenderModelr;
@@ -825,7 +799,7 @@ function HandleInput(app::CMainApplication) :: Bool
   OpenVR.UpdateActionState(vrinput, actionSet, sizeof(actionSet), 1 );
 
   # m_actionHideCubesRef = unsafe_wrap(Array,convert(Ptr{UInt64},fieldpointer(this,:m_actionHideCubes)),(1,);own=false)
-  # this.m_bShowCubes = ~OpenVR.GetDigitalActionState( this.m_actionHideCubes , Ptr{UInt64}(C_NULL) );
+  # this.m_bShowCubes = ~VR.GetDigitalActionState( this.m_actionHideCubes , Ptr{UInt64}(C_NULL) );
   this.m_bShowCubes = ~GetDigitalActionState( this.m_actionHideCubes , Ptr{UInt64}(C_NULL) );
 
   Left = 0 # TODO: CxxWrap.jl enum to Uint
@@ -851,7 +825,7 @@ function HandleInput(app::CMainApplication) :: Bool
   @yolo this.m_rHand[Right+1].m_bShowController = true
 
   ulHideDevice = Ref{OpenVR.VRInputValueHandle_t}();
-  # if ( @GC.preserve ulHideDevice OpenVR.GetDigitalActionState( this.m_actionHideThisController, reinterpret(Ptr{UInt64},pointer_from_objref(ulHideDevice)) ) )
+  # if ( @GC.preserve ulHideDevice VR.GetDigitalActionState( this.m_actionHideThisController, reinterpret(Ptr{UInt64},pointer_from_objref(ulHideDevice)) ) )
   if ( GetDigitalActionState( this.m_actionHideThisController, reinterpret(Ptr{UInt64},pointer_from_objref(ulHideDevice)) ) )
     if ( ulHideDevice[] == this.m_rHand[Left+1].m_source )
       @yolo this.m_rHand[Left+1].m_bShowController = false;
@@ -873,15 +847,15 @@ function HandleInput(app::CMainApplication) :: Bool
       originInfo = Ref{OpenVR.InputOriginInfo_t}();
       if ( OpenVR.GetOriginTrackedDeviceInfo(vrinput, poseData[].activeOrigin, originInfo, sizeof( originInfo ) ) == OpenVR.VRInputError_None
         && originInfo[].trackedDeviceIndex != OpenVR.k_unTrackedDeviceIndexInvalid )
-        # sRenderModelName = OpenVR.GetTrackedDeviceString( originInfo[].trackedDeviceIndex, OpenVR.Prop_RenderModelName_String , C_NULL );
+        # sRenderModelName = VR.GetTrackedDeviceString( originInfo[].trackedDeviceIndex, VR.Prop_RenderModelName_String , C_NULL );
         sRenderModelName = GetTrackedDeviceString(originInfo[].trackedDeviceIndex, OpenVR.Prop_RenderModelName_String)
-        # m_sRenderModelName = OpenVR.stdstringToJuliaString(@voidptr this.m_rHand[eHand+1].m_sRenderModelName) # TODO
+        # m_sRenderModelName = VR.stdstringToJuliaString(@voidptr this.m_rHand[eHand+1].m_sRenderModelName) # TODO
         m_sRenderModelName = this.m_rHand[eHand+1].m_sRenderModelName
         if ( sRenderModelName != m_sRenderModelName )
-          # @yolo this.m_rHand[eHand+1].m_pRenderModel = OpenVR.FindOrLoadRenderModel(app, sRenderModelName ).cpp_object;
+          # @yolo this.m_rHand[eHand+1].m_pRenderModel = VR.FindOrLoadRenderModel(app, sRenderModelName ).cpp_object;
           # @yolo this.m_rHand[eHand+1].m_pRenderModel = FindOrLoadRenderModel(app, sRenderModelName ).cpp_object;
           @yolo this.m_rHand[eHand+1].m_pRenderModel = FindOrLoadRenderModel(app, sRenderModelName );
-          # OpenVR.setJuliaStringTostdstring(sRenderModelName,@voidptr this.m_rHand[eHand+1].m_sRenderModelName) # TODO
+          # VR.setJuliaStringTostdstring(sRenderModelName,@voidptr this.m_rHand[eHand+1].m_sRenderModelName) # TODO
           @yolo this.m_rHand[eHand+1].m_sRenderModelName = sRenderModelName
         end
       end
@@ -960,19 +934,19 @@ end
 function RunMainLoop(app :: CMainApplication)
     bQuit = false;
 
-    # OpenVR.SDL_StartTextInput();
+    # VR.SDL_StartTextInput();
     SDL.StartTextInput();
-    # OpenVR.SDL_ShowCursor( SDL.DISABLE );
+    # VR.SDL_ShowCursor( SDL.DISABLE );
     SDL.ShowCursor( Int32(SDL.DISABLE) );
 
     while ~bQuit
-      # bQuit = OpenVR.HandleInput(app);
+      # bQuit = VR.HandleInput(app);
       bQuit = HandleInput(app);
-      # OpenVR.RenderFrame(app);
+      # VR.RenderFrame(app);
       RenderFrame(app)
     end
 
-    # OpenVR.SDL_StopTextInput();
+    # VR.SDL_StopTextInput();
     SDL.StopTextInput();
 end
 
@@ -1334,7 +1308,7 @@ function SetupScene(app :: CMainApplication)
   glEnableVertexAttribArray( 0 );
   glVertexAttribPointer( 0, 3, GL_FLOAT, GL_FALSE, stride , offset);
 
-  offset += 3*sizeof(Float32) # sizeof(OpenVR.Vector3);
+  offset += 3*sizeof(Float32) # sizeof(VR.Vector3);
   glEnableVertexAttribArray( 1 );
   glVertexAttribPointer( 1, 2, GL_FLOAT, GL_FALSE, stride, offset);
 
@@ -1348,16 +1322,16 @@ end
 #  Purpose:
 # -----------------------------------------------------------------------------
 function SetupCameras(app :: CMainApplication)
-  # m_mat4ProjectionLeft = OpenVR.GetHMDMatrixProjectionEye(app, OpenVR.Eye_Left ); # TODO
+  # m_mat4ProjectionLeft = VR.GetHMDMatrixProjectionEye(app, VR.Eye_Left ); # TODO
   # @mem this.m_mat4ProjectionLeft = unsafe_load(reinterpret(Ptr{Matrix4},m_mat4ProjectionLeft.cpp_object))
   @mem this.m_mat4ProjectionLeft = GetHMDMatrixProjectionEye(app, OpenVR.Eye_Left );
-  # m_mat4ProjectionRight = OpenVR.GetHMDMatrixProjectionEye(app, OpenVR.Eye_Right ); # TODO
+  # m_mat4ProjectionRight = VR.GetHMDMatrixProjectionEye(app, VR.Eye_Right ); # TODO
   # @mem this.m_mat4ProjectionRight = unsafe_load(reinterpret(Ptr{Matrix4},m_mat4ProjectionRight.cpp_object))
   @mem this.m_mat4ProjectionRight = GetHMDMatrixProjectionEye(app, OpenVR.Eye_Right );
-  # m_mat4eyePosLeft = OpenVR.GetHMDMatrixPoseEye(app, OpenVR.Eye_Left ); # TODO
+  # m_mat4eyePosLeft = VR.GetHMDMatrixPoseEye(app, VR.Eye_Left ); # TODO
   # @mem this.m_mat4eyePosLeft = unsafe_load(reinterpret(Ptr{Matrix4},m_mat4eyePosLeft.cpp_object))
   @mem this.m_mat4eyePosLeft = GetHMDMatrixPoseEye(app, OpenVR.Eye_Left );
-  # m_mat4eyePosRight = OpenVR.GetHMDMatrixPoseEye(app, OpenVR.Eye_Right ); # TODO
+  # m_mat4eyePosRight = VR.GetHMDMatrixPoseEye(app, VR.Eye_Right ); # TODO
   # @mem this.m_mat4eyePosRight = unsafe_load(reinterpret(Ptr{Matrix4},m_mat4eyePosRight.cpp_object))
   @mem this.m_mat4eyePosRight = GetHMDMatrixPoseEye(app, OpenVR.Eye_Right );
 end
@@ -1416,7 +1390,7 @@ function SetupStereoRenderTargets(app :: CMainApplication)::Bool
     return false;
   end
 
-  vrsystem = OpenVR.VRSystem() # TODO: the original uses m_pHMD, which currently is a Ptr{Nothing}; so we might use OpenVR.IVRSystemRef and replace all "this.m_pHMD == C_NULL" with the CxxWrap provided "isnull(this.m_pHMD)"
+  vrsystem = OpenVR.VRSystem() # TODO: the original uses m_pHMD, which currently is a Ptr{Nothing}; so we might use VR.IVRSystemRef and replace all "this.m_pHMD == C_NULL" with the CxxWrap provided "isnull(this.m_pHMD)"
   OpenVR.GetRecommendedRenderTargetSize(vrsystem, (@typedptr UInt32 this.m_nRenderWidth), @typedptr UInt32 this.m_nRenderHeight );
 
   CreateFrameBuffer(this.m_nRenderWidth, this.m_nRenderHeight, @ptr this.leftEyeDesc );
@@ -1536,7 +1510,7 @@ function BInit(app :: CMainApplication)::Bool
   if ( eError[] != OpenVR.VRInitError_None )
     this.m_pHMD = C_NULL;
     # char buf[1024];
-    # sprintf_s( buf, sizeof( buf ), "Unable to init VR runtime: %s", OpenVR.VR_GetVRInitErrorAsEnglishDescription( eError ) );
+    # sprintf_s( buf, sizeof( buf ), "Unable to init VR runtime: %s", VR.VR_GetVRInitErrorAsEnglishDescription( eError ) );
     # SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", buf, C_NULL );
     SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", "TODO: VR_GetVRInitErrorAsEnglishDescription", C_NULL ); # TODO
     return false;
@@ -1573,10 +1547,10 @@ function BInit(app :: CMainApplication)::Bool
   end
 
   # # NOTE: this seems to work without GLEW apparently
-  # OpenVR.setglewExperimental(UInt8(GL_TRUE)); # TODO
-  # nGlewError = OpenVR.glewInit(); # TODO
+  # VR.setglewExperimental(UInt8(GL_TRUE)); # TODO
+  # nGlewError = VR.glewInit(); # TODO
   # if (nGlewError != GLEW_OK)
-  #   printf( "BInit - Error initializing GLEW! ", OpenVR.glewGetErrorString( nGlewError ) ); # TODO
+  #   printf( "BInit - Error initializing GLEW! ", VR.glewGetErrorString( nGlewError ) ); # TODO
   #   return false;
   # end
   glGetError(); # to clear the error caused deep in GLEW
@@ -1587,14 +1561,14 @@ function BInit(app :: CMainApplication)::Bool
   end
 
   this.m_strDriver = "No Driver";
-  # OpenVR.setJuliaStringTostdstring(m_strDriver,@voidptr this.m_strDriver) # TODO
+  # VR.setJuliaStringTostdstring(m_strDriver,@voidptr this.m_strDriver) # TODO
   this.m_strDisplay = "No Display";
-  # OpenVR.setJuliaStringTostdstring(m_strDisplay,@voidptr this.m_strDisplay) # TODO
+  # VR.setJuliaStringTostdstring(m_strDisplay,@voidptr this.m_strDisplay) # TODO
 
   this.m_strDriver = GetTrackedDeviceString( OpenVR.k_unTrackedDeviceIndex_Hmd, OpenVR.Prop_TrackingSystemName_String );
-  # OpenVR.setJuliaStringTostdstring(m_strDriver,@voidptr this.m_strDriver) # TODO
+  # VR.setJuliaStringTostdstring(m_strDriver,@voidptr this.m_strDriver) # TODO
   this.m_strDisplay = GetTrackedDeviceString( OpenVR.k_unTrackedDeviceIndex_Hmd, OpenVR.Prop_SerialNumber_String );
-  # OpenVR.setJuliaStringTostdstring(m_strDisplay,@voidptr this.m_strDisplay) # TODO
+  # VR.setJuliaStringTostdstring(m_strDisplay,@voidptr this.m_strDisplay) # TODO
 
   strWindowTitle = "hellovr - " * this.m_strDriver * " " * this.m_strDisplay;
   SDL.SetWindowTitle( this.m_pCompanionWindow, strWindowTitle );
@@ -1626,7 +1600,7 @@ function BInit(app :: CMainApplication)::Bool
     return false;
   end
 
-  # OpenVR.VRInput()->SetActionManifestPath( Path_MakeAbsolute( "../hellovr_actions.json", Path_StripFilename( Path_GetExecutablePath() ) ).c_str() );
+  # VR.VRInput()->SetActionManifestPath( Path_MakeAbsolute( "../hellovr_actions.json", Path_StripFilename( Path_GetExecutablePath() ) ).c_str() );
   println("SetActionManifestPath of $ActionManifestPath");
   vrinput = OpenVR.VRInput()
   OpenVR.SetActionManifestPath(vrinput, ActionManifestPath );
@@ -1653,7 +1627,7 @@ function BInit(app :: CMainApplication)::Bool
 end
 
 if BInit(jMainApplication)
-  # OpenVR.RunMainLoop(jMainApplication)
+  # VR.RunMainLoop(jMainApplication)
 
   vrsystem = OpenVR.VRSystem()
   println("TrackingSystemName                      = $(OpenVR.GetStringTrackedDeviceProperty(vrsystem,OpenVR.k_unTrackedDeviceIndex_Hmd,OpenVR.Prop_TrackingSystemName_String))")
@@ -1685,7 +1659,7 @@ if BInit(jMainApplication)
 end
 Shutdown(jMainApplication)
 
-# OpenVR.HandleInput(jMainApplication)
+# VR.HandleInput(jMainApplication)
 # RenderFrame(jMainApplication)
 # RenderFrame(jMainApplication)
 # RenderFrame(jMainApplication)
