@@ -1,0 +1,187 @@
+#!/bin/bash -x
+
+# The (Julia-tweaked) hellovr_opengl example builds with
+#
+#  /usr/bin/c++ \
+#    -DGNUC -DJULIA_ENABLE_THREADING=1 \
+#    -DLINUX -DPOSIX \
+#    -Dhellovr_julia_EXPORTS \
+#    -I/home/christianl/src/openvr/samples/build/hellovr_opengl_julia \
+#    -I/home/christianl/src/openvr/samples/hellovr_opengl_julia \
+#    -I/home/christianl/src/openvr/samples/build/hellovr_opengl_julia/hellovr_julia_autogen/include \
+#    -I/home/christianl/src/openvr/samples/. \
+#    -I/home/christianl/src/openvr/samples/thirdparty/sdl2-2.0.3/include \
+#    -I/usr/include/qt \
+#    -I/usr/include/qt/QtCore \
+#    -I/usr/lib/qt/mkspecs/linux-g++ \
+#    -I/usr/include/qt/QtGui \
+#    -I/usr/include/qt/QtWidgets \
+#    -I/home/christianl/src/openvr/samples/../headers \
+#    -I/home/christianl/src/openvr/samples/thirdparty/vulkan-1.0.49.0/include \
+#    -I/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/include \
+#    -I/usr/include/julia \
+#    -std=c++11 \
+#    -include /home/christianl/src/openvr/samples/shared/compat.h \
+#    -std=c++14 \
+#    -O3 \
+#    -DNDEBUG \
+#    -O2 \
+#    -fPIC \
+#    -o CMakeFiles/hellovr_julia.dir/hellovr_opengl_julia_main.cpp.o \
+#    -c /home/christianl/src/openvr/samples/hellovr_opengl_julia/hellovr_opengl_julia_main.cpp
+#
+# and it links with
+#
+#  /usr/bin/c++ \
+#    -fPIC \
+#    -std=c++11 \
+#    -include /home/christianl/src/openvr/samples/shared/compat.h \
+#    -std=c++14 \
+#    -O3 \
+#    -DNDEBUG \
+#    -O2 \
+#    -shared \
+#    -Wl,-soname,libhellovr_julia.so \
+#    -o ../../bin/linux64/libhellovr_julia.so \
+#    CMakeFiles/hellovr_julia.dir/__/shared/Matrices.cpp.o \
+#    CMakeFiles/hellovr_julia.dir/__/shared/lodepng.cpp.o \
+#    CMakeFiles/hellovr_julia.dir/__/shared/pathtools.cpp.o \
+#    CMakeFiles/hellovr_julia.dir/__/shared/strtools.cpp.o \
+#    CMakeFiles/hellovr_julia.dir/hellovr_opengl_julia_main.cpp.o \
+#    CMakeFiles/hellovr_julia.dir/hellovr_julia_autogen/mocs_compilation.cpp.o \
+#    -L/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/lib \
+#    -L/home/christianl/src/openvr/bin/linux64 \
+#    -Wl,-rpath,/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/lib:/home/christianl/src/openvr/bin/linux64 \
+#    -lGL \
+#    -lGLU \
+#    -lGLEW \
+#    -lSDL2 \
+#    -lopenvr_api \
+#    -ldl \
+#    -lcxxwrap_julia \
+#    -ljulia
+#
+# therefore we build with
+#
+#   /usr/bin/c++ \
+#     -fPIC \
+#     -O2 \
+#     -std=c++14 \
+#     -DGNUC -DJULIA_ENABLE_THREADING=1 \
+#     -I/home/christianl/src/openvr/samples/../headers \
+#     -I/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/include \
+#     -I/usr/include/julia \
+#     -o CMakeFiles/hellovr_julia.dir/hellovr_opengl_julia_main.cpp.o \
+#     -c /home/christianl/src/openvr/samples/hellovr_opengl_julia/hellovr_opengl_julia_main.cpp
+#
+# and we link with
+#
+#   /usr/bin/c++ \
+#     -fPIC \
+#     -shared \
+#     -Wl,-soname,libhellovr_julia.so \
+#     -o ../../bin/linux64/libhellovr_julia.so \
+#     CMakeFiles/hellovr_julia.dir/hellovr_opengl_julia_main.cpp.o \
+#     -L/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/lib \
+#     -L/home/christianl/src/openvr/bin/linux64 \
+#     -Wl,-rpath,/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/lib:/home/christianl/src/openvr/bin/linux64 \
+#     -lopenvr_api \
+#     -ldl \
+#     -lcxxwrap_julia \
+#     -ljulia
+#
+# the following example reflects that
+
+BUILD_DIR=.
+
+SRC_DIR=.
+
+JULIA_DIR=C:\Users\Andy\AppData\Local\Julia-1.1.0
+JULIA_INCLUDE_DIR=$(JULIA_DIR)\include\julia
+
+# # OPENVR_DIR=/home/christianl/src/openvr
+OPENVR_DIR=C:\Users\Andy\.julia\packages\OpenVR\8txWJ\deps\openvr-1.2.10
+
+# # CxxWrap.prefix().path
+JLCXX_DIR=C:\Users\Andy\.julia\packages\CxxWrap\KcmSi\deps\usr
+# JLCXX_DIR=C:\Users\Andy\Julia\libcxxwrap-julia
+
+# OS_DIR:=linux64
+
+# OS_SO_EXTENSION:=.so
+
+# GNU-make runs the first target,
+# nmake runs all targets
+#  also the "clean" target
+#  therefore we need to invoke it with a concrete one: "nmake all"
+
+# ldd in windows is
+#  dumpbin /dependents libvrstage1.dll
+# there is also
+#  http://www.dependencywalker.com/
+
+INCLUDE_PATHS=-I$(OPENVR_DIR)\headers -I$(JLCXX_DIR)\include -I$(JULIA_INCLUDE_DIR)
+#CXX_FLAGS=-fPIC -O2 -std=c++14 -DGNUC -DJULIA_ENABLE_THREADING=1 $(INCLUDE_PATHS) $(MORE_CXX_FLAGS)
+WIN_CXX_FLAGS=/D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_MBCS"
+CXX_FLAGS=-O2 /bigobj /std:c++14 -DJULIA_ENABLE_THREADING=1 $(WIN_CXX_FLAGS) $(INCLUDE_PATHS) $(MORE_CXX_FLAGS) /TP /EHsc /MD
+
+OS_DIR=win64
+LIBRARY_PATHS=-Libpath:$(JLCXX_DIR)\lib -Libpath:$(OPENVR_DIR)\lib\$(OS_DIR) -Libpath:$(JULIA_DIR)\lib
+# no rpath in windows
+#LD_RPATHS=-Wl,-rpath,$(JLCXX_DIR)\lib:$(OPENVR_DIR)\bin\$(OS_DIR)
+# WIN_LIBS=kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib
+WIN_LIBS=
+# LIBS=openvr_api.lib -ldl libcxxwrap_julia.dll.a libjulia.dll.a libjlcxx_containers.dll.a $(WIN_LIBS)
+LIBS=openvr_api.lib -ldl libcxxwrap_julia.dll.a libjulia.dll.a $(WIN_LIBS)
+
+# /DEBUG generates a .pdb file
+# /NXCOMPAT Indicates that an executable is compatible with the Windows Data Execution Prevention feature.
+LD_FLAGS=/DLL /DEBUG $(LIBRARY_PATHS) $(LD_RPATHS) $(LIBS)
+
+CXX=cl
+OS_SO_EXTENSION=.dll
+
+LD=link
+
+RM=del
+
+# LD:=/usr/bin/c++
+
+# wondows' nmake does not support %
+OS_OBJ_EXTENSION=.obj
+
+TARGET1=$(BUILD_DIR)\libvrstage1$(OS_SO_EXTENSION)
+TARGET2=$(BUILD_DIR)\libvrstage2$(OS_SO_EXTENSION)
+TARGET3=$(BUILD_DIR)\libhello$(OS_SO_EXTENSION)
+OBJ1=$(BUILD_DIR)\vrstage1$(OS_OBJ_EXTENSION)
+OBJ2=$(BUILD_DIR)\vrstage2$(OS_OBJ_EXTENSION)
+OBJ3=$(BUILD_DIR)\hello$(OS_OBJ_EXTENSION)
+SRC1=$(SRC_DIR)\vrstage1.cpp
+SRC2=$(SRC_DIR)\vrstage2.cpp
+SRC3=$(SRC_DIR)\hello.cpp
+OBJECTS=$(OBJ1) $(OBJ2)
+TARGETS=$(TARGET1) $(TARGET2)
+
+.PHONY: all clean
+all: $(TARGETS)
+clean:
+	-$(RM) $(TARGETS)
+	-$(RM) $(OBJECTS)
+
+$(OBJ1): $(SRC1)
+	$(CXX) $(CXX_FLAGS) /Fo$@ /c $(SRC1)
+
+$(TARGET1): $(OBJ1)
+	$(LD) $(LD_FLAGS) -out:$@ $(OBJ1)
+
+$(OBJ2): $(SRC2)
+	$(CXX) $(CXX_FLAGS) /Fo$@ /c $(SRC2)
+
+$(TARGET2): $(OBJ2)
+	$(LD) $(LD_FLAGS) -out:$@ $(OBJ2)
+
+$(OBJ3): $(SRC3)
+	$(CXX) $(CXX_FLAGS) /Fo$@ /c $(SRC3)
+
+$(TARGET3): $(OBJ3)
+	$(LD) $(LD_FLAGS) -out:$@ $(OBJ3)

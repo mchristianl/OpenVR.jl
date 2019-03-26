@@ -92,6 +92,75 @@
 #
 # the following example reflects that
 
+# gcc -fPIC
+#   -O2
+#   -std=c++14
+#   -DGNUC
+#   -DJULIA_ENABLE_THREADING=1
+#   -I/home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10/headers
+#   -I/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/include
+#   -I/usr/include/julia
+#   -o /home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10/lib/linux64/vrstage1.o
+#   -c vrstage1.cpp
+# gcc
+#   -shared
+#   -L/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/lib
+#   -L/home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10/bin/linux64
+#   -Wl,-rpath,/home/christianl/.julia/packages/CxxWrap/KcmSi/deps/usr/lib:/home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10/bin/linux64
+# 	-lopenvr_api
+# 	-ldl
+# 	-lcxxwrap_julia
+# 	-ljulia
+# 	-lstdc++
+# 	-o/home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10/lib/linux64/libvrstage1.so
+# 	/home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10/lib/linux64/vrstage1.o
+
+# MS sets up environment variables in a "developer command prompt" or via vcvars.bat scripts
+#  https://docs.microsoft.com/de-de/cpp/build/building-on-the-command-line?view=vs-2017#developer_command_file_locations
+#   VS2017: \Program Files (x86)\Microsoft Visual Studio\2017\{Community, Professional, Enterprise, BuildTools, ...}\VC\Auxiliary\Build
+#   VS2015: \Program Files (x86)\Microsoft Visual Studio 14.0\VC
+#   VS2015: \Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin
+#   VS2015: \Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\{amd64,x64,...}
+# e.g "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
+# there are environment variables
+#   HOMEDRIVE=C:
+#   ProgramFiles(x86)=C:\Program Files (x86)
+
+# MS https://docs.microsoft.com/de-de/cpp/build/building-on-the-command-line?view=vs-2017
+#  these command line options need not to be CAPSIZED
+#  C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x64
+# cl.exe https://docs.microsoft.com/de-de/cpp/build/reference/compiler-options-listed-by-category?view=vs-2017
+#   /O2
+#   /std:c++14
+#   /nologo
+#   /EHsc
+#   /DJULIA_ENABLE_THREADING#1
+#   /I\home\christianl\.julia\packages\CxxWrap\KcmSi\deps\usr\include
+#   /Fo\home\christianl\owncloud\arbeit\tetshared\FEM\FEMday\OpenVR\deps\openvr-1.2.10\lib\linux64\vrstage1.o
+#   /c vrstage1.cpp
+# link.exe https://docs.microsoft.com/de-de/cpp/build/reference/libpath-additional-libpath?view=vs-2017
+#   /LIBPATH:\home\christianl\.julia\packages\CxxWrap\KcmSi\deps\usr\lib
+#   /DLL
+#   /MD
+#   /OUT:\home\christianl\owncloud\arbeit\tetshared\FEM\FEMday\OpenVR\deps\openvr-1.2.10\lib\linux64\libvrstage1.dll
+#   @objlist.txt
+#   @liblist.txt
+#   @exports.txt
+# in Windows, we have .dll and .lib what both is in .so in linux
+#  "a .lib used to refer to symbols exported from a DLL"
+# lib.exe /LIST foo.lib
+#   https://stackoverflow.com/questions/305287/how-to-see-the-contents-of-windows-library-lib/26689684
+
+# no -rpath on windows
+#  https://stackoverflow.com/questions/107888/is-there-a-windows-msvc-equivalent-to-the-rpath-linker-flag
+#  You can use the function SetDllDirectory or AddDllDirectory inside your exe.
+#  This is probably the closest to an RPATH, but only works on WinXP SP1 or later.
+# Dynamic-Link Library Search Order
+#  https://docs.microsoft.com/de-de/windows/desktop/Dlls/dynamic-link-library-search-order
+
+# NOTE: we might also want to use relative paths in Linux, for being able to move/binarily distribute the shared libraries
+
+
 ifeq ($(BUILD_DIR),)
 BUILD_DIR=.
 endif
