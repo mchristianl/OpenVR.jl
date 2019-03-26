@@ -8,6 +8,8 @@ function VR_InitInternal(peError, eType)
     ccall((:VR_InitInternal, libopenvr), intptr_t, (Ptr{EVRInitError}, EVRApplicationType), peError, eType)
 end
 
+VR_InitInternal(peError, eType, pStartupInfo) = VR_InitInternal(peError, eType) # the last parameter, pStartupInfo, is reserved for future use.
+
 function VR_ShutdownInternal()
     ccall((:VR_ShutdownInternal, libopenvr), Cvoid, ())
 end
@@ -32,8 +34,12 @@ function VR_GetVRInitErrorAsEnglishDescription(error)
     ccall((:VR_GetVRInitErrorAsEnglishDescription, libopenvr), Cstring, (EVRInitError,), error)
 end
 
+const VR_Init = VR_InitInternal
+const VR_Shutdown = VR_ShutdownInternal
+
+# an example: https://github.com/burito/vrtest/blob/master/src/vr.c#L422
 function GetGenericInterface(str)
-  e = Ref(EVRInitError)
+  e = Ref(VRInitError_None)
   r = VR_GetGenericInterface(str,e)
   if e[] != VRInitError_None
     println("GetGenericInterface on $str returned error $e[]\n  $(unsafe_string(VR_GetVRInitErrorAsSymbol(e[])))")

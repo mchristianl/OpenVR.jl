@@ -1,5 +1,14 @@
 using OpenVR
 
+# include(joinpath((@__DIR__),"..","src","OpenVR_C.jl"))
+# using Main.OpenVR_C
+# const OpenVR = OpenVR_C
+
+# unfortunatley the C-API is not maintained by Valve … and the currently distributed version does not provide all necessary function pointers in the C-function-tables
+#   https://github.com/ValveSoftware/openvr/issues/89
+#     https://steamcommunity.com/app/358720/discussions/0/405692758722144628/
+#     https://github.com/ValveSoftware/openvr/issues/133
+
 include("hellovr_opengl_structs.jl")
 
 ActionManifestPath = "/home/christianl/src/openvr/samples/bin/hellovr_actions.json"
@@ -77,12 +86,19 @@ using ImageMagick
 using ColorTypes
 using FixedPointNumbers
 
+# compatibility for CxxWrap wrapped library
+cpp_object(x::Ptr{T}) where T = x
+cpp_object(x::T) where T = x.cpp_object
+Base.unsafe_string(x::String) = x
+using CxxWrap
+CxxWrap.isnull(x::Ptr{T}) where T = x == C_NULL
+
 using SimpleDirectMediaLayer
 const SDL = SimpleDirectMediaLayer
 SDLText = Dict(vcat(map(M -> map(s -> getproperty(M,s) => s,filter(s -> typeof(getproperty(M,s)) == UInt32,names(M;all=true,imported=false))),[SDL])...))
 
-using CxxWrap
-module_functions = CxxWrap.get_module_functions(OpenVR)
+# using CxxWrap
+# module_functions = CxxWrap.get_module_functions(OpenVR)
 
 # glmain() = ccall((:main, "/home/christianl/src/openvr/samples/bin/linux64/libhellovr_julia.so"), Int32, (Cint, Ref{Cstring}),0,[])
 
@@ -99,7 +115,6 @@ app = jMainApplication
 # use C++ placement new to put the object there
 # VR.placeCMainApplication(pointer_from_objref(jMainApplication))
 
-using CxxWrap
 using ModernGL
 ModernGL.glShaderSource(shader::GLuint,source::String) = glShaderSource(shader,1,[source],[length(source)])
 
@@ -1485,7 +1500,7 @@ end
 function BInitCompositor(app :: CMainApplication)::Bool
   peError = OpenVR.VRInitError_None;
 
-  if ( OpenVR.VRCompositor().cpp_object == C_NULL )
+  if ( cpp_object(OpenVR.VRCompositor()) == C_NULL )
     println( "Compositor initialization failed. See log file for details\n" );
     return false;
   end
@@ -1505,14 +1520,16 @@ function BInit(app :: CMainApplication)::Bool
   # Loading the SteamVR Runtime
   eError = Ref(OpenVR.VRInitError_None);
   m_pHMD = OpenVR.VR_Init( eError, OpenVR.VRApplication_Scene , ""); # the last parameter, pStartupInfo, is reserved for future use.
-  this.m_pHMD = m_pHMD.cpp_object
+  this.m_pHMD = cpp_object(m_pHMD)
+  # this.m_pHMD = OpenVR.VRSystem()
 
   if ( eError[] != OpenVR.VRInitError_None )
     this.m_pHMD = C_NULL;
     # char buf[1024];
     # sprintf_s( buf, sizeof( buf ), "Unable to init VR runtime: %s", VR.VR_GetVRInitErrorAsEnglishDescription( eError ) );
     # SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", buf, C_NULL );
-    SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", "TODO: VR_GetVRInitErrorAsEnglishDescription", C_NULL ); # TODO
+    # SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", "TODO: VR_GetVRInitErrorAsEnglishDescription", C_NULL ); # TODO
+    SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", unsafe_string(OpenVR.VR_GetVRInitErrorAsEnglishDescription(eError[])), C_NULL ); # TODo
     return false;
   end
 
@@ -1663,3 +1680,62 @@ Shutdown(jMainApplication)
 # RenderFrame(jMainApplication)
 # RenderFrame(jMainApplication)
 # RenderFrame(jMainApplication)
+
+
+# eError = Ref(OpenVR.VRInitError_None);
+# m_pHMD = OpenVR.VR_Init( eError, OpenVR.VRApplication_Scene , "");
+# vrsystem = OpenVR.VRSystem()
+# err = Ref(OpenVR.TrackedProp_Success)
+# OpenVR.GetStringTrackedDeviceProperty(vrsystem,OpenVR.k_unTrackedDeviceIndex_Hmd, OpenVR.Prop_TrackingSystemName_String,Cstring(C_NULL),0,err)
+#
+# fntable = unsafe_load(reinterpret(Ptr{OpenVR.VR_IVRSystem_FnTable},vrsystem))
+# fntable.GetStringTrackedDeviceProperty
+# ccall(unsafe_load(reinterpret(Ptr{VR_IVRSystem_FnTable},this)).GetStringTrackedDeviceProperty,  UInt32, (TrackedDeviceIndex_t, ETrackedDeviceProperty, Cstring, UInt32, Ptr{ETrackedPropertyError},), unDeviceIndex, prop, pchValue, unBufferSize, pError)
+
+# GetRecommendedRenderTargetSize                  = Ptr{Nothing} @0x00007f6ee221e958
+# GetProjectionMatrix                             = Ptr{Nothing} @0x00007f6ee221eba8
+# GetProjectionRaw                                = Ptr{Nothing} @0x00007f6ee221ec68
+# ComputeDistortion                               = Ptr{Nothing} @0x00007f6ee2245220
+# GetEyeToHeadTransform                           = Ptr{Nothing} @0x00007f6ee2227918
+# GetTimeSinceLastVsync                           = Ptr{Nothing} @0x0000000000000000
+# GetD3D9AdapterIndex                             = Ptr{Nothing} @0x00007f6ee2245220
+# GetDXGIOutputInfo                               = Ptr{Nothing} @0x0000000000000000
+# GetOutputDevice                                 = Ptr{Nothing} @0x0000000000000000
+# IsDisplayOnDesktop                              = Ptr{Nothing} @0x0000000000000001
+# SetDisplayVisibility                            = Ptr{Nothing} @0x0000000000000000
+# GetDeviceToAbsoluteTrackingPose                 = Ptr{Nothing} @0x0000000000000000
+# ResetSeatedZeroPose                             = Ptr{Nothing} @0x0000000000000001
+# GetSeatedZeroPoseToStandingAbsoluteTrackingPose = Ptr{Nothing} @0x0000000000000000
+# GetRawZeroPoseToStandingAbsoluteTrackingPose    = Ptr{Nothing} @0x0000000000000000
+# GetSortedTrackedDeviceIndicesOfClass            = Ptr{Nothing} @0x0000000000000000
+# GetTrackedDeviceActivityLevel                   = Ptr{Nothing} @0x0000000000000000
+# ApplyTransform                                  = Ptr{Nothing} @0x0000000000000000
+# GetTrackedDeviceIndexForControllerRole          = Ptr{Nothing} @0x00007f6ee2243040
+# GetControllerRoleForTrackedDeviceIndex          = Ptr{Nothing} @0x00007f6ee2242318
+# GetTrackedDeviceClass                           = Ptr{Nothing} @0x00007f6ee2244a38
+# IsTrackedDeviceConnected                        = Ptr{Nothing} @0x00007f6ee2242308
+# GetBoolTrackedDeviceProperty                    = Ptr{Nothing} @0x00007f6ee2244b90
+# GetFloatTrackedDeviceProperty                   = Ptr{Nothing} @0x0000000000000001
+# GetInt32TrackedDeviceProperty                   = Ptr{Nothing} @0x0000561697392920
+# GetUint64TrackedDeviceProperty                  = Ptr{Nothing} @0x00005616963f9850
+# GetMatrix34TrackedDeviceProperty                = Ptr{Nothing} @0x000000000000007c
+# GetArrayTrackedDeviceProperty                   = Ptr{Nothing} @0x0000000000000000
+# GetStringTrackedDeviceProperty                  = Ptr{Nothing} @0x0000000000000000
+# GetPropErrorNameFromEnum                        = Ptr{Nothing} @0x0000000000000000
+# PollNextEvent                                   = Ptr{Nothing} @0x0000007c0000007c
+# PollNextEventWithPose                           = Ptr{Nothing} @0x0000007c0000007c
+# GetEventTypeNameFromEnum                        = Ptr{Nothing} @0x0000007c0000007c
+# GetHiddenAreaMesh                               = Ptr{Nothing} @0x0000007c0000007c
+# GetControllerState                              = Ptr{Nothing} @0x0000007c0000007c
+# GetControllerStateWithPose                      = Ptr{Nothing} @0x0000007c0000007c
+# TriggerHapticPulse                              = Ptr{Nothing} @0x0000007c0000007c
+# GetButtonIdNameFromEnum                         = Ptr{Nothing} @0x0000007c0000007c
+# GetControllerAxisTypeNameFromEnum               = Ptr{Nothing} @0x0000007c0000007c
+# IsInputAvailable                                = Ptr{Nothing} @0x0000007c0000007c
+# IsSteamVRDrawingControllers                     = Ptr{Nothing} @0x0000007c0000007c
+# ShouldApplicationPause                          = Ptr{Nothing} @0x0000007c0000007c
+# ShouldApplicationReduceRenderingWork            = Ptr{Nothing} @0x0000007c0000007c
+# DriverDebugRequest                              = Ptr{Nothing} @0x0000007c0000007c
+# PerformFirmwareUpdate                           = Ptr{Nothing} @0x0000007c0000007c
+# AcknowledgeQuit_Exiting                         = Ptr{Nothing} @0x0000007c0000007c
+# AcknowledgeQuit_UserPrompt                      = Ptr{Nothing} @0x0000007c0000007c
