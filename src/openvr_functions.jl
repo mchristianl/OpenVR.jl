@@ -1,0 +1,23 @@
+@mkCppFun IsRoleAllowedAsHand
+@mkCppFun ButtonMaskFromId
+@mkCppFun VRToken
+@mkCppFun OpenVRInternal_ModuleContext
+@mkCppFun VRSystem
+@mkCppFun VRChaperone
+@mkCppFun VRChaperoneSetup
+@mkCppFun VRCompositor
+@mkCppFun VROverlay
+@mkCppFun VRScreenshots
+@mkCppFun VRRenderModels
+@mkCppFun VRApplications
+@mkCppFun VRSettings
+@mkCppFun VRResources
+@mkCppFun VRExtendedDisplay
+@mkCppFun VRTrackedCamera
+@mkCppFun VRDriverManager
+@mkCppFun VRInput
+@mkCppFun VRIOBuffer
+@mkCppFun VRSpatialAnchors
+# # @mkCppFun VRNotifications
+@mkCppFun VR_Init
+@mkCppFun VR_Shutdown

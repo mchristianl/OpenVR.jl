@@ -1,229 +1,381 @@
+
 module OpenVR
-  const openvr_version = "1.2.10"
-  const openvr_dirname = "openvr-$openvr_version"
-  const module_dir = dirname(dirname(@__FILE__))
-  const src_dir = joinpath(module_dir,"src")
-  const openvr_dir = joinpath(module_dir,"deps",openvr_dirname)
-  const os_dir_and_so_ext = begin
-    local os_dirname = "unknown"
-    local os_so_extension = ""
-    Sys.islinux()   &&                        (os_dirname = "linux64"; os_so_extension=".so")
-    Sys.isapple()   &&                        (os_dirname = "osx32"  ; os_so_extension=".dylib")
-    Sys.iswindows() && Sys.ARCH == :x86_32 && (os_dirname = "win32"  ; os_so_extension=".dll")
-    Sys.iswindows() && Sys.ARCH == :x86_64 && (os_dirname = "win64"  ; os_so_extension=".dll")
-    (os_dirname, os_so_extension)
-  end
-  const openvr_bin_dir = joinpath(openvr_dir,"lib",os_dir_and_so_ext[1])
-  const stage1_path = joinpath(openvr_bin_dir,"libvrstage1$(os_dir_and_so_ext[2])")
-  const stage2_path = joinpath(openvr_bin_dir,"libvrstage2$(os_dir_and_so_ext[2])")
+  using Libdl
+  using Cxx
+  import Cxx.CxxCore.CppEnum
+  import Cxx.CxxCore.CppMFptr
+  import Cxx.CxxCore.CppValue
+  import Cxx.CxxCore.CppPtr
+  import Cxx.CxxCore.CxxQualType
+  import Cxx.CxxCore.CppBaseType
+  import Cxx.CxxCore.cppcall_member
+  import Cxx.CxxCore.cppcall
+  import Cxx.CxxCore.CppNNS
+  import Cxx.CxxCore.CppTemplate
+  import Cxx.CxxCore.CppRef
 
-  using ModernGL
-  #  add Cxx#master
+  reinterpret4cxx(::Type{T}     , x::T     ) where {T}                           = x
+  reinterpret4cxx(::Type{Ptr{T}}, x::Ptr{U}) where {T,U}                         = convert(Ptr{T},x)
+  reinterpret4cxx(::Type{Ptr{T}}, x::Ref{U}) where {T,U}                         = convert(Ptr{T},pointer_from_objref(x))
+  reinterpret4cxx(::Type{T}     , x::U     ) where {T <: Cxx.CxxCore.CppEnum, U} = T(x)
+  reinterpret4cxx(::Type{T}     , x::T     ) where {T <: Cxx.CxxCore.CppEnum}    = x
 
-  module VR_enums
-    using CxxWrap
-    # @wrapmodule(joinpath("/home/christianl/src/openvr/samples/bin/linux64","libhellovr_preamble"))
-
-    # https://stackoverflow.com/questions/32518131/reference-function-of-outer-module
-    import ...OpenVR: stage1_path
-    @wrapmodule(stage1_path)
-
-    function __init__()
-      @initcxx
-    end
-  end
-
-  for n in names(VR_enums; all=true, imported=false) # skip `#eval` and `#include`
-    startswith(string(n),"__cxxwrap") && continue
-    # skip `#eval` and `#include` etc.
-    n ∈ [:eval, :include, :__init__, :VR_enums, Symbol("#include"), Symbol("#eval"), Symbol("#__init__")] && continue
-    Core.eval(@__MODULE__,:(const $n = VR_enums.$n))
-  end
-
-  const ETrackedPropertyErrorRef = Ref{ETrackedPropertyError}
-
-  const UInt8Ptr = Ptr{UInt8}
-
-  # const VR0 = VR_enums
-  # include("openvr/hellovr_opengl_julia/vrstructs.jl")
-  include(joinpath(src_dir,"vrstructs.jl"))
-  # include("openvr/hellovr_opengl_julia/HelloVRstructs.jl")
-
-  # create Ref{T} and Ptr{T}, since we cannot use these names directly from the C++ shared library
-  for n in names(@__MODULE__; all=true, imported=false)
-    T = getfield(@__MODULE__,n)
-    # only DataTypes
-    typeof(T) != DataType && continue
-    # only those which were defined in this module (by checking their prefix)
-    Tname = string(T.name)
-    Mname = occursin(".",Tname) ? split(Tname,".")[end-1] : ""
-    (Mname == String(nameof(@__MODULE__)) || Mname == String(nameof(VR_enums))) || continue
-    # skip `#eval` and `#include`
-    n ∈ [Symbol("#include"), Symbol("#eval")] && continue
-    # build expression
-    refname = Symbol(String(n)*"Ref")
-    # ptrname = Symbol(String(n)*"Ptr")
-    refexpr = :(const $refname = Ref{$T})
-    # ptrexpr = :(const $ptrname = Ptr{$T})
-    Core.eval(@__MODULE__,refexpr)
-    # display(n)
-    # Core.eval(@__MODULE__,ptrexpr)
-    # TODO: check all field-types on their bitstypeness
-    #   if any, then the layout is guaranteed to not match
-    ~isbitstype(T) && println("WARNING $(nameof(T)) is NOT a bitstype anymore. The memory layout might not match what C/C++ expects.")
-  end
-
-  const RenderModel_tPtrRef = Ref{Ptr{RenderModel_t}} # TODO: figure out how T** template should work
-  const RenderModel_TextureMap_tPtrRef = Ref{Ptr{RenderModel_TextureMap_t}}
-
-  struct FramebufferDesc
-    m_nDepthBufferId :: GLuint
-    m_nRenderTextureId :: GLuint
-    m_nRenderFramebufferId :: GLuint
-    m_nResolveTextureId :: GLuint
-    m_nResolveFramebufferId :: GLuint
-  end
-
-  using CxxWrap
-  # @wrapmodule(joinpath("/home/christianl/src/openvr/samples/bin/linux64","libhellovr_julia"))
-  # CxxWrap.wrapmodule(joinpath("/home/christianl/src/openvr/samples/bin/linux64","libhellovr_julia"),:define_julia_module,@__MODULE__)
-  CxxWrap.wrapmodule(stage2_path,:define_julia_module,@__MODULE__)
-  # const module_functions = CxxWrap.get_module_functions(@__MODULE__)
-
-  # ptr(x :: T) where T = reinterpret(Ptr{T},pointer_from_objref(x))
-  # nulltpr(T) = reinterpret(Ptr{T},C_NULL)
-
-  mkRefOrPtr(x::Ptr{Nothing},::Val{Ref{U}}) where U = reinterpret(Ptr{U},x)
-  mkRefOrPtr(x::U,::Val{U}) where U = x
-  mkRefOrPtr(x,::Val) = Ref(x) # ptr(x)
-
-  # overload for each function that takes a bitstype, allocates it with Ref and passes it as such
-  for f ∈ filter(f -> any(T -> T <: Ref && ~(T <: Ptr), f.argument_types), CxxWrap.get_module_functions(@__MODULE__))
-    argtypes = f.argument_types
-    argsymbols = map((i) -> Symbol(:arg,i[1]), enumerate(argtypes))
-
-    # this makes the smart pointer type union, taken from CxxWrap.build_function_expression
-    function map_julia_arg_type_named(fname, t)
-      if fname ∈ CxxWrap.__excluded_names
-        return t
-      end
-      return CxxWrap.map_julia_arg_type(t)
-    end
-
-    # BUG: I got this looping with nested Ref{Ref{Ref{...}}} when passing a Ptr{Nothing}, where a Ref{Something} was needed
-    # fname = mod === nothing ? f.name : (f.name,mod) # TODO: multi-module support?
-    fname = CxxWrap.process_fname(f.name) # matches on constructors and other functions (and different modules, but that is to be done)
-    args = [map_julia_arg_type_named(f.name, t) for t in f.argument_types]
-    newargs = [T <: Ref ? :($arg)           : :($arg :: $T) for (arg,T) in  zip(argsymbols,args)]
-    wraps   = [T <: Ref ? :(mkRefOrPtr($arg,Val($T))) : :($arg)       for (arg,T) in  zip(argsymbols,args)]
-    expr = :($fname($(newargs...))::$(f.return_type)=$fname($(wraps...)))
-    Core.eval(@__MODULE__,expr)
-  end
-
-  function getUnion(y::VROverlayIntersectionMaskPrimitive_t)
-    off = fieldoffset(VROverlayIntersectionMaskPrimitive_t,2)
-    x = Ref(y)
-    @GC.preserve x begin
-    	x.m_nPrimitiveType == OverlayIntersectionPrimitiveType_Rectangle && return @GC.preserve x unsafe_load(reinterpret(Ptr{IntersectionMaskRectangle_t},pointer_from_objref(x)+off))
-    	x.m_nPrimitiveType == OverlayIntersectionPrimitiveType_Circle    && return @GC.preserve x unsafe_load(reinterpret(Ptr{IntersectionMaskCircle_t}   ,pointer_from_objref(x)+off))
-    end
-  	nothing
-  end
-
-  function getUnion(y::VREvent_t)
-    x = Ref(y)
-    off = fieldoffset(VREvent_t,4)
-
-    # this is reconstructed from the openvr.h comments
-    (( t == VREvent_ButtonPress
-    || t == VREvent_ButtonUnpress
-    || t == VREvent_ButtonTouch
-    || t == VREvent_ButtonUntouch
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_Controller_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_DualAnalog_Press
-    || t == VREvent_DualAnalog_Unpress
-    || t == VREvent_DualAnalog_Touch
-    || t == VREvent_DualAnalog_Untouch
-    || t == VREvent_DualAnalog_Move
-    || t == VREvent_DualAnalog_ModeSwitch1
-    || t == VREvent_DualAnalog_ModeSwitch2
-    || t == VREvent_DualAnalog_Cancel
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_DualAnalog_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_MouseMove
-    || t == VREvent_MouseButtonDown
-    || t == VREvent_MouseButtonUp
-    || t == VREvent_TouchPadMove
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_Mouse_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_FocusEnter
-    || t == VREvent_FocusLeave
-    || t == VREvent_OverlayFocusChanged
-    || t == VREvent_DashboardThumbSelected
-    || t == VREvent_DashboardRequested
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_Overlay_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_ScrollDiscrete
-    || t == VREvent_ScrollSmooth
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_Scroll_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_InputFocusCaptured
-    || t == VREvent_InputFocusReleased
-    || t == VREvent_SceneFocusLost
-    || t == VREvent_SceneFocusGained
-    || t == VREvent_SceneApplicationChanged
-    || t == VREvent_SceneFocusChanged
-    || t == VREvent_InputFocusChanged
-    || t == VREvent_SceneApplicationSecondaryRenderingStarted
-    || t == VREvent_SceneApplicationUsingWrongGraphicsAdapter
-    || t == VREvent_ActionBindingReloaded
-    || t == VREvent_Quit
-    || t == VREvent_ProcessQuit
-    || t == VREvent_QuitAborted_UserPrompt
-    || t == VREvent_QuitAcknowledged
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_Process_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_RenderToast
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_Notification_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_ShowUI
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_ShowUI_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_Input_HapticVibration
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_HapticVibration_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_Input_BindingLoadFailed
-    || t == VREvent_Input_BindingLoadSuccessful
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_InputBindingLoad_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_Input_ActionManifestLoadFailed
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_InputActionManifestLoad_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_Input_ProgressUpdate
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_ProgressUpdate_t}, pointer_from_objref(x) + off))
-    (( t == VREvent_SpatialAnchors_PoseUpdated
-    || t == VREvent_SpatialAnchors_DescriptorUpdated
-    || t == VREvent_SpatialAnchors_RequestPoseUpdate
-    || t == VREvent_SpatialAnchors_RequestDescriptorUpdate
-    )) && return @GC.preserve x unsafe_load(reinterpret(Ptr{VREvent_SpatialAnchor_t}, pointer_from_objref(x) + off))
-
-    # ?? VREvent_Reserved_t reserved;
-    # ?? VREvent_Status_t status;
-    # ?? VREvent_Keyboard_t keyboard;
-    # ?? VREvent_Ipd_t ipd;
-    # ?? VREvent_Chaperone_t chaperone;
-    # ?? VREvent_PerformanceTest_t performanceTest;
-    # ?? VREvent_TouchPadMove_t touchPadMove;
-    # ?? VREvent_SeatedZeroPoseReset_t seatedZeroPoseReset;
-    # ?? VREvent_Screenshot_t screenshot;
-    # ?? VREvent_ScreenshotProgress_t screenshotProgress;
-    # ?? VREvent_ApplicationLaunch_t applicationLaunch;
-    # ?? VREvent_EditingCameraSurface_t cameraSurface;
-    # ?? VREvent_MessageOverlay_t messageOverlay;
-    # ?? VREvent_Property_t property;
-    # ?? VREvent_WebConsole_t webConsole;
-  end
-
-  function GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop)::String
-    err = TrackedProp_Success
-    len = GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop,Cstring(C_NULL),0,err)
-    buf = Array{UInt8,1}(undef,len)
-    GetStringTrackedDeviceProperty(vrsystem,deviceindex,prop,Cstring(pointer(buf)),len,err)
-    err != TrackedProp_Success && println("Warning: GetStringTrackedDeviceProperty failed with error $(err)")
-    return unsafe_string(pointer(buf))
-  end
+  const openvr_incpath = "/home/christianl/src/openvr/headers"
+  const openvr_libpath = "/home/christianl/src/openvr/lib/linux64"
 
   function __init__()
-    @initcxx
+    # /Cxx.cpp:1:1: note: '/usr/lib64/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/openvr.h' included multiple times, additional include site here
+    # __current_compiler__ = Cxx.new_clang_instance()
+    addHeaderDir(openvr_incpath, kind=C_System)
+    Libdl.dlopen(joinpath(openvr_libpath, "libopenvr_api.so"), Libdl.RTLD_GLOBAL)
+    try
+      cxxinclude("openvr.h")
+    catch e
+      # TODO: this throws when openvr is included multiple times, e.g. first during build and second at `using OpenVR`
+    end
+  end
+
+  const include_openvr_enums               = joinpath(@__DIR__,"openvr_enums.jl")
+  const include_openvr_consts              = joinpath(@__DIR__,"openvr_consts.jl")
+  const include_openvr_functions           = joinpath(@__DIR__,"openvr_functions.jl")
+  const include_openvr_methods             = joinpath(@__DIR__,"openvr_methods.jl")
+  const include_openvr_enums_generated     = joinpath(@__DIR__,"openvr_enums_generated.jl")
+  const include_openvr_consts_generated    = joinpath(@__DIR__,"openvr_consts_generated.jl")
+  const include_openvr_functions_generated = joinpath(@__DIR__,"openvr_functions_generated.jl")
+  const include_openvr_methods_generated   = joinpath(@__DIR__,"openvr_methods_generated.jl")
+
+  cur_output_file = stdout
+
+  # const GENERATE_BINDINGS          = true
+  const GENERATE_BINDINGS          = !isfile(include_openvr_methods_generated)
+  const INCLUDE_GENERATED_BINDINGS = true
+  const DIRECT_DEFINITIONS         = false
+
+  if GENERATE_BINDINGS || DIRECT_DEFINITIONS
+    println("creating OpenVR bindings...")
+    addHeaderDir(openvr_incpath, kind=C_System)
+    Libdl.dlopen(joinpath(openvr_libpath, "libopenvr_api.so"), Libdl.RTLD_GLOBAL)
+    try
+      cxxinclude("openvr.h")
+    catch e
+      # TODO: this throws when openvr is included multiple times, e.g. first during build and second at `using OpenVR`
+    end
+
+    macro mkCppConst(cname)
+      cxx_quot = :( vr::$cname )
+      println(cxx_quot)
+      cppconst = __module__.eval(:( @cxx $cxx_quot ))
+      if cppconst isa Cxx.CxxCore.CppPtr{UInt8,(true, false, false)}
+        printval = "\"" * unsafe_string(reinterpret(Ptr{Int8},cppconst)) * "\""
+      elseif cppconst isa Ptr{UInt8}
+        printval = "\"" * unsafe_string(convert(Ptr{Int8},cppconst)) * "\""
+      elseif cppconst isa CppEnum
+        constructor = string(typeof(cppconst).parameters[1])[length("vr::")+1:end]
+        printval = "$constructor($(cppconst.val))"
+      elseif cppconst isa DataType
+        printval = replace(string(cppconst), "Cxx.CxxCore." => "")
+      else
+        constructor = typeof(cppconst)
+        printval = "$constructor($cppconst)"
+      end
+      if cppconst isa DataType
+        GENERATE_BINDINGS && println(cur_output_file,"export $(string(cname))")
+        GENERATE_BINDINGS && println(cur_output_file,"const $(string(cname)) = $printval")
+        DIRECT_DEFINITIONS || return :()
+        return quote
+          export $(esc(cname))
+          const $(esc(cname)) = $cppconst
+        end
+      else
+        GENERATE_BINDINGS && println(cur_output_file,"const $(string(cname)) = $printval")
+        DIRECT_DEFINITIONS || return :()
+        return quote
+          const $(esc(cname)) = $cppconst
+        end
+      end
+    end
+    quote2string(q) = strip(replace(replace(repr(q)[length("quote\n")+1:end-length("\nend")], r" *#=.*=# *\n" => s""), r"\n *" => s"; "))
+    joinargstrindent(arr::Vector{String},del,i;forcenl = false) =
+      ( length(arr) == 0
+      ? ""
+      : length(arr) == 1 && !forcenl
+      ? arr[1]
+      : let istr = repeat(" ",i)
+            "\n" * istr * repeat(" ",length(del)) * join(arr,"\n" * istr * del) * "\n" * istr
+        end
+      )
+
+    macro cppFun(fname)
+      cppfun = __module__.eval(quote
+        typeof(@cxx vr::&$fname).parameters[1]
+      end)
+    end
+    # reinterpret4cxx(::Type{T},x::Ref{U}) where {T,U} = reinterpret(T,convert(Ptr{U},pointer_from_objref(x)))
+    macro mkCppFun(fname)
+      cppfun      = __module__.eval(:( typeof($(__module__).@cxx vr::&$fname).parameters[1] ))
+      rtype       = cppfun.parameters[1]
+      args        = cppfun.parameters[2].parameters
+      argstyp     = [:(                      $(esc(Symbol("arg$n")))::$T  ) for (n,T) in enumerate(args)]
+      arglist     = [:(                      $(esc(Symbol("arg$n")))      ) for (n,T) in enumerate(args)]
+      argsipt     = [:( $reinterpret4cxx($T, $(esc(Symbol("arg$n")))    ) ) for (n,T) in enumerate(args)]
+      argstyp_str = [                       "arg$n :: $T" for (n,T) in enumerate(args)]
+      arglist_str = [                       "arg$n"       for (n,T) in enumerate(args)]
+      argsipt_str = [   "reinterpret4cxx($T, arg$n)"      for (n,T) in enumerate(args)]
+      q1 = quote
+        function $(esc(fname))( $(argstyp...) )::$rtype
+          # $Cxx.@cxx vr::$fname( $(arglist...) )
+          # ($(__module__.Cxx.CxxCore.cppcall))(
+          #      $(__module__.__current_compiler__)
+          #   , ($(__module__.Cxx.CxxCore.CppNNS)){(Tuple){:vr, $(QuoteNode(Symbol(fname)))}}()
+          #     , $(arglist...) )
+          $cppcall( $__current_compiler__
+                  , $CppNNS{(Tuple){:vr, $(QuoteNode(Symbol(fname)))}}()
+                  , $(arglist...) )
+        end
+      end
+      s1 = """
+      $(string(fname))($(joinargstrindent(argstyp_str,", ",2))) $(length(arglist) < 2 ? "" : "     "):: $rtype =
+        cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :$(string(fname))}}()$(length(arglist_str) > 0 ? ", " : "")$(join(arglist_str,", ")))"""
+      s1 = replace(s1, "Cxx.CxxCore." => "")
+      GENERATE_BINDINGS && println(cur_output_file,"export $fname")
+      GENERATE_BINDINGS && println(cur_output_file,s1)
+      if isempty(arglist)
+        GENERATE_BINDINGS && println(cur_output_file)
+        DIRECT_DEFINITIONS || return :()
+        return quote
+            export $(esc(fname))
+            $q1
+          end
+      else
+        q2 = quote
+               function $(esc(fname))( $(arglist...) )::$rtype
+                 $(esc(fname))( $(argsipt...) )
+               end
+             end
+        s2 = """
+        $(string(fname))($(join(arglist_str,", "))) =
+          $(string(fname))($(joinargstrindent(argsipt_str,", ",4)))"""
+        GENERATE_BINDINGS && println(cur_output_file,s2)
+        GENERATE_BINDINGS && println(cur_output_file)
+        DIRECT_DEFINITIONS || return :()
+        return quote
+            export $(esc(fname))
+            $q1
+            $q2
+          end
+      end
+    end
+
+    macro mkCppMethodCast(cname,fname,rtype,argtypes)
+      argtypes_str =
+        if argtypes isa Expr && argtypes.head == :tuple
+          argtypes_str = join(string.(argtypes.args), ",")
+        elseif argtypes isa String
+          if startswith(argtypes,"(") && endswith(argtypes,")")
+            argtypes[2:end-1]
+          else
+            argtypes
+          end
+        else
+          string(argtypes)
+        end
+      # .method("SetString", static_cast<void(vr::CVRSettingHelper::*)(const char *, const char *, const char *, vr::EVRSettingsError *)>(&vr::CVRSettingHelper::SetString))
+      cname_str = string(cname)
+      fname_str = string(fname)
+      rtype_str = string(rtype)
+      icxx_str = "static_cast<$rtype_str(vr::$cname_str::*)($argtypes_str)>(&vr::$cname_str::$fname_str);"
+      println(icxx_str)
+      cppmet = __module__.eval(:( typeof(@icxx_str $icxx_str)) )
+      mkCppMethod_expr(cppmet,cname,fname; createConvenienceWrapper=false)
+    end
+
+    macro mkCppMethod(cname,fname)
+      icxx_str = "&vr::$cname::$fname;"
+      println(icxx_str)
+      cppmet  = __module__.eval(:( typeof(@icxx_str $icxx_str) ))
+      mkCppMethod_expr(cppmet,cname,fname)
+    end
+
+    macro mkCppMethodInline(cname,fname)
+      cxx_quot = :( vr::$cname::&$fname )
+      println(cxx_quot)
+      cppmet  = __module__.eval(:( typeof(@cxx $cxx_quot) ))
+      mkCppMethod_expr(cppmet,cname,fname)
+    end
+
+    function mkCppMethod_expr(cppmet,cname,fname; createConvenienceWrapper = true)
+      cppmet <: Cxx.CxxCore.CppMFptr || return :( error("vr::$($cname)::$($fname) is not a method reference") )
+      this = ( cppmet.parameters[1] <: (Cxx.CxxCore.CppValue{U,N} where {U,N})
+             ? Cxx.CxxCore.CppPtr{cppmet.parameters[1].body.parameters[1], N} where N
+             : return :( error("method call on *this :: $($(cppmet.parameters[1]))") )
+             )
+      cppfun  = cppmet.parameters[2]
+      rtype   = cppfun.parameters[1]
+      args    = cppfun.parameters[2].parameters
+      argstyp = [:(                     $(esc(Symbol("arg$n")))::$T  ) for (n,T) in enumerate(args)]
+      arglist = [:(                     $(esc(Symbol("arg$n")))      ) for (n,T) in enumerate(args)]
+      argsipt = [:( $reinterpret4cxx($T, $(esc(Symbol("arg$n")))    ) ) for (n,T) in enumerate(args)]
+      argstyp_str = [                       "arg$n :: $T" for (n,T) in enumerate(args)]
+      arglist_str = [                       "arg$n"       for (n,T) in enumerate(args)]
+      argsipt_str = [   "reinterpret4cxx($T, arg$n)"      for (n,T) in enumerate(args)]
+      pushfirst!(argstyp, :( $(esc(Symbol("this")))::$this ))
+      pushfirst!(arglist, :( $(esc(Symbol("this"))) ))
+      pushfirst!(argsipt, :( $(esc(Symbol("this"))) ))
+      pushfirst!(argstyp_str, "this :: $this" )
+      pushfirst!(arglist_str, "this" )
+      pushfirst!(argsipt_str, "this" )
+      q1 = quote
+        function $(esc(fname))( $(argstyp...) )::$rtype
+          # $Cxx.@cxx vr::$fname( $(arglist...) )
+          ($(Cxx.CxxCore.cppcall_member))(
+               $(__current_compiler__)
+            , ($(Cxx.CxxCore.CppNNS)){(Tuple){:GetStringTrackedDeviceProperty}}()
+            , $(arglist...)
+            )
+        end
+      end
+      s1 = """
+      $(string(fname))($(joinargstrindent(argstyp_str,", ",2; forcenl=true)))      :: $rtype =
+        cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :$(string(fname))}}()$(length(arglist_str) > 0 ? ", " : "")$(join(arglist_str,", ")))"""
+      s1 = replace(s1, "Cxx.CxxCore." => "")
+      GENERATE_BINDINGS && println(cur_output_file,"export $fname")
+      GENERATE_BINDINGS && println(cur_output_file,s1)
+      if length(arglist) == 1 || !createConvenienceWrapper
+        GENERATE_BINDINGS && println(cur_output_file)
+        DIRECT_DEFINITIONS || return :()
+        return quote
+            export $(esc(fname))
+            $q1
+          end
+      else
+        q2 = quote
+               function $(esc(fname))( $(vcat(argstyp[1:1],arglist[2:end])...) )::$rtype
+                 $(esc(fname))( $(argsipt...) )
+               end
+             end
+        s2 = """
+        $(string(fname))($(join(vcat(argstyp_str[1:1],arglist_str[2:end]),", "))) =
+          $(string(fname))($(joinargstrindent(argsipt_str,", ",4)))"""
+        s2 = replace(s2, "Cxx.CxxCore." => "")
+        GENERATE_BINDINGS && println(cur_output_file,s2)
+        GENERATE_BINDINGS && println(cur_output_file)
+        DIRECT_DEFINITIONS || return :()
+        return quote
+            export $(esc(fname))
+            $q1
+            $q2
+          end
+      end
+    end
+
+    println("creating $include_openvr_enums_generated...")
+    cur_output_file = open(include_openvr_enums_generated, "w")
+      include(include_openvr_enums)
+    close(cur_output_file)
+    println("creating $include_openvr_consts_generated...")
+    cur_output_file = open(include_openvr_consts_generated, "w")
+      include(include_openvr_consts)
+    close(cur_output_file)
+    println("creating $include_openvr_functions_generated...")
+    cur_output_file = open(include_openvr_functions_generated, "w")
+      include(include_openvr_functions)
+    close(cur_output_file)
+    println("creating $include_openvr_methods_generated...")
+    cur_output_file = open(include_openvr_methods_generated, "w")
+      include(include_openvr_methods)
+    close(cur_output_file)
+    cur_output_file = stdout
+  end
+
+  if INCLUDE_GENERATED_BINDINGS
+    include(include_openvr_enums_generated)
+    include(include_openvr_consts_generated)
+    include(include_openvr_functions_generated)
+    include(include_openvr_methods_generated)
+  end
+
+
+  # julia> cxx"struct A{ int x; };"
+  # true
+  # julia> @cxxnew A()
+  # (struct A *) @0x000055f2048a1eb0
+  # julia> typeof(@cxxnew A())
+  # Cxx.CxxCore.CppPtr{Cxx.CxxCore.CppValue{Cxx.CxxCore.CxxQualType{Cxx.CxxCore.CppBaseType{:A},(false, false, false)},N} where N,(false, false, false)}
+
+  # ivrsystem
+  # (class vr::IVRSystem *) @0x00007f543a2f00e0
+  # julia> typeof(ivrsystem)
+  # Cxx.CxxCore.CppPtr{Cxx.CxxCore.CxxQualType{Cxx.CxxCore.CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},(false, false, false)}
+
+  # @cxx vr::IVRSystem::&GetEyeToHeadTransform
+  # Cxx.CxxCore.CppMFptr{
+  #   Cxx.CxxCore.CppValue{
+  #     Cxx.CxxCore.CxxQualType{
+  #       Cxx.CxxCore.CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)}
+  #     , N
+  #     } where N
+  #   , Cxx.CxxCore.CppFunc{
+  #       Cxx.CxxCore.CppValue{
+  #         Cxx.CxxCore.CxxQualType{
+  #           Cxx.CxxCore.CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},N} where N,Tuple{Cxx.CxxCore.CppEnum{Symbol("vr::EVREye"),UInt32}}}}(0x0000000000000021, 0x0000000000000000)
+
+
+  # @mkCppConst IVRSystem
+  # @mkCppConst IVRApplications
+  # @mkCppConst IVRSettings
+  # @mkCppConst IVRChaperone
+  # @mkCppConst IVRChaperoneSetup
+  # @mkCppConst IVRCompositor
+  # @mkCppConst IVRNotifications
+  # @mkCppConst IVROverlay
+  # @mkCppConst IVRRenderModels
+  # @mkCppConst IVRExtendedDisplay
+  # @mkCppConst IVRTrackedCamera
+  # @mkCppConst IVRScreenshots
+  # @mkCppConst IVRResources
+  # @mkCppConst IVRDriverManager
+  # @mkCppConst IVRInput
+  # @mkCppConst IVRIOBuffer
+  # @mkCppConst IVRSpatialAnchors
+  # @mkCppConst COpenVRContext
+
+  const IVRSystem_ptr          = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
+  const IVRApplications_ptr    = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
+  const IVRSettings_ptr        = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N
+  const IVRChaperone_ptr       = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
+  const IVRChaperoneSetup_ptr  = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
+  const IVRCompositor_ptr      = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
+  const IVRNotifications_ptr   = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRNotifications")},(false, false, false)},N} where N
+  const IVROverlay_ptr         = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
+  const IVRRenderModels_ptr    = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
+  const IVRExtendedDisplay_ptr = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRExtendedDisplay")},(false, false, false)},N} where N
+  const IVRTrackedCamera_ptr   = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N
+  const IVRScreenshots_ptr     = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N
+  const IVRResources_ptr       = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRResources")},(false, false, false)},N} where N
+  const IVRDriverManager_ptr   = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRDriverManager")},(false, false, false)},N} where N
+  const IVRInput_ptr           = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N
+  const IVRIOBuffer_ptr        = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N
+  const IVRSpatialAnchors_ptr  = CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSpatialAnchors")},(false, false, false)},N} where N
+  const COpenVRContext_ptr     = CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
+
+
+  #  NOTE: it also might help to set the vr*-process' niceness to 19 and move the vrcompmositor windows "out of the visual viewport"
+  function killall()
+    println("VR_Shutdown...")
+    VR_Shutdown()
+    println("waiting for VR to shut down")
+    sleep(2.0)
+    println("sending term signal...")
+    try; run(`pkill --signal TERM -f vrserver`);     catch e; end
+    try; run(`pkill --signal TERM -f vrdashboard`);  catch e; end
+    try; run(`pkill --signal TERM -f vrwebhelper`);  catch e; end
+    try; run(`pkill --signal TERM -f vrcompositor`); catch e; end
+    sleep(2.0)
+    println("sending kill signal...")
+    try; run(`pkill --signal KILL -f vrserver`);     catch e; end
+    try; run(`pkill --signal KILL -f vrdashboard`);  catch e; end
+    try; run(`pkill --signal KILL -f vrwebhelper`);  catch e; end
+    try; run(`pkill --signal KILL -f vrcompositor`); catch e; end
+    nothing
   end
 end
