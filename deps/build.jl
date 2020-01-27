@@ -1,6 +1,6 @@
 # https://julialang.github.io/Pkg.jl/v1/creating-packages/#Adding-a-build-step-to-the-package.-1
 
-cd(dirname(dirname(@__FILE__)))
+cd(dirname(@__DIR__))
 
 # https://github.com/JuliaPackaging/BinaryProvider.jl
 using BinaryProvider
@@ -27,13 +27,13 @@ build_samples = true
 #  https://github.com/JuliaGraphics/Cairo.jl/blob/master/deps/build.jl
 #  https://github.com/jonathanBieler/SimpleDirectMediaLayer.jl/blob/master/deps/build.jl
 
-os_dirname = "unknown"
-os_so_extension = ""
-Sys.islinux()   &&                        (os_dirname = "linux64"; os_so_extension=".so")
-Sys.isapple()   &&                        (os_dirname = "osx32"  ; os_so_extension=".dylib")
-Sys.iswindows() && Sys.ARCH == :x86_32 && (os_dirname = "win32"  ; os_so_extension=".dll")
-Sys.iswindows() && Sys.ARCH == :x86_64 && (os_dirname = "win64"  ; os_so_extension=".dll")
-os_julia_include_dir = joinpath(dirname(Sys.BINDIR),"include","julia")
+# os_dirname = "unknown"
+# os_so_extension = ""
+# Sys.islinux()   &&                        (os_dirname = "linux64"; os_so_extension=".so")
+# Sys.isapple()   &&                        (os_dirname = "osx32"  ; os_so_extension=".dylib")
+# Sys.iswindows() && Sys.ARCH == :x86_32 && (os_dirname = "win32"  ; os_so_extension=".dll")
+# Sys.iswindows() && Sys.ARCH == :x86_64 && (os_dirname = "win64"  ; os_so_extension=".dll")
+# os_julia_include_dir = joinpath(dirname(Sys.BINDIR),"include","julia")
 
 if Sys.iswindows()
   # detect Visual studio https://docs.microsoft.com/de-de/cpp/build/building-on-the-command-line?view=vs-2017#developer_command_file_locations
@@ -80,13 +80,14 @@ end
 prefix = Prefix("./deps") # `/` also on windows?
 @assert ~isempty(prefix.path) ""
 
-openvr_dirname = "openvr-1.2.10"
+openvr_version = "1.9.16"
+openvr_dirname = "openvr-$openvr_version"
 openvr_dir = joinpath(prefix.path,openvr_dirname)
 openvr_sample_dir = joinpath(openvr_dir,"samples")
 openvr_bin_dir = joinpath(openvr_dir,"lib",os_dirname)
 
-openvr_url  = "https://github.com/ValveSoftware/openvr/archive/v1.2.10.tar.gz"
-openvr_tar_gz_sha256 = "969b8696f00164bb6f7dcb15bdb399fd5e63dbf8961de812c7b0f0a1c440b869"
+openvr_url  = "https://github.com/ValveSoftware/openvr/archive/v$openvr_version.tar.gz"
+openvr_tar_gz_sha256 = "8264e8dc20c926bc1828407a588b0755e15314f48a9b96bd1e550ac030174ecb"
 
 ispath(openvr_dir) && rm(openvr_dir; recursive=true, force=true)
 install(openvr_url, openvr_tar_gz_sha256; prefix=prefix, force=true)
@@ -121,31 +122,31 @@ if with_samples
   # run(`$openvr_sample_dir/bin/$os_dirname/hellovr_opengl`)
 end
 
-wrapper_src_dir=joinpath(prefix.path,"wrapper")
-wrapper_build_dir=openvr_bin_dir
-cd(wrapper_src_dir)
-cmd_make="make"
-
-using CxxWrap
-
-oldENV=copy(ENV) # save environment
-  ENV["BUILD_DIR"        ] = wrapper_build_dir
-  ENV["SRC_DIR"          ] = "."
-  ENV["JULIA_INCLUDE_DIR"] = os_julia_include_dir
-  ENV["OPENVR_DIR"       ] = openvr_dir
-  ENV["JLCXX_DIR"        ] = CxxWrap.prefix().path
-  ENV["OS_DIR"           ] = os_dirname
-  ENV["OS_SO_EXTENSION"  ] = os_so_extension
-  ENV["CXX"              ] = "gcc"
-  println("building openvr wrapper with the following settings:")
-  println("  BUILD_DIR         = $(ENV["BUILD_DIR"        ])")
-  println("  SRC_DIR           = $(ENV["SRC_DIR"          ])")
-  println("  JULIA_INCLUDE_DIR = $(ENV["JULIA_INCLUDE_DIR"])")
-  println("  OPENVR_DIR        = $(ENV["OPENVR_DIR"       ])")
-  println("  JLCXX_DIR         = $(ENV["JLCXX_DIR"        ])")
-  println("  OS_DIR            = $(ENV["OS_DIR"           ])")
-  println("  OS_SO_EXTENSION   = $(ENV["OS_SO_EXTENSION"  ])")
-  println("  CXX               = $(ENV["CXX"              ])")
-  p = run(`$cmd_make`)
-for kv in oldENV; ENV[kv[1]] = kv[2]; end  # restore environment
-@assert p.exitcode == 0 "make has failed"
+# wrapper_src_dir=joinpath(prefix.path,"wrapper")
+# wrapper_build_dir=openvr_bin_dir
+# cd(wrapper_src_dir)
+# cmd_make="make"
+#
+# using CxxWrap
+#
+# oldENV=copy(ENV) # save environment
+#   ENV["BUILD_DIR"        ] = wrapper_build_dir
+#   ENV["SRC_DIR"          ] = "."
+#   ENV["JULIA_INCLUDE_DIR"] = os_julia_include_dir
+#   ENV["OPENVR_DIR"       ] = openvr_dir
+#   ENV["JLCXX_DIR"        ] = CxxWrap.prefix().path
+#   ENV["OS_DIR"           ] = os_dirname
+#   ENV["OS_SO_EXTENSION"  ] = os_so_extension
+#   ENV["CXX"              ] = "gcc"
+#   println("building openvr wrapper with the following settings:")
+#   println("  BUILD_DIR         = $(ENV["BUILD_DIR"        ])")
+#   println("  SRC_DIR           = $(ENV["SRC_DIR"          ])")
+#   println("  JULIA_INCLUDE_DIR = $(ENV["JULIA_INCLUDE_DIR"])")
+#   println("  OPENVR_DIR        = $(ENV["OPENVR_DIR"       ])")
+#   println("  JLCXX_DIR         = $(ENV["JLCXX_DIR"        ])")
+#   println("  OS_DIR            = $(ENV["OS_DIR"           ])")
+#   println("  OS_SO_EXTENSION   = $(ENV["OS_SO_EXTENSION"  ])")
+#   println("  CXX               = $(ENV["CXX"              ])")
+#   p = run(`$cmd_make`)
+# for kv in oldENV; ENV[kv[1]] = kv[2]; end  # restore environment
+# @assert p.exitcode == 0 "make has failed"

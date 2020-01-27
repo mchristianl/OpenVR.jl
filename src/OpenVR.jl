@@ -20,14 +20,28 @@ module OpenVR
   reinterpret4cxx(::Type{T}     , x::U     ) where {T <: Cxx.CxxCore.CppEnum, U} = T(x)
   reinterpret4cxx(::Type{T}     , x::T     ) where {T <: Cxx.CxxCore.CppEnum}    = x
 
-  const openvr_incpath = "/home/christianl/src/openvr/headers"
-  const openvr_libpath = "/home/christianl/src/openvr/lib/linux64"
+  const openvr_version = "1.9.16"
+  const openvr_dirname = "openvr-$openvr_version"
+  const module_dir = dirname(dirname(@__FILE__))
+  const src_dir = joinpath(module_dir,"src")
+  const openvr_dir = joinpath(module_dir,"deps",openvr_dirname)
+  const openvr_lib_relpath =
+    if     Sys.islinux()   && Sys.ARCH == :x86_32; "linux32/libopenvr_api.so"
+    elseif Sys.islinux()   && Sys.ARCH == :x86_64; "linux64/libopenvr_api.so"
+    elseif Sys.iswindows() && Sys.ARCH == :x86_32; "win32/openvr_api.lib"
+    elseif Sys.iswindows() && Sys.ARCH == :x86_64; "win64/openvr_api.lib"
+    elseif Sys.isapple()                         ; "osx32/libopenvr_api.dylib"
+    else error("system not detected or unsupported")
+    end
+
+  const openvr_binpath = joinpath(openvr_dir,"lib",openvr_lib_relpath)
+  const openvr_incpath = joinpath(openvr_dir,"headers")
 
   function __init__()
     # /Cxx.cpp:1:1: note: '/usr/lib64/gcc/x86_64-pc-linux-gnu/9.2.0/../../../../include/openvr.h' included multiple times, additional include site here
     # __current_compiler__ = Cxx.new_clang_instance()
     addHeaderDir(openvr_incpath, kind=C_System)
-    Libdl.dlopen(joinpath(openvr_libpath, "libopenvr_api.so"), Libdl.RTLD_GLOBAL)
+    Libdl.dlopen(openvr_binpath, Libdl.RTLD_GLOBAL)
     try
       cxxinclude("openvr.h")
     catch e
@@ -54,7 +68,7 @@ module OpenVR
   if GENERATE_BINDINGS || DIRECT_DEFINITIONS
     println("creating OpenVR bindings...")
     addHeaderDir(openvr_incpath, kind=C_System)
-    Libdl.dlopen(joinpath(openvr_libpath, "libopenvr_api.so"), Libdl.RTLD_GLOBAL)
+    Libdl.dlopen(openvr_binpath, Libdl.RTLD_GLOBAL)
     try
       cxxinclude("openvr.h")
     catch e
