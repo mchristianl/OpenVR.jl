@@ -175,7 +175,7 @@ endif
 
 ifeq ($(OPENVR_DIR),)
 # OPENVR_DIR=/home/christianl/src/openvr
-OPENVR_DIR:=/home/christianl/owncloud/arbeit/tetshared/FEM/FEMday/OpenVR/deps/openvr-1.2.10
+OPENVR_DIR:=/home/christianl/owncloud/arbeit/julia/OpenVR/deps/openvr-1.2.10
 endif
 
 ifeq ($(JLCXX_DIR),)

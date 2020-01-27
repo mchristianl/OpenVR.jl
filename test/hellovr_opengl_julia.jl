@@ -1529,7 +1529,7 @@ function BInit(app :: CMainApplication)::Bool
     # sprintf_s( buf, sizeof( buf ), "Unable to init VR runtime: %s", VR.VR_GetVRInitErrorAsEnglishDescription( eError ) );
     # SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", buf, C_NULL );
     # SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", "TODO: VR_GetVRInitErrorAsEnglishDescription", C_NULL ); # TODO
-    SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", unsafe_string(OpenVR.VR_GetVRInitErrorAsEnglishDescription(eError[])), C_NULL ); # TODo
+    # SDL.ShowSimpleMessageBox( SDL.MESSAGEBOX_ERROR, "VR_Init Failed", unsafe_string(OpenVR.VR_GetVRInitErrorAsEnglishDescription(eError[])), C_NULL ); # TODo
     return false;
   end
 

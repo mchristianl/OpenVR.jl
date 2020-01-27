@@ -18,6 +18,7 @@ module OpenVR
   const stage2_path = joinpath(openvr_bin_dir,"libvrstage2$(os_dir_and_so_ext[2])")
 
   using ModernGL
+  #  add Cxx#master
 
   module VR_enums
     using CxxWrap
@@ -109,6 +110,7 @@ module OpenVR
       return CxxWrap.map_julia_arg_type(t)
     end
 
+    # BUG: I got this looping with nested Ref{Ref{Ref{...}}} when passing a Ptr{Nothing}, where a Ref{Something} was needed
     # fname = mod === nothing ? f.name : (f.name,mod) # TODO: multi-module support?
     fname = CxxWrap.process_fname(f.name) # matches on constructors and other functions (and different modules, but that is to be done)
     args = [map_julia_arg_type_named(f.name, t) for t in f.argument_types]

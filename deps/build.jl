@@ -13,6 +13,7 @@ using BinaryProvider
 # using BinaryBuilder # TODO: much complicated, many instable
 # examples
 #   https://github.com/staticfloat/IpoptBuilder/blob/master/build_tarballs.jl
+#   BinaryBuilder.run_wizard()
 
 # import Compat.Sys
 
