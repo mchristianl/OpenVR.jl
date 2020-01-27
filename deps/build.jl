@@ -131,7 +131,7 @@ if !ispath(openvr_dir)
   end
 end
 
-for d in [d for d in readdir(openvr_dir) if d ∉ ["lib", "headers", "LICENSE", with_samples ? "samples" : "", "README.md"] ]
+for d in [d for d in readdir(openvr_dir) if d ∉ ["lib", "bin", "headers", "LICENSE", with_samples ? "samples" : "", "README.md"] ]
   println("removing " * joinpath(openvr_dir,d))
   rm(joinpath(openvr_dir,d); recursive=true, force=true)
 end

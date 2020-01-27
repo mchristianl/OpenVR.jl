@@ -25,16 +25,17 @@ module OpenVR
   const module_dir = dirname(dirname(@__FILE__))
   const src_dir = joinpath(module_dir,"src")
   const openvr_dir = joinpath(module_dir,"deps",openvr_dirname)
-  const openvr_lib_relpath =
+  const openvr_bin_relpath =
     if     Sys.islinux()   && Sys.ARCH == :x86_32; "linux32/libopenvr_api.so"
     elseif Sys.islinux()   && Sys.ARCH == :x86_64; "linux64/libopenvr_api.so"
     elseif Sys.iswindows() && Sys.ARCH == :x86_32; "win32/openvr_api.lib"
     elseif Sys.iswindows() && Sys.ARCH == :x86_64; "win64/openvr_api.lib"
-    elseif Sys.isapple()                         ; "osx32/libopenvr_api.dylib"
+    elseif Sys.isapple()   && Sys.ARCH == :x86_32; "osx32/libopenvr_api.dylib"
+    elseif Sys.isapple()   && Sys.ARCH == :x86_64; "osx64/OpenVR.framework/OpenVR"
     else error("system not detected or unsupported")
     end
 
-  const openvr_binpath = joinpath(openvr_dir,"lib",openvr_lib_relpath)
+  const openvr_binpath = joinpath(openvr_dir,"bin",openvr_bin_relpath)
   const openvr_incpath = joinpath(openvr_dir,"headers")
 
   function __init__()
