@@ -40,7 +40,7 @@
 @mkCppConst Imu_OffScaleFlags
 @mkCppConst EVRApplicationError
 @mkCppConst EVRApplicationProperty
-@mkCppConst EVRApplicationTransitionState
+# @mkCppConst EVRApplicationTransitionState
 @mkCppConst EVRSettingsError
 @mkCppConst ChaperoneCalibrationState
 @mkCppConst EChaperoneConfigFile
@@ -55,7 +55,7 @@
 @mkCppConst VRMessageOverlayResponse
 @mkCppConst EGamepadTextInputMode
 @mkCppConst EGamepadTextInputLineMode
-@mkCppConst EOverlayDirection
+# @mkCppConst EOverlayDirection
 @mkCppConst EVROverlayIntersectionMaskPrimitiveType
 @mkCppConst EVRRenderModelError
 @mkCppConst EVRComponentProperty
@@ -271,7 +271,7 @@
 @mkCppConst Prop_HasVirtualDisplayComponent_Bool
 @mkCppConst Prop_HasSpatialAnchorsSupport_Bool
 @mkCppConst Prop_ControllerType_String
-@mkCppConst Prop_LegacyInputProfile_String
+# @mkCppConst Prop_LegacyInputProfile_String
 @mkCppConst Prop_ControllerHandSelectionPriority_Int32
 @mkCppConst Prop_VendorSpecific_Reserved_Start
 @mkCppConst Prop_VendorSpecific_Reserved_End
@@ -344,12 +344,12 @@
 # @mkCppConst VREvent_ScrollSmooth
 @mkCppConst VREvent_InputFocusCaptured
 @mkCppConst VREvent_InputFocusReleased
-@mkCppConst VREvent_SceneFocusLost
-@mkCppConst VREvent_SceneFocusGained
-@mkCppConst VREvent_SceneApplicationChanged
+# @mkCppConst VREvent_SceneFocusLost
+# @mkCppConst VREvent_SceneFocusGained
+# @mkCppConst VREvent_SceneApplicationChanged
 @mkCppConst VREvent_SceneFocusChanged
 @mkCppConst VREvent_InputFocusChanged
-@mkCppConst VREvent_SceneApplicationSecondaryRenderingStarted
+# @mkCppConst VREvent_SceneApplicationSecondaryRenderingStarted
 @mkCppConst VREvent_SceneApplicationUsingWrongGraphicsAdapter
 @mkCppConst VREvent_ActionBindingReloaded
 @mkCppConst VREvent_HideRenderModels
@@ -360,7 +360,7 @@
 @mkCppConst VREvent_OverlayHidden
 @mkCppConst VREvent_DashboardActivated
 @mkCppConst VREvent_DashboardDeactivated
-@mkCppConst VREvent_DashboardThumbSelected
+# @mkCppConst VREvent_DashboardThumbSelected
 @mkCppConst VREvent_DashboardRequested
 @mkCppConst VREvent_ResetDashboard
 @mkCppConst VREvent_RenderToast
@@ -389,7 +389,7 @@
 @mkCppConst VREvent_Notification_Destroyed
 @mkCppConst VREvent_Quit
 @mkCppConst VREvent_ProcessQuit
-@mkCppConst VREvent_QuitAborted_UserPrompt
+# @mkCppConst VREvent_QuitAborted_UserPrompt
 @mkCppConst VREvent_QuitAcknowledged
 @mkCppConst VREvent_DriverRequestedQuit
 @mkCppConst VREvent_ChaperoneDataHasChanged
@@ -426,16 +426,16 @@
 @mkCppConst VREvent_KeyboardClosed
 @mkCppConst VREvent_KeyboardCharInput
 @mkCppConst VREvent_KeyboardDone
-@mkCppConst VREvent_ApplicationTransitionStarted
-@mkCppConst VREvent_ApplicationTransitionAborted
-@mkCppConst VREvent_ApplicationTransitionNewAppStarted
+# @mkCppConst VREvent_ApplicationTransitionStarted
+# @mkCppConst VREvent_ApplicationTransitionAborted
+# @mkCppConst VREvent_ApplicationTransitionNewAppStarted
 @mkCppConst VREvent_ApplicationListUpdated
 @mkCppConst VREvent_ApplicationMimeTypeLoad
-@mkCppConst VREvent_ApplicationTransitionNewAppLaunchComplete
+# @mkCppConst VREvent_ApplicationTransitionNewAppLaunchComplete
 @mkCppConst VREvent_ProcessConnected
 @mkCppConst VREvent_ProcessDisconnected
-@mkCppConst VREvent_Compositor_MirrorWindowShown
-@mkCppConst VREvent_Compositor_MirrorWindowHidden
+# @mkCppConst VREvent_Compositor_MirrorWindowShown
+# @mkCppConst VREvent_Compositor_MirrorWindowHidden
 @mkCppConst VREvent_Compositor_ChaperoneBoundsShown
 @mkCppConst VREvent_Compositor_ChaperoneBoundsHidden
 @mkCppConst VREvent_TrackedCamera_StartVideoStream
@@ -484,9 +484,9 @@
 @mkCppConst k_EButton_SteamVR_Touchpad
 @mkCppConst k_EButton_SteamVR_Trigger
 @mkCppConst k_EButton_Dashboard_Back
-@mkCppConst k_EButton_Knuckles_A
-@mkCppConst k_EButton_Knuckles_B
-@mkCppConst k_EButton_Knuckles_JoyStick
+# @mkCppConst k_EButton_Knuckles_A
+# @mkCppConst k_EButton_Knuckles_B
+# @mkCppConst k_EButton_Knuckles_JoyStick
 @mkCppConst k_EButton_Max
 @mkCppConst VRMouseButton_Left
 @mkCppConst VRMouseButton_Right
@@ -495,7 +495,7 @@
 @mkCppConst k_EDualAnalog_Right
 @mkCppConst ShowUI_ControllerBinding
 @mkCppConst ShowUI_ManageTrackers
-@mkCppConst ShowUI_QuickStart
+# @mkCppConst ShowUI_QuickStart
 # @mkCppConst ShowUI_Pairing
 @mkCppConst VRInputError_None
 @mkCppConst VRInputError_NameNotFound
@@ -847,10 +847,10 @@
 @mkCppConst VRApplicationProperty_IsInternal_Bool
 @mkCppConst VRApplicationProperty_WantsCompositorPauseInStandby_Bool
 @mkCppConst VRApplicationProperty_LastLaunchTime_Uint64
-@mkCppConst VRApplicationTransition_None
-@mkCppConst VRApplicationTransition_OldAppQuitSent
-@mkCppConst VRApplicationTransition_WaitingForExternalLaunch
-@mkCppConst VRApplicationTransition_NewAppLaunched
+# @mkCppConst VRApplicationTransition_None
+# @mkCppConst VRApplicationTransition_OldAppQuitSent
+# @mkCppConst VRApplicationTransition_WaitingForExternalLaunch
+# @mkCppConst VRApplicationTransition_NewAppLaunched
 @mkCppConst VRSettingsError_None
 @mkCppConst VRSettingsError_IPCFailed
 @mkCppConst VRSettingsError_WriteFailed
@@ -900,23 +900,23 @@
 @mkCppConst VROverlayTransform_TrackedDeviceRelative
 @mkCppConst VROverlayTransform_SystemOverlay
 @mkCppConst VROverlayTransform_TrackedComponent
-@mkCppConst VROverlayFlags_None
-@mkCppConst VROverlayFlags_Curved
-@mkCppConst VROverlayFlags_RGSS4X
-@mkCppConst VROverlayFlags_NoDashboardTab
-@mkCppConst VROverlayFlags_AcceptsGamepadEvents
-@mkCppConst VROverlayFlags_ShowGamepadFocus
+# @mkCppConst VROverlayFlags_None
+# @mkCppConst VROverlayFlags_Curved
+# @mkCppConst VROverlayFlags_RGSS4X
+# @mkCppConst VROverlayFlags_NoDashboardTab
+# @mkCppConst VROverlayFlags_AcceptsGamepadEvents
+# @mkCppConst VROverlayFlags_ShowGamepadFocus
 # @mkCppConst VROverlayFlags_SendVRDiscreteScrollEvents
-@mkCppConst VROverlayFlags_SendVRTouchpadEvents
-@mkCppConst VROverlayFlags_ShowTouchPadScrollWheel
-@mkCppConst VROverlayFlags_TransferOwnershipToInternalProcess
-@mkCppConst VROverlayFlags_SideBySide_Parallel
-@mkCppConst VROverlayFlags_SideBySide_Crossed
-@mkCppConst VROverlayFlags_Panorama
-@mkCppConst VROverlayFlags_StereoPanorama
-@mkCppConst VROverlayFlags_SortWithNonSceneOverlays
-@mkCppConst VROverlayFlags_VisibleInDashboard
-@mkCppConst VROverlayFlags_MakeOverlaysInteractiveIfVisible
+# @mkCppConst VROverlayFlags_SendVRTouchpadEvents
+# @mkCppConst VROverlayFlags_ShowTouchPadScrollWheel
+# @mkCppConst VROverlayFlags_TransferOwnershipToInternalProcess
+# @mkCppConst VROverlayFlags_SideBySide_Parallel
+# @mkCppConst VROverlayFlags_SideBySide_Crossed
+# @mkCppConst VROverlayFlags_Panorama
+# @mkCppConst VROverlayFlags_StereoPanorama
+# @mkCppConst VROverlayFlags_SortWithNonSceneOverlays
+# @mkCppConst VROverlayFlags_VisibleInDashboard
+# @mkCppConst VROverlayFlags_MakeOverlaysInteractiveIfVisible
 # @mkCppConst VROverlayFlags_SendVRSmoothScrollEvents
 @mkCppConst VRMessageOverlayResponse_ButtonPress_0
 @mkCppConst VRMessageOverlayResponse_ButtonPress_1
@@ -930,11 +930,11 @@
 @mkCppConst k_EGamepadTextInputModeSubmit
 @mkCppConst k_EGamepadTextInputLineModeSingleLine
 @mkCppConst k_EGamepadTextInputLineModeMultipleLines
-@mkCppConst OverlayDirection_Up
-@mkCppConst OverlayDirection_Down
-@mkCppConst OverlayDirection_Left
-@mkCppConst OverlayDirection_Right
-@mkCppConst OverlayDirection_Count
+# @mkCppConst OverlayDirection_Up
+# @mkCppConst OverlayDirection_Down
+# @mkCppConst OverlayDirection_Left
+# @mkCppConst OverlayDirection_Right
+# @mkCppConst OverlayDirection_Count
 @mkCppConst OverlayIntersectionPrimitiveType_Rectangle
 @mkCppConst OverlayIntersectionPrimitiveType_Circle
 @mkCppConst VRRenderModelError_None

@@ -4,7 +4,7 @@ GetRecommendedRenderTargetSize(
   , arg1 :: Ptr{UInt32}
   , arg2 :: Ptr{UInt32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRecommendedRenderTargetSize}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRecommendedRenderTargetSize}}(), this, arg1, arg2)
 GetRecommendedRenderTargetSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2) =
   GetRecommendedRenderTargetSize(
       this
@@ -19,7 +19,7 @@ GetProjectionMatrix(
   , arg2 :: Float32
   , arg3 :: Float32
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix44_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetProjectionMatrix}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetProjectionMatrix}}(), this, arg1, arg2, arg3)
 GetProjectionMatrix(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetProjectionMatrix(
       this
@@ -37,7 +37,7 @@ GetProjectionRaw(
   , arg4 :: Ptr{Float32}
   , arg5 :: Ptr{Float32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetProjectionRaw}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetProjectionRaw}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetProjectionRaw(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetProjectionRaw(
       this
@@ -56,7 +56,7 @@ ComputeDistortion(
   , arg3 :: Float32
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::DistortionCoordinates_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ComputeDistortion}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ComputeDistortion}}(), this, arg1, arg2, arg3, arg4)
 ComputeDistortion(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   ComputeDistortion(
       this
@@ -71,7 +71,7 @@ GetEyeToHeadTransform(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVREye"),UInt32}
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetEyeToHeadTransform}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetEyeToHeadTransform}}(), this, arg1)
 GetEyeToHeadTransform(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetEyeToHeadTransform(
       this
@@ -84,7 +84,7 @@ GetTimeSinceLastVsync(
   , arg1 :: Ptr{Float32}
   , arg2 :: Ptr{UInt64}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTimeSinceLastVsync}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetTimeSinceLastVsync}}(), this, arg1, arg2)
 GetTimeSinceLastVsync(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2) =
   GetTimeSinceLastVsync(
       this
@@ -96,14 +96,14 @@ export GetD3D9AdapterIndex
 GetD3D9AdapterIndex(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Int32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetD3D9AdapterIndex}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetD3D9AdapterIndex}}(), this)
 
 export GetDXGIOutputInfo
 GetDXGIOutputInfo(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: Ptr{Int32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDXGIOutputInfo}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDXGIOutputInfo}}(), this, arg1)
 GetDXGIOutputInfo(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetDXGIOutputInfo(
       this
@@ -117,7 +117,7 @@ GetOutputDevice(
   , arg2 :: CppEnum{Symbol("vr::ETextureType"),Int32}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{:VkInstance_T},(false, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOutputDevice}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOutputDevice}}(), this, arg1, arg2, arg3)
 GetOutputDevice(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOutputDevice(
       this
@@ -130,14 +130,14 @@ export IsDisplayOnDesktop
 IsDisplayOnDesktop(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsDisplayOnDesktop}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsDisplayOnDesktop}}(), this)
 
 export SetDisplayVisibility
 SetDisplayVisibility(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: Bool
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetDisplayVisibility}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetDisplayVisibility}}(), this, arg1)
 SetDisplayVisibility(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   SetDisplayVisibility(
       this
@@ -152,7 +152,7 @@ GetDeviceToAbsoluteTrackingPose(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   , arg4 :: UInt32
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDeviceToAbsoluteTrackingPose}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDeviceToAbsoluteTrackingPose}}(), this, arg1, arg2, arg3, arg4)
 GetDeviceToAbsoluteTrackingPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetDeviceToAbsoluteTrackingPose(
       this
@@ -166,19 +166,19 @@ export ResetSeatedZeroPose
 ResetSeatedZeroPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ResetSeatedZeroPose}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ResetSeatedZeroPose}}(), this)
 
 export GetSeatedZeroPoseToStandingAbsoluteTrackingPose
 GetSeatedZeroPoseToStandingAbsoluteTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSeatedZeroPoseToStandingAbsoluteTrackingPose}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSeatedZeroPoseToStandingAbsoluteTrackingPose}}(), this)
 
 export GetRawZeroPoseToStandingAbsoluteTrackingPose
 GetRawZeroPoseToStandingAbsoluteTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRawZeroPoseToStandingAbsoluteTrackingPose}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRawZeroPoseToStandingAbsoluteTrackingPose}}(), this)
 
 export GetSortedTrackedDeviceIndicesOfClass
 GetSortedTrackedDeviceIndicesOfClass(
@@ -188,7 +188,7 @@ GetSortedTrackedDeviceIndicesOfClass(
   , arg3 :: UInt32
   , arg4 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSortedTrackedDeviceIndicesOfClass}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSortedTrackedDeviceIndicesOfClass}}(), this, arg1, arg2, arg3, arg4)
 GetSortedTrackedDeviceIndicesOfClass(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetSortedTrackedDeviceIndicesOfClass(
       this
@@ -203,7 +203,7 @@ GetTrackedDeviceActivityLevel(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: UInt32
   )      :: CppEnum{Symbol("vr::EDeviceActivityLevel"),Int32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTrackedDeviceActivityLevel}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetTrackedDeviceActivityLevel}}(), this, arg1)
 GetTrackedDeviceActivityLevel(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetTrackedDeviceActivityLevel(
       this
@@ -217,7 +217,7 @@ ApplyTransform(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(true, false, false)},(false, false, false)}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ApplyTransform}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ApplyTransform}}(), this, arg1, arg2, arg3)
 ApplyTransform(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   ApplyTransform(
       this
@@ -231,7 +231,7 @@ GetTrackedDeviceIndexForControllerRole(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::ETrackedControllerRole"),UInt32}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTrackedDeviceIndexForControllerRole}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetTrackedDeviceIndexForControllerRole}}(), this, arg1)
 GetTrackedDeviceIndexForControllerRole(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetTrackedDeviceIndexForControllerRole(
       this
@@ -243,7 +243,7 @@ GetControllerRoleForTrackedDeviceIndex(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: UInt32
   )      :: CppEnum{Symbol("vr::ETrackedControllerRole"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetControllerRoleForTrackedDeviceIndex}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetControllerRoleForTrackedDeviceIndex}}(), this, arg1)
 GetControllerRoleForTrackedDeviceIndex(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetControllerRoleForTrackedDeviceIndex(
       this
@@ -255,7 +255,7 @@ GetTrackedDeviceClass(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: UInt32
   )      :: CppEnum{Symbol("vr::ETrackedDeviceClass"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTrackedDeviceClass}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetTrackedDeviceClass}}(), this, arg1)
 GetTrackedDeviceClass(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetTrackedDeviceClass(
       this
@@ -267,7 +267,7 @@ IsTrackedDeviceConnected(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsTrackedDeviceConnected}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsTrackedDeviceConnected}}(), this, arg1)
 IsTrackedDeviceConnected(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   IsTrackedDeviceConnected(
       this
@@ -281,7 +281,7 @@ GetBoolTrackedDeviceProperty(
   , arg2 :: CppEnum{Symbol("vr::ETrackedDeviceProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBoolTrackedDeviceProperty}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBoolTrackedDeviceProperty}}(), this, arg1, arg2, arg3)
 GetBoolTrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetBoolTrackedDeviceProperty(
       this
@@ -297,7 +297,7 @@ GetFloatTrackedDeviceProperty(
   , arg2 :: CppEnum{Symbol("vr::ETrackedDeviceProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: Float32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetFloatTrackedDeviceProperty}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetFloatTrackedDeviceProperty}}(), this, arg1, arg2, arg3)
 GetFloatTrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetFloatTrackedDeviceProperty(
       this
@@ -313,7 +313,7 @@ GetInt32TrackedDeviceProperty(
   , arg2 :: CppEnum{Symbol("vr::ETrackedDeviceProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: Int32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetInt32TrackedDeviceProperty}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetInt32TrackedDeviceProperty}}(), this, arg1, arg2, arg3)
 GetInt32TrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetInt32TrackedDeviceProperty(
       this
@@ -329,7 +329,7 @@ GetUint64TrackedDeviceProperty(
   , arg2 :: CppEnum{Symbol("vr::ETrackedDeviceProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetUint64TrackedDeviceProperty}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetUint64TrackedDeviceProperty}}(), this, arg1, arg2, arg3)
 GetUint64TrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetUint64TrackedDeviceProperty(
       this
@@ -345,7 +345,7 @@ GetMatrix34TrackedDeviceProperty(
   , arg2 :: CppEnum{Symbol("vr::ETrackedDeviceProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetMatrix34TrackedDeviceProperty}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetMatrix34TrackedDeviceProperty}}(), this, arg1, arg2, arg3)
 GetMatrix34TrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetMatrix34TrackedDeviceProperty(
       this
@@ -364,7 +364,7 @@ GetArrayTrackedDeviceProperty(
   , arg5 :: UInt32
   , arg6 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetArrayTrackedDeviceProperty}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetArrayTrackedDeviceProperty}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 GetArrayTrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   GetArrayTrackedDeviceProperty(
       this
@@ -385,7 +385,7 @@ GetStringTrackedDeviceProperty(
   , arg4 :: UInt32
   , arg5 :: Ptr{CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetStringTrackedDeviceProperty}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetStringTrackedDeviceProperty}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetStringTrackedDeviceProperty(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetStringTrackedDeviceProperty(
       this
@@ -401,7 +401,7 @@ GetPropErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::ETrackedPropertyError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetPropErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetPropErrorNameFromEnum}}(), this, arg1)
 GetPropErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetPropErrorNameFromEnum(
       this
@@ -414,7 +414,7 @@ PollNextEvent(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VREvent_t")},(false, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PollNextEvent}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PollNextEvent}}(), this, arg1, arg2)
 PollNextEvent(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2) =
   PollNextEvent(
       this
@@ -430,7 +430,7 @@ PollNextEventWithPose(
   , arg3 :: UInt32
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PollNextEventWithPose}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PollNextEventWithPose}}(), this, arg1, arg2, arg3, arg4)
 PollNextEventWithPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   PollNextEventWithPose(
       this
@@ -445,7 +445,7 @@ GetEventTypeNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVREventType"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetEventTypeNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetEventTypeNameFromEnum}}(), this, arg1)
 GetEventTypeNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetEventTypeNameFromEnum(
       this
@@ -458,7 +458,7 @@ GetHiddenAreaMesh(
   , arg1 :: CppEnum{Symbol("vr::EVREye"),UInt32}
   , arg2 :: CppEnum{Symbol("vr::EHiddenAreaMeshType"),UInt32}
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HiddenAreaMesh_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetHiddenAreaMesh}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetHiddenAreaMesh}}(), this, arg1, arg2)
 GetHiddenAreaMesh(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2) =
   GetHiddenAreaMesh(
       this
@@ -473,7 +473,7 @@ GetControllerState(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRControllerState001_t")},(false, false, false)},(false, false, false)}
   , arg3 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetControllerState}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetControllerState}}(), this, arg1, arg2, arg3)
 GetControllerState(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetControllerState(
       this
@@ -491,7 +491,7 @@ GetControllerStateWithPose(
   , arg4 :: UInt32
   , arg5 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetControllerStateWithPose}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetControllerStateWithPose}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetControllerStateWithPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetControllerStateWithPose(
       this
@@ -509,7 +509,7 @@ TriggerHapticPulse(
   , arg2 :: UInt32
   , arg3 :: UInt16
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :TriggerHapticPulse}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:TriggerHapticPulse}}(), this, arg1, arg2, arg3)
 TriggerHapticPulse(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   TriggerHapticPulse(
       this
@@ -523,7 +523,7 @@ GetButtonIdNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRButtonId"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetButtonIdNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetButtonIdNameFromEnum}}(), this, arg1)
 GetButtonIdNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetButtonIdNameFromEnum(
       this
@@ -535,7 +535,7 @@ GetControllerAxisTypeNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRControllerAxisType"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetControllerAxisTypeNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetControllerAxisTypeNameFromEnum}}(), this, arg1)
 GetControllerAxisTypeNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   GetControllerAxisTypeNameFromEnum(
       this
@@ -546,50 +546,32 @@ export IsInputAvailable
 IsInputAvailable(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsInputAvailable}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsInputAvailable}}(), this)
 
 export IsSteamVRDrawingControllers
 IsSteamVRDrawingControllers(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsSteamVRDrawingControllers}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsSteamVRDrawingControllers}}(), this)
 
 export ShouldApplicationPause
 ShouldApplicationPause(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShouldApplicationPause}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShouldApplicationPause}}(), this)
 
 export ShouldApplicationReduceRenderingWork
 ShouldApplicationReduceRenderingWork(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShouldApplicationReduceRenderingWork}}(), this)
-
-export DriverDebugRequest
-DriverDebugRequest(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
-  , arg1 :: UInt32
-  , arg2 :: Ptr{UInt8}
-  , arg3 :: Ptr{UInt8}
-  , arg4 :: UInt32
-  )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :DriverDebugRequest}}(), this, arg1, arg2, arg3, arg4)
-DriverDebugRequest(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
-  DriverDebugRequest(
-      this
-    , reinterpret4cxx(UInt32, arg1)
-    , reinterpret4cxx(Ptr{UInt8}, arg2)
-    , reinterpret4cxx(Ptr{UInt8}, arg3)
-    , reinterpret4cxx(UInt32, arg4)
-    )
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShouldApplicationReduceRenderingWork}}(), this)
 
 export PerformFirmwareUpdate
 PerformFirmwareUpdate(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   , arg1 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRFirmwareError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PerformFirmwareUpdate}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PerformFirmwareUpdate}}(), this, arg1)
 PerformFirmwareUpdate(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N, arg1) =
   PerformFirmwareUpdate(
       this
@@ -600,13 +582,7 @@ export AcknowledgeQuit_Exiting
 AcknowledgeQuit_Exiting(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :AcknowledgeQuit_Exiting}}(), this)
-
-export AcknowledgeQuit_UserPrompt
-AcknowledgeQuit_UserPrompt(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},N} where N
-  )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :AcknowledgeQuit_UserPrompt}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:AcknowledgeQuit_Exiting}}(), this)
 
 export AddApplicationManifest
 AddApplicationManifest(
@@ -614,7 +590,7 @@ AddApplicationManifest(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Bool
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :AddApplicationManifest}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:AddApplicationManifest}}(), this, arg1, arg2)
 AddApplicationManifest(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2) =
   AddApplicationManifest(
       this
@@ -627,7 +603,7 @@ RemoveApplicationManifest(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RemoveApplicationManifest}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RemoveApplicationManifest}}(), this, arg1)
 RemoveApplicationManifest(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   RemoveApplicationManifest(
       this
@@ -639,7 +615,7 @@ IsApplicationInstalled(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsApplicationInstalled}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsApplicationInstalled}}(), this, arg1)
 IsApplicationInstalled(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   IsApplicationInstalled(
       this
@@ -650,7 +626,7 @@ export GetApplicationCount
 GetApplicationCount(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationCount}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationCount}}(), this)
 
 export GetApplicationKeyByIndex
 GetApplicationKeyByIndex(
@@ -659,7 +635,7 @@ GetApplicationKeyByIndex(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationKeyByIndex}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationKeyByIndex}}(), this, arg1, arg2, arg3)
 GetApplicationKeyByIndex(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationKeyByIndex(
       this
@@ -675,7 +651,7 @@ GetApplicationKeyByProcessId(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationKeyByProcessId}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationKeyByProcessId}}(), this, arg1, arg2, arg3)
 GetApplicationKeyByProcessId(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationKeyByProcessId(
       this
@@ -689,7 +665,7 @@ LaunchApplication(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LaunchApplication}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LaunchApplication}}(), this, arg1)
 LaunchApplication(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   LaunchApplication(
       this
@@ -704,7 +680,7 @@ LaunchTemplateApplication(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::AppOverrideKeys_t")},(true, false, false)},(false, false, false)}
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LaunchTemplateApplication}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LaunchTemplateApplication}}(), this, arg1, arg2, arg3, arg4)
 LaunchTemplateApplication(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   LaunchTemplateApplication(
       this
@@ -720,7 +696,7 @@ LaunchApplicationFromMimeType(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LaunchApplicationFromMimeType}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LaunchApplicationFromMimeType}}(), this, arg1, arg2)
 LaunchApplicationFromMimeType(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2) =
   LaunchApplicationFromMimeType(
       this
@@ -733,7 +709,7 @@ LaunchDashboardOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LaunchDashboardOverlay}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LaunchDashboardOverlay}}(), this, arg1)
 LaunchDashboardOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   LaunchDashboardOverlay(
       this
@@ -745,7 +721,7 @@ CancelApplicationLaunch(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CancelApplicationLaunch}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CancelApplicationLaunch}}(), this, arg1)
 CancelApplicationLaunch(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   CancelApplicationLaunch(
       this
@@ -758,7 +734,7 @@ IdentifyApplication(
   , arg1 :: UInt32
   , arg2 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IdentifyApplication}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IdentifyApplication}}(), this, arg1, arg2)
 IdentifyApplication(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2) =
   IdentifyApplication(
       this
@@ -771,7 +747,7 @@ GetApplicationProcessId(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationProcessId}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationProcessId}}(), this, arg1)
 GetApplicationProcessId(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   GetApplicationProcessId(
       this
@@ -783,7 +759,7 @@ GetApplicationsErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationsErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationsErrorNameFromEnum}}(), this, arg1)
 GetApplicationsErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   GetApplicationsErrorNameFromEnum(
       this
@@ -799,7 +775,7 @@ GetApplicationPropertyString(
   , arg4 :: UInt32
   , arg5 :: Ptr{CppEnum{Symbol("vr::EVRApplicationError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationPropertyString}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationPropertyString}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetApplicationPropertyString(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetApplicationPropertyString(
       this
@@ -817,7 +793,7 @@ GetApplicationPropertyBool(
   , arg2 :: CppEnum{Symbol("vr::EVRApplicationProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRApplicationError"),UInt32}}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationPropertyBool}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationPropertyBool}}(), this, arg1, arg2, arg3)
 GetApplicationPropertyBool(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationPropertyBool(
       this
@@ -833,7 +809,7 @@ GetApplicationPropertyUint64(
   , arg2 :: CppEnum{Symbol("vr::EVRApplicationProperty"),UInt32}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRApplicationError"),UInt32}}
   )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationPropertyUint64}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationPropertyUint64}}(), this, arg1, arg2, arg3)
 GetApplicationPropertyUint64(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationPropertyUint64(
       this
@@ -848,7 +824,7 @@ SetApplicationAutoLaunch(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Bool
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetApplicationAutoLaunch}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetApplicationAutoLaunch}}(), this, arg1, arg2)
 SetApplicationAutoLaunch(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2) =
   SetApplicationAutoLaunch(
       this
@@ -861,7 +837,7 @@ GetApplicationAutoLaunch(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationAutoLaunch}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationAutoLaunch}}(), this, arg1)
 GetApplicationAutoLaunch(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   GetApplicationAutoLaunch(
       this
@@ -874,7 +850,7 @@ SetDefaultApplicationForMimeType(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetDefaultApplicationForMimeType}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetDefaultApplicationForMimeType}}(), this, arg1, arg2)
 SetDefaultApplicationForMimeType(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2) =
   SetDefaultApplicationForMimeType(
       this
@@ -889,7 +865,7 @@ GetDefaultApplicationForMimeType(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDefaultApplicationForMimeType}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDefaultApplicationForMimeType}}(), this, arg1, arg2, arg3)
 GetDefaultApplicationForMimeType(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetDefaultApplicationForMimeType(
       this
@@ -905,7 +881,7 @@ GetApplicationSupportedMimeTypes(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationSupportedMimeTypes}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationSupportedMimeTypes}}(), this, arg1, arg2, arg3)
 GetApplicationSupportedMimeTypes(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationSupportedMimeTypes(
       this
@@ -921,7 +897,7 @@ GetApplicationsThatSupportMimeType(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationsThatSupportMimeType}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationsThatSupportMimeType}}(), this, arg1, arg2, arg3)
 GetApplicationsThatSupportMimeType(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationsThatSupportMimeType(
       this
@@ -937,7 +913,7 @@ GetApplicationLaunchArguments(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationLaunchArguments}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetApplicationLaunchArguments}}(), this, arg1, arg2, arg3)
 GetApplicationLaunchArguments(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetApplicationLaunchArguments(
       this
@@ -952,7 +928,7 @@ GetStartingApplication(
   , arg1 :: Ptr{UInt8}
   , arg2 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetStartingApplication}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetStartingApplication}}(), this, arg1, arg2)
 GetStartingApplication(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2) =
   GetStartingApplication(
       this
@@ -960,41 +936,17 @@ GetStartingApplication(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApp
     , reinterpret4cxx(UInt32, arg2)
     )
 
-export GetTransitionState
-GetTransitionState(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
-  )      :: CppEnum{Symbol("vr::EVRApplicationTransitionState"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTransitionState}}(), this)
-
 export PerformApplicationPrelaunchCheck
 PerformApplicationPrelaunchCheck(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PerformApplicationPrelaunchCheck}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PerformApplicationPrelaunchCheck}}(), this, arg1)
 PerformApplicationPrelaunchCheck(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
   PerformApplicationPrelaunchCheck(
       this
     , reinterpret4cxx(Ptr{UInt8}, arg1)
     )
-
-export GetApplicationsTransitionStateNameFromEnum
-GetApplicationsTransitionStateNameFromEnum(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
-  , arg1 :: CppEnum{Symbol("vr::EVRApplicationTransitionState"),UInt32}
-  )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetApplicationsTransitionStateNameFromEnum}}(), this, arg1)
-GetApplicationsTransitionStateNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1) =
-  GetApplicationsTransitionStateNameFromEnum(
-      this
-    , reinterpret4cxx(CppEnum{Symbol("vr::EVRApplicationTransitionState"),UInt32}, arg1)
-    )
-
-export IsQuitUserPromptRequested
-IsQuitUserPromptRequested(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
-  )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsQuitUserPromptRequested}}(), this)
 
 export LaunchInternalProcess
 LaunchInternalProcess(
@@ -1003,7 +955,7 @@ LaunchInternalProcess(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRApplicationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LaunchInternalProcess}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LaunchInternalProcess}}(), this, arg1, arg2, arg3)
 LaunchInternalProcess(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   LaunchInternalProcess(
       this
@@ -1016,32 +968,18 @@ export GetCurrentSceneProcessId
 GetCurrentSceneProcessId(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCurrentSceneProcessId}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCurrentSceneProcessId}}(), this)
 
 export GetSettingsErrorNameFromEnum
 GetSettingsErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRSettingsError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSettingsErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSettingsErrorNameFromEnum}}(), this, arg1)
 GetSettingsErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1) =
   GetSettingsErrorNameFromEnum(
       this
     , reinterpret4cxx(CppEnum{Symbol("vr::EVRSettingsError"),UInt32}, arg1)
-    )
-
-export Sync
-Sync(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N
-  , arg1 :: Bool
-  , arg2 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
-  )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Sync}}(), this, arg1, arg2)
-Sync(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2) =
-  Sync(
-      this
-    , reinterpret4cxx(Bool, arg1)
-    , reinterpret4cxx(Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}, arg2)
     )
 
 export SetBool
@@ -1052,7 +990,7 @@ SetBool(
   , arg3 :: Bool
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetBool}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetBool}}(), this, arg1, arg2, arg3, arg4)
 SetBool(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetBool(
       this
@@ -1070,7 +1008,7 @@ SetInt32(
   , arg3 :: Int32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetInt32}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetInt32}}(), this, arg1, arg2, arg3, arg4)
 SetInt32(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetInt32(
       this
@@ -1088,7 +1026,7 @@ SetFloat(
   , arg3 :: Float32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetFloat}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetFloat}}(), this, arg1, arg2, arg3, arg4)
 SetFloat(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetFloat(
       this
@@ -1106,7 +1044,7 @@ SetString(
   , arg3 :: Ptr{UInt8}
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetString}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetString}}(), this, arg1, arg2, arg3, arg4)
 SetString(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetString(
       this
@@ -1123,7 +1061,7 @@ GetBool(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBool}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBool}}(), this, arg1, arg2, arg3)
 GetBool(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetBool(
       this
@@ -1139,7 +1077,7 @@ GetInt32(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Int32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetInt32}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetInt32}}(), this, arg1, arg2, arg3)
 GetInt32(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetInt32(
       this
@@ -1155,7 +1093,7 @@ GetFloat(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Float32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetFloat}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetFloat}}(), this, arg1, arg2, arg3)
 GetFloat(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetFloat(
       this
@@ -1173,7 +1111,7 @@ GetString(
   , arg4 :: UInt32
   , arg5 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetString}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetString}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetString(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetString(
       this
@@ -1190,7 +1128,7 @@ RemoveSection(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RemoveSection}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RemoveSection}}(), this, arg1, arg2)
 RemoveSection(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2) =
   RemoveSection(
       this
@@ -1205,7 +1143,7 @@ RemoveKeyInSection(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RemoveKeyInSection}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RemoveKeyInSection}}(), this, arg1, arg2, arg3)
 RemoveKeyInSection(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   RemoveKeyInSection(
       this
@@ -1219,25 +1157,11 @@ GetSettingsErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRSettingsError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSettingsErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSettingsErrorNameFromEnum}}(), this, arg1)
 GetSettingsErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1) =
   GetSettingsErrorNameFromEnum(
       this
     , reinterpret4cxx(CppEnum{Symbol("vr::EVRSettingsError"),UInt32}, arg1)
-    )
-
-export Sync
-Sync(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N
-  , arg1 :: Bool
-  , arg2 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
-  )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Sync}}(), this, arg1, arg2)
-Sync(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2) =
-  Sync(
-      this
-    , reinterpret4cxx(Bool, arg1)
-    , reinterpret4cxx(Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}, arg2)
     )
 
 export SetBool
@@ -1248,7 +1172,7 @@ SetBool(
   , arg3 :: Bool
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetBool}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetBool}}(), this, arg1, arg2, arg3, arg4)
 SetBool(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetBool(
       this
@@ -1266,7 +1190,7 @@ SetInt32(
   , arg3 :: Int32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetInt32}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetInt32}}(), this, arg1, arg2, arg3, arg4)
 SetInt32(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetInt32(
       this
@@ -1284,7 +1208,7 @@ SetFloat(
   , arg3 :: Float32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetFloat}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetFloat}}(), this, arg1, arg2, arg3, arg4)
 SetFloat(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetFloat(
       this
@@ -1302,7 +1226,7 @@ SetString(
   , arg3 :: Ptr{UInt8}
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetString}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetString}}(), this, arg1, arg2, arg3, arg4)
 
 export SetString
 SetString(
@@ -1312,7 +1236,7 @@ SetString(
   , arg3 :: CppRef{CppTemplate{CppBaseType{Symbol("std::__cxx11::basic_string")},Tuple{UInt8,CxxQualType{CppTemplate{CppBaseType{Symbol("std::char_traits")},Tuple{UInt8}},(false, false, false)},CxxQualType{CppTemplate{CppBaseType{Symbol("std::allocator")},Tuple{UInt8}},(false, false, false)}}},(false, false, false)}
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetString}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetString}}(), this, arg1, arg2, arg3, arg4)
 
 export GetBool
 GetBool(
@@ -1321,7 +1245,7 @@ GetBool(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBool}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBool}}(), this, arg1, arg2, arg3)
 GetBool(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetBool(
       this
@@ -1337,7 +1261,7 @@ GetInt32(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Int32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetInt32}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetInt32}}(), this, arg1, arg2, arg3)
 GetInt32(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetInt32(
       this
@@ -1353,7 +1277,7 @@ GetFloat(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Float32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetFloat}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetFloat}}(), this, arg1, arg2, arg3)
 GetFloat(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetFloat(
       this
@@ -1371,7 +1295,7 @@ GetString(
   , arg4 :: UInt32
   , arg5 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetString}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetString}}(), this, arg1, arg2, arg3, arg4, arg5)
 
 export GetString
 GetString(
@@ -1380,7 +1304,7 @@ GetString(
   , arg2 :: CppRef{CppTemplate{CppBaseType{Symbol("std::__cxx11::basic_string")},Tuple{UInt8,CxxQualType{CppTemplate{CppBaseType{Symbol("std::char_traits")},Tuple{UInt8}},(false, false, false)},CxxQualType{CppTemplate{CppBaseType{Symbol("std::allocator")},Tuple{UInt8}},(false, false, false)}}},(false, false, false)}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: CppValue{CxxQualType{CppTemplate{CppBaseType{Symbol("std::__cxx11::basic_string")},Tuple{UInt8,CxxQualType{CppTemplate{CppBaseType{Symbol("std::char_traits")},Tuple{UInt8}},(false, false, false)},CxxQualType{CppTemplate{CppBaseType{Symbol("std::allocator")},Tuple{UInt8}},(false, false, false)}}},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetString}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetString}}(), this, arg1, arg2, arg3)
 
 export RemoveSection
 RemoveSection(
@@ -1388,7 +1312,7 @@ RemoveSection(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RemoveSection}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RemoveSection}}(), this, arg1, arg2)
 RemoveSection(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2) =
   RemoveSection(
       this
@@ -1403,7 +1327,7 @@ RemoveKeyInSection(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{CppEnum{Symbol("vr::EVRSettingsError"),UInt32}}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RemoveKeyInSection}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RemoveKeyInSection}}(), this, arg1, arg2, arg3)
 RemoveKeyInSection(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CVRSettingHelper")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   RemoveKeyInSection(
       this
@@ -1416,7 +1340,7 @@ export GetCalibrationState
 GetCalibrationState(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
   )      :: CppEnum{Symbol("vr::ChaperoneCalibrationState"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCalibrationState}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCalibrationState}}(), this)
 
 export GetPlayAreaSize
 GetPlayAreaSize(
@@ -1424,7 +1348,7 @@ GetPlayAreaSize(
   , arg1 :: Ptr{Float32}
   , arg2 :: Ptr{Float32}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetPlayAreaSize}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetPlayAreaSize}}(), this, arg1, arg2)
 GetPlayAreaSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N, arg1, arg2) =
   GetPlayAreaSize(
       this
@@ -1437,7 +1361,7 @@ GetPlayAreaRect(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdQuad_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetPlayAreaRect}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetPlayAreaRect}}(), this, arg1)
 GetPlayAreaRect(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N, arg1) =
   GetPlayAreaRect(
       this
@@ -1448,14 +1372,14 @@ export ReloadInfo
 ReloadInfo(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReloadInfo}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReloadInfo}}(), this)
 
 export SetSceneColor
 SetSceneColor(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
   , arg1 :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdColor_t")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetSceneColor}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetSceneColor}}(), this, arg1)
 SetSceneColor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N, arg1) =
   SetSceneColor(
       this
@@ -1470,7 +1394,7 @@ GetBoundsColor(
   , arg3 :: Float32
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdColor_t")},(false, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBoundsColor}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBoundsColor}}(), this, arg1, arg2, arg3, arg4)
 GetBoundsColor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetBoundsColor(
       this
@@ -1484,14 +1408,14 @@ export AreBoundsVisible
 AreBoundsVisible(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :AreBoundsVisible}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:AreBoundsVisible}}(), this)
 
 export ForceBoundsVisible
 ForceBoundsVisible(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N
   , arg1 :: Bool
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ForceBoundsVisible}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ForceBoundsVisible}}(), this, arg1)
 ForceBoundsVisible(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},N} where N, arg1) =
   ForceBoundsVisible(
       this
@@ -1503,7 +1427,7 @@ CommitWorkingCopy(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EChaperoneConfigFile"),UInt32}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CommitWorkingCopy}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CommitWorkingCopy}}(), this, arg1)
 CommitWorkingCopy(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   CommitWorkingCopy(
       this
@@ -1514,7 +1438,7 @@ export RevertWorkingCopy
 RevertWorkingCopy(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RevertWorkingCopy}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RevertWorkingCopy}}(), this)
 
 export GetWorkingPlayAreaSize
 GetWorkingPlayAreaSize(
@@ -1522,7 +1446,7 @@ GetWorkingPlayAreaSize(
   , arg1 :: Ptr{Float32}
   , arg2 :: Ptr{Float32}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetWorkingPlayAreaSize}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetWorkingPlayAreaSize}}(), this, arg1, arg2)
 GetWorkingPlayAreaSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   GetWorkingPlayAreaSize(
       this
@@ -1535,7 +1459,7 @@ GetWorkingPlayAreaRect(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdQuad_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetWorkingPlayAreaRect}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetWorkingPlayAreaRect}}(), this, arg1)
 GetWorkingPlayAreaRect(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   GetWorkingPlayAreaRect(
       this
@@ -1548,7 +1472,7 @@ GetWorkingCollisionBoundsInfo(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdQuad_t")},(false, false, false)},(false, false, false)}
   , arg2 :: Ptr{UInt32}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetWorkingCollisionBoundsInfo}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetWorkingCollisionBoundsInfo}}(), this, arg1, arg2)
 GetWorkingCollisionBoundsInfo(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   GetWorkingCollisionBoundsInfo(
       this
@@ -1562,7 +1486,7 @@ GetLiveCollisionBoundsInfo(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdQuad_t")},(false, false, false)},(false, false, false)}
   , arg2 :: Ptr{UInt32}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetLiveCollisionBoundsInfo}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetLiveCollisionBoundsInfo}}(), this, arg1, arg2)
 GetLiveCollisionBoundsInfo(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   GetLiveCollisionBoundsInfo(
       this
@@ -1575,7 +1499,7 @@ GetWorkingSeatedZeroPoseToRawTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetWorkingSeatedZeroPoseToRawTrackingPose}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetWorkingSeatedZeroPoseToRawTrackingPose}}(), this, arg1)
 GetWorkingSeatedZeroPoseToRawTrackingPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   GetWorkingSeatedZeroPoseToRawTrackingPose(
       this
@@ -1587,7 +1511,7 @@ GetWorkingStandingZeroPoseToRawTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetWorkingStandingZeroPoseToRawTrackingPose}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetWorkingStandingZeroPoseToRawTrackingPose}}(), this, arg1)
 GetWorkingStandingZeroPoseToRawTrackingPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   GetWorkingStandingZeroPoseToRawTrackingPose(
       this
@@ -1600,7 +1524,7 @@ SetWorkingPlayAreaSize(
   , arg1 :: Float32
   , arg2 :: Float32
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetWorkingPlayAreaSize}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetWorkingPlayAreaSize}}(), this, arg1, arg2)
 SetWorkingPlayAreaSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   SetWorkingPlayAreaSize(
       this
@@ -1614,7 +1538,7 @@ SetWorkingCollisionBoundsInfo(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdQuad_t")},(false, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetWorkingCollisionBoundsInfo}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetWorkingCollisionBoundsInfo}}(), this, arg1, arg2)
 SetWorkingCollisionBoundsInfo(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   SetWorkingCollisionBoundsInfo(
       this
@@ -1628,7 +1552,7 @@ SetWorkingPerimeter(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(false, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetWorkingPerimeter}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetWorkingPerimeter}}(), this, arg1, arg2)
 SetWorkingPerimeter(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   SetWorkingPerimeter(
       this
@@ -1641,7 +1565,7 @@ SetWorkingSeatedZeroPoseToRawTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetWorkingSeatedZeroPoseToRawTrackingPose}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetWorkingSeatedZeroPoseToRawTrackingPose}}(), this, arg1)
 SetWorkingSeatedZeroPoseToRawTrackingPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   SetWorkingSeatedZeroPoseToRawTrackingPose(
       this
@@ -1653,7 +1577,7 @@ SetWorkingStandingZeroPoseToRawTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetWorkingStandingZeroPoseToRawTrackingPose}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetWorkingStandingZeroPoseToRawTrackingPose}}(), this, arg1)
 SetWorkingStandingZeroPoseToRawTrackingPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   SetWorkingStandingZeroPoseToRawTrackingPose(
       this
@@ -1665,7 +1589,7 @@ ReloadFromDisk(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EChaperoneConfigFile"),UInt32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReloadFromDisk}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReloadFromDisk}}(), this, arg1)
 ReloadFromDisk(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   ReloadFromDisk(
       this
@@ -1677,7 +1601,7 @@ GetLiveSeatedZeroPoseToRawTrackingPose(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetLiveSeatedZeroPoseToRawTrackingPose}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetLiveSeatedZeroPoseToRawTrackingPose}}(), this, arg1)
 GetLiveSeatedZeroPoseToRawTrackingPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1) =
   GetLiveSeatedZeroPoseToRawTrackingPose(
       this
@@ -1690,7 +1614,7 @@ ExportLiveToBuffer(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt32}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ExportLiveToBuffer}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ExportLiveToBuffer}}(), this, arg1, arg2)
 ExportLiveToBuffer(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   ExportLiveToBuffer(
       this
@@ -1704,7 +1628,7 @@ ImportFromBufferToWorking(
   , arg1 :: Ptr{UInt8}
   , arg2 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ImportFromBufferToWorking}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ImportFromBufferToWorking}}(), this, arg1, arg2)
 ImportFromBufferToWorking(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N, arg1, arg2) =
   ImportFromBufferToWorking(
       this
@@ -1716,20 +1640,20 @@ export ShowWorkingSetPreview
 ShowWorkingSetPreview(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowWorkingSetPreview}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowWorkingSetPreview}}(), this)
 
 export HideWorkingSetPreview
 HideWorkingSetPreview(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :HideWorkingSetPreview}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:HideWorkingSetPreview}}(), this)
 
 export SetTrackingSpace
 SetTrackingSpace(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetTrackingSpace}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetTrackingSpace}}(), this, arg1)
 SetTrackingSpace(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   SetTrackingSpace(
       this
@@ -1740,7 +1664,7 @@ export GetTrackingSpace
 GetTrackingSpace(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTrackingSpace}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetTrackingSpace}}(), this)
 
 export WaitGetPoses
 WaitGetPoses(
@@ -1750,7 +1674,7 @@ WaitGetPoses(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :WaitGetPoses}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:WaitGetPoses}}(), this, arg1, arg2, arg3, arg4)
 WaitGetPoses(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   WaitGetPoses(
       this
@@ -1768,7 +1692,7 @@ GetLastPoses(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetLastPoses}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetLastPoses}}(), this, arg1, arg2, arg3, arg4)
 GetLastPoses(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetLastPoses(
       this
@@ -1785,7 +1709,7 @@ GetLastPoseForTrackedDeviceIndex(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::TrackedDevicePose_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetLastPoseForTrackedDeviceIndex}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetLastPoseForTrackedDeviceIndex}}(), this, arg1, arg2, arg3)
 GetLastPoseForTrackedDeviceIndex(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetLastPoseForTrackedDeviceIndex(
       this
@@ -1802,7 +1726,7 @@ Submit(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRTextureBounds_t")},(true, false, false)},(false, false, false)}
   , arg4 :: CppEnum{Symbol("vr::EVRSubmitFlags"),UInt32}
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Submit}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:Submit}}(), this, arg1, arg2, arg3, arg4)
 Submit(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   Submit(
       this
@@ -1816,13 +1740,13 @@ export ClearLastSubmittedFrame
 ClearLastSubmittedFrame(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ClearLastSubmittedFrame}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ClearLastSubmittedFrame}}(), this)
 
 export PostPresentHandoff
 PostPresentHandoff(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PostPresentHandoff}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PostPresentHandoff}}(), this)
 
 export GetFrameTiming
 GetFrameTiming(
@@ -1830,7 +1754,7 @@ GetFrameTiming(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::Compositor_FrameTiming")},(false, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetFrameTiming}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetFrameTiming}}(), this, arg1, arg2)
 GetFrameTiming(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   GetFrameTiming(
       this
@@ -1844,7 +1768,7 @@ GetFrameTimings(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::Compositor_FrameTiming")},(false, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetFrameTimings}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetFrameTimings}}(), this, arg1, arg2)
 GetFrameTimings(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   GetFrameTimings(
       this
@@ -1856,7 +1780,7 @@ export GetFrameTimeRemaining
 GetFrameTimeRemaining(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Float32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetFrameTimeRemaining}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetFrameTimeRemaining}}(), this)
 
 export GetCumulativeStats
 GetCumulativeStats(
@@ -1864,7 +1788,7 @@ GetCumulativeStats(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::Compositor_CumulativeStats")},(false, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCumulativeStats}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCumulativeStats}}(), this, arg1, arg2)
 GetCumulativeStats(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   GetCumulativeStats(
       this
@@ -1882,7 +1806,7 @@ FadeToColor(
   , arg5 :: Float32
   , arg6 :: Bool
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :FadeToColor}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:FadeToColor}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 FadeToColor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   FadeToColor(
       this
@@ -1899,7 +1823,7 @@ GetCurrentFadeColor(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: Bool
   )      :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdColor_t")},(false, false, false)},N} where N =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCurrentFadeColor}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCurrentFadeColor}}(), this, arg1)
 GetCurrentFadeColor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   GetCurrentFadeColor(
       this
@@ -1912,7 +1836,7 @@ FadeGrid(
   , arg1 :: Float32
   , arg2 :: Bool
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :FadeGrid}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:FadeGrid}}(), this, arg1, arg2)
 FadeGrid(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   FadeGrid(
       this
@@ -1924,7 +1848,7 @@ export GetCurrentGridAlpha
 GetCurrentGridAlpha(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Float32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCurrentGridAlpha}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCurrentGridAlpha}}(), this)
 
 export SetSkyboxOverride
 SetSkyboxOverride(
@@ -1932,7 +1856,7 @@ SetSkyboxOverride(
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::Texture_t")},(true, false, false)},(false, false, false)}
   , arg2 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetSkyboxOverride}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetSkyboxOverride}}(), this, arg1, arg2)
 SetSkyboxOverride(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   SetSkyboxOverride(
       this
@@ -1944,86 +1868,86 @@ export ClearSkyboxOverride
 ClearSkyboxOverride(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ClearSkyboxOverride}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ClearSkyboxOverride}}(), this)
 
 export CompositorBringToFront
 CompositorBringToFront(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CompositorBringToFront}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CompositorBringToFront}}(), this)
 
 export CompositorGoToBack
 CompositorGoToBack(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CompositorGoToBack}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CompositorGoToBack}}(), this)
 
 export CompositorQuit
 CompositorQuit(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CompositorQuit}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CompositorQuit}}(), this)
 
 export IsFullscreen
 IsFullscreen(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsFullscreen}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsFullscreen}}(), this)
 
 export GetCurrentSceneFocusProcess
 GetCurrentSceneFocusProcess(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCurrentSceneFocusProcess}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCurrentSceneFocusProcess}}(), this)
 
 export GetLastFrameRenderer
 GetLastFrameRenderer(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetLastFrameRenderer}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetLastFrameRenderer}}(), this)
 
 export CanRenderScene
 CanRenderScene(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CanRenderScene}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CanRenderScene}}(), this)
 
 export ShowMirrorWindow
 ShowMirrorWindow(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowMirrorWindow}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowMirrorWindow}}(), this)
 
 export HideMirrorWindow
 HideMirrorWindow(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :HideMirrorWindow}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:HideMirrorWindow}}(), this)
 
 export IsMirrorWindowVisible
 IsMirrorWindowVisible(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsMirrorWindowVisible}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsMirrorWindowVisible}}(), this)
 
 export CompositorDumpImages
 CompositorDumpImages(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CompositorDumpImages}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CompositorDumpImages}}(), this)
 
 export ShouldAppRenderWithLowResources
 ShouldAppRenderWithLowResources(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShouldAppRenderWithLowResources}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShouldAppRenderWithLowResources}}(), this)
 
 export ForceInterleavedReprojectionOn
 ForceInterleavedReprojectionOn(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: Bool
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ForceInterleavedReprojectionOn}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ForceInterleavedReprojectionOn}}(), this, arg1)
 ForceInterleavedReprojectionOn(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   ForceInterleavedReprojectionOn(
       this
@@ -2034,14 +1958,14 @@ export ForceReconnectProcess
 ForceReconnectProcess(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ForceReconnectProcess}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ForceReconnectProcess}}(), this)
 
 export SuspendRendering
 SuspendRendering(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: Bool
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SuspendRendering}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SuspendRendering}}(), this, arg1)
 SuspendRendering(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   SuspendRendering(
       this
@@ -2055,7 +1979,7 @@ GetMirrorTextureD3D11(
   , arg2 :: Ptr{Nothing}
   , arg3 :: Ptr{Ptr{Nothing}}
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetMirrorTextureD3D11}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetMirrorTextureD3D11}}(), this, arg1, arg2, arg3)
 GetMirrorTextureD3D11(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetMirrorTextureD3D11(
       this
@@ -2069,7 +1993,7 @@ ReleaseMirrorTextureD3D11(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: Ptr{Nothing}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReleaseMirrorTextureD3D11}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReleaseMirrorTextureD3D11}}(), this, arg1)
 ReleaseMirrorTextureD3D11(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   ReleaseMirrorTextureD3D11(
       this
@@ -2083,7 +2007,7 @@ GetMirrorTextureGL(
   , arg2 :: Ptr{UInt32}
   , arg3 :: Ptr{Ptr{Nothing}}
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetMirrorTextureGL}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetMirrorTextureGL}}(), this, arg1, arg2, arg3)
 GetMirrorTextureGL(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetMirrorTextureGL(
       this
@@ -2098,7 +2022,7 @@ ReleaseSharedGLTexture(
   , arg1 :: UInt32
   , arg2 :: Ptr{Nothing}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReleaseSharedGLTexture}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReleaseSharedGLTexture}}(), this, arg1, arg2)
 ReleaseSharedGLTexture(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   ReleaseSharedGLTexture(
       this
@@ -2111,7 +2035,7 @@ LockGLSharedTextureForAccess(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: Ptr{Nothing}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LockGLSharedTextureForAccess}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LockGLSharedTextureForAccess}}(), this, arg1)
 LockGLSharedTextureForAccess(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   LockGLSharedTextureForAccess(
       this
@@ -2123,7 +2047,7 @@ UnlockGLSharedTextureForAccess(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: Ptr{Nothing}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :UnlockGLSharedTextureForAccess}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:UnlockGLSharedTextureForAccess}}(), this, arg1)
 UnlockGLSharedTextureForAccess(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   UnlockGLSharedTextureForAccess(
       this
@@ -2136,7 +2060,7 @@ GetVulkanInstanceExtensionsRequired(
   , arg1 :: Ptr{UInt8}
   , arg2 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetVulkanInstanceExtensionsRequired}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetVulkanInstanceExtensionsRequired}}(), this, arg1, arg2)
 GetVulkanInstanceExtensionsRequired(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1, arg2) =
   GetVulkanInstanceExtensionsRequired(
       this
@@ -2149,7 +2073,7 @@ SetExplicitTimingMode(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRCompositorTimingMode"),UInt32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetExplicitTimingMode}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetExplicitTimingMode}}(), this, arg1)
 SetExplicitTimingMode(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N, arg1) =
   SetExplicitTimingMode(
       this
@@ -2160,13 +2084,13 @@ export SubmitExplicitTimingData
 SubmitExplicitTimingData(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: CppEnum{Symbol("vr::EVRCompositorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SubmitExplicitTimingData}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SubmitExplicitTimingData}}(), this)
 
 export IsMotionSmoothingEnabled
 IsMotionSmoothingEnabled(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsMotionSmoothingEnabled}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsMotionSmoothingEnabled}}(), this)
 
 export CreateNotification
 CreateNotification(
@@ -2179,7 +2103,7 @@ CreateNotification(
   , arg6 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::NotificationBitmap_t")},(true, false, false)},(false, false, false)}
   , arg7 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRNotificationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CreateNotification}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CreateNotification}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 CreateNotification(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRNotifications")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6, arg7) =
   CreateNotification(
       this
@@ -2197,7 +2121,7 @@ RemoveNotification(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRNotifications")},(false, false, false)},N} where N
   , arg1 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRNotificationError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RemoveNotification}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RemoveNotification}}(), this, arg1)
 RemoveNotification(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRNotifications")},(false, false, false)},N} where N, arg1) =
   RemoveNotification(
       this
@@ -2210,7 +2134,7 @@ FindOverlay(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :FindOverlay}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:FindOverlay}}(), this, arg1, arg2)
 FindOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   FindOverlay(
       this
@@ -2225,7 +2149,7 @@ CreateOverlay(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CreateOverlay}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CreateOverlay}}(), this, arg1, arg2, arg3)
 CreateOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   CreateOverlay(
       this
@@ -2239,30 +2163,12 @@ DestroyOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :DestroyOverlay}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:DestroyOverlay}}(), this, arg1)
 DestroyOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   DestroyOverlay(
       this
     , reinterpret4cxx(UInt64, arg1)
     )
-
-export SetHighQualityOverlay
-SetHighQualityOverlay(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  , arg1 :: UInt64
-  )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetHighQualityOverlay}}(), this, arg1)
-SetHighQualityOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
-  SetHighQualityOverlay(
-      this
-    , reinterpret4cxx(UInt64, arg1)
-    )
-
-export GetHighQualityOverlay
-GetHighQualityOverlay(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetHighQualityOverlay}}(), this)
 
 export GetOverlayKey
 GetOverlayKey(
@@ -2272,7 +2178,7 @@ GetOverlayKey(
   , arg3 :: UInt32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVROverlayError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayKey}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayKey}}(), this, arg1, arg2, arg3, arg4)
 GetOverlayKey(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetOverlayKey(
       this
@@ -2290,7 +2196,7 @@ GetOverlayName(
   , arg3 :: UInt32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVROverlayError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayName}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayName}}(), this, arg1, arg2, arg3, arg4)
 GetOverlayName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetOverlayName(
       this
@@ -2306,7 +2212,7 @@ SetOverlayName(
   , arg1 :: UInt64
   , arg2 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayName}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayName}}(), this, arg1, arg2)
 SetOverlayName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayName(
       this
@@ -2323,7 +2229,7 @@ GetOverlayImageData(
   , arg4 :: Ptr{UInt32}
   , arg5 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayImageData}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayImageData}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetOverlayImageData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetOverlayImageData(
       this
@@ -2339,7 +2245,7 @@ GetOverlayErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVROverlayError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayErrorNameFromEnum}}(), this, arg1)
 GetOverlayErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   GetOverlayErrorNameFromEnum(
       this
@@ -2352,7 +2258,7 @@ SetOverlayRenderingPid(
   , arg1 :: UInt64
   , arg2 :: UInt32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayRenderingPid}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayRenderingPid}}(), this, arg1, arg2)
 SetOverlayRenderingPid(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayRenderingPid(
       this
@@ -2365,7 +2271,7 @@ GetOverlayRenderingPid(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayRenderingPid}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayRenderingPid}}(), this, arg1)
 GetOverlayRenderingPid(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   GetOverlayRenderingPid(
       this
@@ -2379,7 +2285,7 @@ SetOverlayFlag(
   , arg2 :: CppEnum{Symbol("vr::VROverlayFlags"),UInt32}
   , arg3 :: Bool
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayFlag}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayFlag}}(), this, arg1, arg2, arg3)
 SetOverlayFlag(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   SetOverlayFlag(
       this
@@ -2395,7 +2301,7 @@ GetOverlayFlag(
   , arg2 :: CppEnum{Symbol("vr::VROverlayFlags"),UInt32}
   , arg3 :: Ptr{Bool}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayFlag}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayFlag}}(), this, arg1, arg2, arg3)
 GetOverlayFlag(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOverlayFlag(
       this
@@ -2412,7 +2318,7 @@ SetOverlayColor(
   , arg3 :: Float32
   , arg4 :: Float32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayColor}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayColor}}(), this, arg1, arg2, arg3, arg4)
 SetOverlayColor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetOverlayColor(
       this
@@ -2430,7 +2336,7 @@ GetOverlayColor(
   , arg3 :: Ptr{Float32}
   , arg4 :: Ptr{Float32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayColor}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayColor}}(), this, arg1, arg2, arg3, arg4)
 GetOverlayColor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetOverlayColor(
       this
@@ -2446,7 +2352,7 @@ SetOverlayAlpha(
   , arg1 :: UInt64
   , arg2 :: Float32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayAlpha}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayAlpha}}(), this, arg1, arg2)
 SetOverlayAlpha(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayAlpha(
       this
@@ -2460,7 +2366,7 @@ GetOverlayAlpha(
   , arg1 :: UInt64
   , arg2 :: Ptr{Float32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayAlpha}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayAlpha}}(), this, arg1, arg2)
 GetOverlayAlpha(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayAlpha(
       this
@@ -2474,7 +2380,7 @@ SetOverlayTexelAspect(
   , arg1 :: UInt64
   , arg2 :: Float32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTexelAspect}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTexelAspect}}(), this, arg1, arg2)
 SetOverlayTexelAspect(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayTexelAspect(
       this
@@ -2488,7 +2394,7 @@ GetOverlayTexelAspect(
   , arg1 :: UInt64
   , arg2 :: Ptr{Float32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTexelAspect}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTexelAspect}}(), this, arg1, arg2)
 GetOverlayTexelAspect(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayTexelAspect(
       this
@@ -2502,7 +2408,7 @@ SetOverlaySortOrder(
   , arg1 :: UInt64
   , arg2 :: UInt32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlaySortOrder}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlaySortOrder}}(), this, arg1, arg2)
 SetOverlaySortOrder(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlaySortOrder(
       this
@@ -2516,7 +2422,7 @@ GetOverlaySortOrder(
   , arg1 :: UInt64
   , arg2 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlaySortOrder}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlaySortOrder}}(), this, arg1, arg2)
 GetOverlaySortOrder(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlaySortOrder(
       this
@@ -2530,7 +2436,7 @@ SetOverlayWidthInMeters(
   , arg1 :: UInt64
   , arg2 :: Float32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayWidthInMeters}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayWidthInMeters}}(), this, arg1, arg2)
 SetOverlayWidthInMeters(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayWidthInMeters(
       this
@@ -2544,44 +2450,12 @@ GetOverlayWidthInMeters(
   , arg1 :: UInt64
   , arg2 :: Ptr{Float32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayWidthInMeters}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayWidthInMeters}}(), this, arg1, arg2)
 GetOverlayWidthInMeters(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayWidthInMeters(
       this
     , reinterpret4cxx(UInt64, arg1)
     , reinterpret4cxx(Ptr{Float32}, arg2)
-    )
-
-export SetOverlayAutoCurveDistanceRangeInMeters
-SetOverlayAutoCurveDistanceRangeInMeters(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  , arg1 :: UInt64
-  , arg2 :: Float32
-  , arg3 :: Float32
-  )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayAutoCurveDistanceRangeInMeters}}(), this, arg1, arg2, arg3)
-SetOverlayAutoCurveDistanceRangeInMeters(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
-  SetOverlayAutoCurveDistanceRangeInMeters(
-      this
-    , reinterpret4cxx(UInt64, arg1)
-    , reinterpret4cxx(Float32, arg2)
-    , reinterpret4cxx(Float32, arg3)
-    )
-
-export GetOverlayAutoCurveDistanceRangeInMeters
-GetOverlayAutoCurveDistanceRangeInMeters(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  , arg1 :: UInt64
-  , arg2 :: Ptr{Float32}
-  , arg3 :: Ptr{Float32}
-  )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayAutoCurveDistanceRangeInMeters}}(), this, arg1, arg2, arg3)
-GetOverlayAutoCurveDistanceRangeInMeters(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
-  GetOverlayAutoCurveDistanceRangeInMeters(
-      this
-    , reinterpret4cxx(UInt64, arg1)
-    , reinterpret4cxx(Ptr{Float32}, arg2)
-    , reinterpret4cxx(Ptr{Float32}, arg3)
     )
 
 export SetOverlayTextureColorSpace
@@ -2590,7 +2464,7 @@ SetOverlayTextureColorSpace(
   , arg1 :: UInt64
   , arg2 :: CppEnum{Symbol("vr::EColorSpace"),UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTextureColorSpace}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTextureColorSpace}}(), this, arg1, arg2)
 SetOverlayTextureColorSpace(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayTextureColorSpace(
       this
@@ -2604,7 +2478,7 @@ GetOverlayTextureColorSpace(
   , arg1 :: UInt64
   , arg2 :: Ptr{CppEnum{Symbol("vr::EColorSpace"),UInt32}}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTextureColorSpace}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTextureColorSpace}}(), this, arg1, arg2)
 GetOverlayTextureColorSpace(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayTextureColorSpace(
       this
@@ -2618,7 +2492,7 @@ SetOverlayTextureBounds(
   , arg1 :: UInt64
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRTextureBounds_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTextureBounds}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTextureBounds}}(), this, arg1, arg2)
 SetOverlayTextureBounds(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayTextureBounds(
       this
@@ -2632,7 +2506,7 @@ GetOverlayTextureBounds(
   , arg1 :: UInt64
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRTextureBounds_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTextureBounds}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTextureBounds}}(), this, arg1, arg2)
 GetOverlayTextureBounds(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayTextureBounds(
       this
@@ -2649,7 +2523,7 @@ GetOverlayRenderModel(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdColor_t")},(false, false, false)},(false, false, false)}
   , arg5 :: Ptr{CppEnum{Symbol("vr::EVROverlayError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayRenderModel}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayRenderModel}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetOverlayRenderModel(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetOverlayRenderModel(
       this
@@ -2667,7 +2541,7 @@ SetOverlayRenderModel(
   , arg2 :: Ptr{UInt8}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdColor_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayRenderModel}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayRenderModel}}(), this, arg1, arg2, arg3)
 SetOverlayRenderModel(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   SetOverlayRenderModel(
       this
@@ -2680,14 +2554,14 @@ export GetOverlayTransformType
 GetOverlayTransformType(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
-  , arg2 :: Ptr{CppEnum{Symbol("vr::VROverlayTransformType"),UInt32}}
+  , arg2 :: Ptr{CppEnum{Symbol("vr::VROverlayTransformType"),Int32}}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTransformType}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTransformType}}(), this, arg1, arg2)
 GetOverlayTransformType(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayTransformType(
       this
     , reinterpret4cxx(UInt64, arg1)
-    , reinterpret4cxx(Ptr{CppEnum{Symbol("vr::VROverlayTransformType"),UInt32}}, arg2)
+    , reinterpret4cxx(Ptr{CppEnum{Symbol("vr::VROverlayTransformType"),Int32}}, arg2)
     )
 
 export SetOverlayTransformAbsolute
@@ -2697,7 +2571,7 @@ SetOverlayTransformAbsolute(
   , arg2 :: CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTransformAbsolute}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTransformAbsolute}}(), this, arg1, arg2, arg3)
 SetOverlayTransformAbsolute(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   SetOverlayTransformAbsolute(
       this
@@ -2713,7 +2587,7 @@ GetOverlayTransformAbsolute(
   , arg2 :: Ptr{CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTransformAbsolute}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTransformAbsolute}}(), this, arg1, arg2, arg3)
 GetOverlayTransformAbsolute(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOverlayTransformAbsolute(
       this
@@ -2729,7 +2603,7 @@ SetOverlayTransformTrackedDeviceRelative(
   , arg2 :: UInt32
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTransformTrackedDeviceRelative}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTransformTrackedDeviceRelative}}(), this, arg1, arg2, arg3)
 SetOverlayTransformTrackedDeviceRelative(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   SetOverlayTransformTrackedDeviceRelative(
       this
@@ -2745,7 +2619,7 @@ GetOverlayTransformTrackedDeviceRelative(
   , arg2 :: Ptr{UInt32}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTransformTrackedDeviceRelative}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTransformTrackedDeviceRelative}}(), this, arg1, arg2, arg3)
 GetOverlayTransformTrackedDeviceRelative(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOverlayTransformTrackedDeviceRelative(
       this
@@ -2761,7 +2635,7 @@ SetOverlayTransformTrackedDeviceComponent(
   , arg2 :: UInt32
   , arg3 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTransformTrackedDeviceComponent}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTransformTrackedDeviceComponent}}(), this, arg1, arg2, arg3)
 SetOverlayTransformTrackedDeviceComponent(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   SetOverlayTransformTrackedDeviceComponent(
       this
@@ -2778,7 +2652,7 @@ GetOverlayTransformTrackedDeviceComponent(
   , arg3 :: Ptr{UInt8}
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTransformTrackedDeviceComponent}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTransformTrackedDeviceComponent}}(), this, arg1, arg2, arg3, arg4)
 GetOverlayTransformTrackedDeviceComponent(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetOverlayTransformTrackedDeviceComponent(
       this
@@ -2795,7 +2669,7 @@ GetOverlayTransformOverlayRelative(
   , arg2 :: Ptr{UInt64}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTransformOverlayRelative}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTransformOverlayRelative}}(), this, arg1, arg2, arg3)
 GetOverlayTransformOverlayRelative(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOverlayTransformOverlayRelative(
       this
@@ -2811,7 +2685,7 @@ SetOverlayTransformOverlayRelative(
   , arg2 :: UInt64
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTransformOverlayRelative}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTransformOverlayRelative}}(), this, arg1, arg2, arg3)
 SetOverlayTransformOverlayRelative(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   SetOverlayTransformOverlayRelative(
       this
@@ -2825,7 +2699,7 @@ ShowOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowOverlay}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowOverlay}}(), this, arg1)
 ShowOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   ShowOverlay(
       this
@@ -2837,7 +2711,7 @@ HideOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :HideOverlay}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:HideOverlay}}(), this, arg1)
 HideOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   HideOverlay(
       this
@@ -2849,7 +2723,7 @@ IsOverlayVisible(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsOverlayVisible}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsOverlayVisible}}(), this, arg1)
 IsOverlayVisible(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   IsOverlayVisible(
       this
@@ -2864,7 +2738,7 @@ GetTransformForOverlayCoordinates(
   , arg3 :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(false, false, false)},N} where N
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetTransformForOverlayCoordinates}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetTransformForOverlayCoordinates}}(), this, arg1, arg2, arg3, arg4)
 GetTransformForOverlayCoordinates(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetTransformForOverlayCoordinates(
       this
@@ -2881,7 +2755,7 @@ PollNextOverlayEvent(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VREvent_t")},(false, false, false)},(false, false, false)}
   , arg3 :: UInt32
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PollNextOverlayEvent}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PollNextOverlayEvent}}(), this, arg1, arg2, arg3)
 PollNextOverlayEvent(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   PollNextOverlayEvent(
       this
@@ -2896,7 +2770,7 @@ GetOverlayInputMethod(
   , arg1 :: UInt64
   , arg2 :: Ptr{CppEnum{Symbol("vr::VROverlayInputMethod"),UInt32}}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayInputMethod}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayInputMethod}}(), this, arg1, arg2)
 GetOverlayInputMethod(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayInputMethod(
       this
@@ -2910,7 +2784,7 @@ SetOverlayInputMethod(
   , arg1 :: UInt64
   , arg2 :: CppEnum{Symbol("vr::VROverlayInputMethod"),UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayInputMethod}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayInputMethod}}(), this, arg1, arg2)
 SetOverlayInputMethod(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayInputMethod(
       this
@@ -2924,7 +2798,7 @@ GetOverlayMouseScale(
   , arg1 :: UInt64
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayMouseScale}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayMouseScale}}(), this, arg1, arg2)
 GetOverlayMouseScale(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayMouseScale(
       this
@@ -2938,7 +2812,7 @@ SetOverlayMouseScale(
   , arg1 :: UInt64
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayMouseScale}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayMouseScale}}(), this, arg1, arg2)
 SetOverlayMouseScale(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayMouseScale(
       this
@@ -2953,7 +2827,7 @@ ComputeOverlayIntersection(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VROverlayIntersectionParams_t")},(true, false, false)},(false, false, false)}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VROverlayIntersectionResults_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ComputeOverlayIntersection}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ComputeOverlayIntersection}}(), this, arg1, arg2, arg3)
 ComputeOverlayIntersection(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   ComputeOverlayIntersection(
       this
@@ -2967,59 +2841,11 @@ IsHoverTargetOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsHoverTargetOverlay}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsHoverTargetOverlay}}(), this, arg1)
 IsHoverTargetOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   IsHoverTargetOverlay(
       this
     , reinterpret4cxx(UInt64, arg1)
-    )
-
-export GetGamepadFocusOverlay
-GetGamepadFocusOverlay(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetGamepadFocusOverlay}}(), this)
-
-export SetGamepadFocusOverlay
-SetGamepadFocusOverlay(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  , arg1 :: UInt64
-  )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetGamepadFocusOverlay}}(), this, arg1)
-SetGamepadFocusOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
-  SetGamepadFocusOverlay(
-      this
-    , reinterpret4cxx(UInt64, arg1)
-    )
-
-export SetOverlayNeighbor
-SetOverlayNeighbor(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  , arg1 :: CppEnum{Symbol("vr::EOverlayDirection"),UInt32}
-  , arg2 :: UInt64
-  , arg3 :: UInt64
-  )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayNeighbor}}(), this, arg1, arg2, arg3)
-SetOverlayNeighbor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
-  SetOverlayNeighbor(
-      this
-    , reinterpret4cxx(CppEnum{Symbol("vr::EOverlayDirection"),UInt32}, arg1)
-    , reinterpret4cxx(UInt64, arg2)
-    , reinterpret4cxx(UInt64, arg3)
-    )
-
-export MoveGamepadFocusToNeighbor
-MoveGamepadFocusToNeighbor(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
-  , arg1 :: CppEnum{Symbol("vr::EOverlayDirection"),UInt32}
-  , arg2 :: UInt64
-  )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :MoveGamepadFocusToNeighbor}}(), this, arg1, arg2)
-MoveGamepadFocusToNeighbor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
-  MoveGamepadFocusToNeighbor(
-      this
-    , reinterpret4cxx(CppEnum{Symbol("vr::EOverlayDirection"),UInt32}, arg1)
-    , reinterpret4cxx(UInt64, arg2)
     )
 
 export SetOverlayDualAnalogTransform
@@ -3030,7 +2856,7 @@ SetOverlayDualAnalogTransform(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(true, false, false)},(false, false, false)}
   , arg4 :: Float32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayDualAnalogTransform}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayDualAnalogTransform}}(), this, arg1, arg2, arg3, arg4)
 SetOverlayDualAnalogTransform(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetOverlayDualAnalogTransform(
       this
@@ -3048,7 +2874,7 @@ GetOverlayDualAnalogTransform(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(false, false, false)},(false, false, false)}
   , arg4 :: Ptr{Float32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayDualAnalogTransform}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayDualAnalogTransform}}(), this, arg1, arg2, arg3, arg4)
 GetOverlayDualAnalogTransform(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetOverlayDualAnalogTransform(
       this
@@ -3064,7 +2890,7 @@ SetOverlayTexture(
   , arg1 :: UInt64
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::Texture_t")},(true, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayTexture}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayTexture}}(), this, arg1, arg2)
 SetOverlayTexture(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayTexture(
       this
@@ -3077,7 +2903,7 @@ ClearOverlayTexture(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ClearOverlayTexture}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ClearOverlayTexture}}(), this, arg1)
 ClearOverlayTexture(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   ClearOverlayTexture(
       this
@@ -3093,7 +2919,7 @@ SetOverlayRaw(
   , arg4 :: UInt32
   , arg5 :: UInt32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayRaw}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayRaw}}(), this, arg1, arg2, arg3, arg4, arg5)
 SetOverlayRaw(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   SetOverlayRaw(
       this
@@ -3110,7 +2936,7 @@ SetOverlayFromFile(
   , arg1 :: UInt64
   , arg2 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayFromFile}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayFromFile}}(), this, arg1, arg2)
 SetOverlayFromFile(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetOverlayFromFile(
       this
@@ -3131,7 +2957,7 @@ GetOverlayTexture(
   , arg8 :: Ptr{CppEnum{Symbol("vr::EColorSpace"),UInt32}}
   , arg9 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRTextureBounds_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTexture}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTexture}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9)
 GetOverlayTexture(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9) =
   GetOverlayTexture(
       this
@@ -3152,7 +2978,7 @@ ReleaseNativeOverlayHandle(
   , arg1 :: UInt64
   , arg2 :: Ptr{Nothing}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReleaseNativeOverlayHandle}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReleaseNativeOverlayHandle}}(), this, arg1, arg2)
 ReleaseNativeOverlayHandle(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   ReleaseNativeOverlayHandle(
       this
@@ -3167,7 +2993,7 @@ GetOverlayTextureSize(
   , arg2 :: Ptr{UInt32}
   , arg3 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayTextureSize}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayTextureSize}}(), this, arg1, arg2, arg3)
 GetOverlayTextureSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOverlayTextureSize(
       this
@@ -3184,7 +3010,7 @@ CreateDashboardOverlay(
   , arg3 :: Ptr{UInt64}
   , arg4 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CreateDashboardOverlay}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CreateDashboardOverlay}}(), this, arg1, arg2, arg3, arg4)
 CreateDashboardOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   CreateDashboardOverlay(
       this
@@ -3198,14 +3024,14 @@ export IsDashboardVisible
 IsDashboardVisible(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsDashboardVisible}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsDashboardVisible}}(), this)
 
 export IsActiveDashboardOverlay
 IsActiveDashboardOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :IsActiveDashboardOverlay}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:IsActiveDashboardOverlay}}(), this, arg1)
 IsActiveDashboardOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   IsActiveDashboardOverlay(
       this
@@ -3218,7 +3044,7 @@ SetDashboardOverlaySceneProcess(
   , arg1 :: UInt64
   , arg2 :: UInt32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetDashboardOverlaySceneProcess}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetDashboardOverlaySceneProcess}}(), this, arg1, arg2)
 SetDashboardOverlaySceneProcess(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetDashboardOverlaySceneProcess(
       this
@@ -3232,7 +3058,7 @@ GetDashboardOverlaySceneProcess(
   , arg1 :: UInt64
   , arg2 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDashboardOverlaySceneProcess}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDashboardOverlaySceneProcess}}(), this, arg1, arg2)
 GetDashboardOverlaySceneProcess(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetDashboardOverlaySceneProcess(
       this
@@ -3245,7 +3071,7 @@ ShowDashboard(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowDashboard}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowDashboard}}(), this, arg1)
 ShowDashboard(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1) =
   ShowDashboard(
       this
@@ -3256,7 +3082,7 @@ export GetPrimaryDashboardDevice
 GetPrimaryDashboardDevice(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetPrimaryDashboardDevice}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetPrimaryDashboardDevice}}(), this)
 
 export ShowKeyboard
 ShowKeyboard(
@@ -3269,7 +3095,7 @@ ShowKeyboard(
   , arg6 :: Bool
   , arg7 :: UInt64
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowKeyboard}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowKeyboard}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7)
 ShowKeyboard(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6, arg7) =
   ShowKeyboard(
       this
@@ -3294,7 +3120,7 @@ ShowKeyboardForOverlay(
   , arg7 :: Bool
   , arg8 :: UInt64
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowKeyboardForOverlay}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowKeyboardForOverlay}}(), this, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8)
 ShowKeyboardForOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8) =
   ShowKeyboardForOverlay(
       this
@@ -3314,7 +3140,7 @@ GetKeyboardText(
   , arg1 :: Ptr{UInt8}
   , arg2 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetKeyboardText}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetKeyboardText}}(), this, arg1, arg2)
 GetKeyboardText(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetKeyboardText(
       this
@@ -3326,7 +3152,7 @@ export HideKeyboard
 HideKeyboard(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :HideKeyboard}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:HideKeyboard}}(), this)
 
 export SetKeyboardTransformAbsolute
 SetKeyboardTransformAbsolute(
@@ -3334,7 +3160,7 @@ SetKeyboardTransformAbsolute(
   , arg1 :: CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix34_t")},(true, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetKeyboardTransformAbsolute}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetKeyboardTransformAbsolute}}(), this, arg1, arg2)
 SetKeyboardTransformAbsolute(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetKeyboardTransformAbsolute(
       this
@@ -3348,7 +3174,7 @@ SetKeyboardPositionForOverlay(
   , arg1 :: UInt64
   , arg2 :: CppValue{CxxQualType{CppBaseType{Symbol("vr::HmdRect2_t")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetKeyboardPositionForOverlay}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetKeyboardPositionForOverlay}}(), this, arg1, arg2)
 SetKeyboardPositionForOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   SetKeyboardPositionForOverlay(
       this
@@ -3364,7 +3190,7 @@ SetOverlayIntersectionMask(
   , arg3 :: UInt32
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetOverlayIntersectionMask}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetOverlayIntersectionMask}}(), this, arg1, arg2, arg3, arg4)
 SetOverlayIntersectionMask(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SetOverlayIntersectionMask(
       this
@@ -3380,7 +3206,7 @@ GetOverlayFlags(
   , arg1 :: UInt64
   , arg2 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVROverlayError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOverlayFlags}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOverlayFlags}}(), this, arg1, arg2)
 GetOverlayFlags(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2) =
   GetOverlayFlags(
       this
@@ -3398,7 +3224,7 @@ ShowMessageOverlay(
   , arg5 :: Ptr{UInt8}
   , arg6 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::VRMessageOverlayResponse"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowMessageOverlay}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowMessageOverlay}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 ShowMessageOverlay(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   ShowMessageOverlay(
       this
@@ -3414,7 +3240,7 @@ export CloseMessageOverlay
 CloseMessageOverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CloseMessageOverlay}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CloseMessageOverlay}}(), this)
 
 export LoadRenderModel_Async
 LoadRenderModel_Async(
@@ -3422,7 +3248,7 @@ LoadRenderModel_Async(
   , arg1 :: Ptr{UInt8}
   , arg2 :: CppPtr{CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_t")},(false, false, false)},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRRenderModelError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LoadRenderModel_Async}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LoadRenderModel_Async}}(), this, arg1, arg2)
 LoadRenderModel_Async(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2) =
   LoadRenderModel_Async(
       this
@@ -3435,7 +3261,7 @@ FreeRenderModel(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_t")},(false, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :FreeRenderModel}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:FreeRenderModel}}(), this, arg1)
 FreeRenderModel(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1) =
   FreeRenderModel(
       this
@@ -3448,7 +3274,7 @@ LoadTexture_Async(
   , arg1 :: Int32
   , arg2 :: CppPtr{CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_TextureMap_t")},(false, false, false)},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRRenderModelError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LoadTexture_Async}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LoadTexture_Async}}(), this, arg1, arg2)
 LoadTexture_Async(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2) =
   LoadTexture_Async(
       this
@@ -3461,7 +3287,7 @@ FreeTexture(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
   , arg1 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_TextureMap_t")},(false, false, false)},(false, false, false)}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :FreeTexture}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:FreeTexture}}(), this, arg1)
 FreeTexture(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1) =
   FreeTexture(
       this
@@ -3475,7 +3301,7 @@ LoadTextureD3D11_Async(
   , arg2 :: Ptr{Nothing}
   , arg3 :: Ptr{Ptr{Nothing}}
   )      :: CppEnum{Symbol("vr::EVRRenderModelError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LoadTextureD3D11_Async}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LoadTextureD3D11_Async}}(), this, arg1, arg2, arg3)
 LoadTextureD3D11_Async(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   LoadTextureD3D11_Async(
       this
@@ -3490,7 +3316,7 @@ LoadIntoTextureD3D11_Async(
   , arg1 :: Int32
   , arg2 :: Ptr{Nothing}
   )      :: CppEnum{Symbol("vr::EVRRenderModelError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LoadIntoTextureD3D11_Async}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LoadIntoTextureD3D11_Async}}(), this, arg1, arg2)
 LoadIntoTextureD3D11_Async(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2) =
   LoadIntoTextureD3D11_Async(
       this
@@ -3503,7 +3329,7 @@ FreeTextureD3D11(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
   , arg1 :: Ptr{Nothing}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :FreeTextureD3D11}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:FreeTextureD3D11}}(), this, arg1)
 FreeTextureD3D11(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1) =
   FreeTextureD3D11(
       this
@@ -3517,7 +3343,7 @@ GetRenderModelName(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRenderModelName}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRenderModelName}}(), this, arg1, arg2, arg3)
 GetRenderModelName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetRenderModelName(
       this
@@ -3530,14 +3356,14 @@ export GetRenderModelCount
 GetRenderModelCount(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRenderModelCount}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRenderModelCount}}(), this)
 
 export GetComponentCount
 GetComponentCount(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetComponentCount}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetComponentCount}}(), this, arg1)
 GetComponentCount(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1) =
   GetComponentCount(
       this
@@ -3552,7 +3378,7 @@ GetComponentName(
   , arg3 :: Ptr{UInt8}
   , arg4 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetComponentName}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetComponentName}}(), this, arg1, arg2, arg3, arg4)
 GetComponentName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetComponentName(
       this
@@ -3568,7 +3394,7 @@ GetComponentButtonMask(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt8}
   )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetComponentButtonMask}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetComponentButtonMask}}(), this, arg1, arg2)
 GetComponentButtonMask(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2) =
   GetComponentButtonMask(
       this
@@ -3584,7 +3410,7 @@ GetComponentRenderModelName(
   , arg3 :: Ptr{UInt8}
   , arg4 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetComponentRenderModelName}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetComponentRenderModelName}}(), this, arg1, arg2, arg3, arg4)
 GetComponentRenderModelName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetComponentRenderModelName(
       this
@@ -3603,7 +3429,7 @@ GetComponentStateForDevicePath(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_ControllerMode_State_t")},(true, false, false)},(false, false, false)}
   , arg5 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_ComponentState_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetComponentStateForDevicePath}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetComponentStateForDevicePath}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetComponentStateForDevicePath(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetComponentStateForDevicePath(
       this
@@ -3623,7 +3449,7 @@ GetComponentState(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_ControllerMode_State_t")},(true, false, false)},(false, false, false)}
   , arg5 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::RenderModel_ComponentState_t")},(false, false, false)},(false, false, false)}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetComponentState}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetComponentState}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetComponentState(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetComponentState(
       this
@@ -3640,7 +3466,7 @@ RenderModelHasComponent(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt8}
   )      :: Bool =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RenderModelHasComponent}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RenderModelHasComponent}}(), this, arg1, arg2)
 RenderModelHasComponent(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2) =
   RenderModelHasComponent(
       this
@@ -3656,7 +3482,7 @@ GetRenderModelThumbnailURL(
   , arg3 :: UInt32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRRenderModelError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRenderModelThumbnailURL}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRenderModelThumbnailURL}}(), this, arg1, arg2, arg3, arg4)
 GetRenderModelThumbnailURL(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetRenderModelThumbnailURL(
       this
@@ -3674,7 +3500,7 @@ GetRenderModelOriginalPath(
   , arg3 :: UInt32
   , arg4 :: Ptr{CppEnum{Symbol("vr::EVRRenderModelError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRenderModelOriginalPath}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRenderModelOriginalPath}}(), this, arg1, arg2, arg3, arg4)
 GetRenderModelOriginalPath(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetRenderModelOriginalPath(
       this
@@ -3689,7 +3515,7 @@ GetRenderModelErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRRenderModelError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetRenderModelErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetRenderModelErrorNameFromEnum}}(), this, arg1)
 GetRenderModelErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},N} where N, arg1) =
   GetRenderModelErrorNameFromEnum(
       this
@@ -3704,7 +3530,7 @@ GetWindowBounds(
   , arg3 :: Ptr{UInt32}
   , arg4 :: Ptr{UInt32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetWindowBounds}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetWindowBounds}}(), this, arg1, arg2, arg3, arg4)
 GetWindowBounds(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRExtendedDisplay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetWindowBounds(
       this
@@ -3723,7 +3549,7 @@ GetEyeOutputViewport(
   , arg4 :: Ptr{UInt32}
   , arg5 :: Ptr{UInt32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetEyeOutputViewport}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetEyeOutputViewport}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetEyeOutputViewport(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRExtendedDisplay")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetEyeOutputViewport(
       this
@@ -3740,7 +3566,7 @@ GetDXGIOutputInfo(
   , arg1 :: Ptr{Int32}
   , arg2 :: Ptr{Int32}
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDXGIOutputInfo}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDXGIOutputInfo}}(), this, arg1, arg2)
 GetDXGIOutputInfo(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRExtendedDisplay")},(false, false, false)},N} where N, arg1, arg2) =
   GetDXGIOutputInfo(
       this
@@ -3753,7 +3579,7 @@ GetCameraErrorNameFromEnum(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N
   , arg1 :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32}
   )      :: Ptr{UInt8} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCameraErrorNameFromEnum}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCameraErrorNameFromEnum}}(), this, arg1)
 GetCameraErrorNameFromEnum(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1) =
   GetCameraErrorNameFromEnum(
       this
@@ -3766,7 +3592,7 @@ HasCamera(
   , arg1 :: UInt32
   , arg2 :: Ptr{Bool}
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :HasCamera}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:HasCamera}}(), this, arg1, arg2)
 HasCamera(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2) =
   HasCamera(
       this
@@ -3783,7 +3609,7 @@ GetCameraFrameSize(
   , arg4 :: Ptr{UInt32}
   , arg5 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCameraFrameSize}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCameraFrameSize}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetCameraFrameSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetCameraFrameSize(
       this
@@ -3803,7 +3629,7 @@ GetCameraIntrinsics(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(false, false, false)},(false, false, false)}
   , arg5 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdVector2_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCameraIntrinsics}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCameraIntrinsics}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetCameraIntrinsics(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetCameraIntrinsics(
       this
@@ -3824,7 +3650,7 @@ GetCameraProjection(
   , arg5 :: Float32
   , arg6 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::HmdMatrix44_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetCameraProjection}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetCameraProjection}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 GetCameraProjection(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   GetCameraProjection(
       this
@@ -3842,7 +3668,7 @@ AcquireVideoStreamingService(
   , arg1 :: UInt32
   , arg2 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :AcquireVideoStreamingService}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:AcquireVideoStreamingService}}(), this, arg1, arg2)
 AcquireVideoStreamingService(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2) =
   AcquireVideoStreamingService(
       this
@@ -3855,7 +3681,7 @@ ReleaseVideoStreamingService(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReleaseVideoStreamingService}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReleaseVideoStreamingService}}(), this, arg1)
 ReleaseVideoStreamingService(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1) =
   ReleaseVideoStreamingService(
       this
@@ -3872,7 +3698,7 @@ GetVideoStreamFrameBuffer(
   , arg5 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CameraVideoStreamFrameHeader_t")},(false, false, false)},(false, false, false)}
   , arg6 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetVideoStreamFrameBuffer}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetVideoStreamFrameBuffer}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 GetVideoStreamFrameBuffer(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   GetVideoStreamFrameBuffer(
       this
@@ -3893,7 +3719,7 @@ GetVideoStreamTextureSize(
   , arg4 :: Ptr{UInt32}
   , arg5 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetVideoStreamTextureSize}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetVideoStreamTextureSize}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetVideoStreamTextureSize(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetVideoStreamTextureSize(
       this
@@ -3914,7 +3740,7 @@ GetVideoStreamTextureD3D11(
   , arg5 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CameraVideoStreamFrameHeader_t")},(false, false, false)},(false, false, false)}
   , arg6 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetVideoStreamTextureD3D11}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetVideoStreamTextureD3D11}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 GetVideoStreamTextureD3D11(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   GetVideoStreamTextureD3D11(
       this
@@ -3935,7 +3761,7 @@ GetVideoStreamTextureGL(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::CameraVideoStreamFrameHeader_t")},(false, false, false)},(false, false, false)}
   , arg5 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetVideoStreamTextureGL}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetVideoStreamTextureGL}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetVideoStreamTextureGL(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetVideoStreamTextureGL(
       this
@@ -3952,7 +3778,7 @@ ReleaseVideoStreamTextureGL(
   , arg1 :: UInt64
   , arg2 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRTrackedCameraError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ReleaseVideoStreamTextureGL}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ReleaseVideoStreamTextureGL}}(), this, arg1, arg2)
 ReleaseVideoStreamTextureGL(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},N} where N, arg1, arg2) =
   ReleaseVideoStreamTextureGL(
       this
@@ -3968,7 +3794,7 @@ RequestScreenshot(
   , arg3 :: Ptr{UInt8}
   , arg4 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRScreenshotError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :RequestScreenshot}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:RequestScreenshot}}(), this, arg1, arg2, arg3, arg4)
 RequestScreenshot(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   RequestScreenshot(
       this
@@ -3984,7 +3810,7 @@ HookScreenshot(
   , arg1 :: Ptr{CppEnum{Symbol("vr::EVRScreenshotType"),UInt32}}
   , arg2 :: Int32
   )      :: CppEnum{Symbol("vr::EVRScreenshotError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :HookScreenshot}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:HookScreenshot}}(), this, arg1, arg2)
 HookScreenshot(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2) =
   HookScreenshot(
       this
@@ -3998,7 +3824,7 @@ GetScreenshotPropertyType(
   , arg1 :: UInt32
   , arg2 :: Ptr{CppEnum{Symbol("vr::EVRScreenshotError"),UInt32}}
   )      :: CppEnum{Symbol("vr::EVRScreenshotType"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetScreenshotPropertyType}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetScreenshotPropertyType}}(), this, arg1, arg2)
 GetScreenshotPropertyType(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2) =
   GetScreenshotPropertyType(
       this
@@ -4015,7 +3841,7 @@ GetScreenshotPropertyFilename(
   , arg4 :: UInt32
   , arg5 :: Ptr{CppEnum{Symbol("vr::EVRScreenshotError"),UInt32}}
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetScreenshotPropertyFilename}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetScreenshotPropertyFilename}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetScreenshotPropertyFilename(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetScreenshotPropertyFilename(
       this
@@ -4032,7 +3858,7 @@ UpdateScreenshotProgress(
   , arg1 :: UInt32
   , arg2 :: Float32
   )      :: CppEnum{Symbol("vr::EVRScreenshotError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :UpdateScreenshotProgress}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:UpdateScreenshotProgress}}(), this, arg1, arg2)
 UpdateScreenshotProgress(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2) =
   UpdateScreenshotProgress(
       this
@@ -4047,7 +3873,7 @@ TakeStereoScreenshot(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRScreenshotError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :TakeStereoScreenshot}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:TakeStereoScreenshot}}(), this, arg1, arg2, arg3)
 TakeStereoScreenshot(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   TakeStereoScreenshot(
       this
@@ -4064,7 +3890,7 @@ SubmitScreenshot(
   , arg3 :: Ptr{UInt8}
   , arg4 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRScreenshotError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SubmitScreenshot}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SubmitScreenshot}}(), this, arg1, arg2, arg3, arg4)
 SubmitScreenshot(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   SubmitScreenshot(
       this
@@ -4081,7 +3907,7 @@ LoadSharedResource(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :LoadSharedResource}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:LoadSharedResource}}(), this, arg1, arg2, arg3)
 LoadSharedResource(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRResources")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   LoadSharedResource(
       this
@@ -4098,7 +3924,7 @@ GetResourceFullPath(
   , arg3 :: Ptr{UInt8}
   , arg4 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetResourceFullPath}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetResourceFullPath}}(), this, arg1, arg2, arg3, arg4)
 GetResourceFullPath(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRResources")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetResourceFullPath(
       this
@@ -4112,7 +3938,7 @@ export GetDriverCount
 GetDriverCount(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRDriverManager")},(false, false, false)},N} where N
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDriverCount}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDriverCount}}(), this)
 
 export GetDriverName
 GetDriverName(
@@ -4121,7 +3947,7 @@ GetDriverName(
   , arg2 :: Ptr{UInt8}
   , arg3 :: UInt32
   )      :: UInt32 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDriverName}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDriverName}}(), this, arg1, arg2, arg3)
 GetDriverName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRDriverManager")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetDriverName(
       this
@@ -4135,7 +3961,7 @@ GetDriverHandle(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRDriverManager")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDriverHandle}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDriverHandle}}(), this, arg1)
 GetDriverHandle(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRDriverManager")},(false, false, false)},N} where N, arg1) =
   GetDriverHandle(
       this
@@ -4147,7 +3973,7 @@ SetActionManifestPath(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N
   , arg1 :: Ptr{UInt8}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :SetActionManifestPath}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:SetActionManifestPath}}(), this, arg1)
 SetActionManifestPath(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1) =
   SetActionManifestPath(
       this
@@ -4160,7 +3986,7 @@ GetActionSetHandle(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetActionSetHandle}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetActionSetHandle}}(), this, arg1, arg2)
 GetActionSetHandle(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
   GetActionSetHandle(
       this
@@ -4174,7 +4000,7 @@ GetActionHandle(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetActionHandle}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetActionHandle}}(), this, arg1, arg2)
 GetActionHandle(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
   GetActionHandle(
       this
@@ -4188,7 +4014,7 @@ GetInputSourceHandle(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetInputSourceHandle}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetInputSourceHandle}}(), this, arg1, arg2)
 GetInputSourceHandle(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
   GetInputSourceHandle(
       this
@@ -4203,7 +4029,7 @@ UpdateActionState(
   , arg2 :: UInt32
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :UpdateActionState}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:UpdateActionState}}(), this, arg1, arg2, arg3)
 UpdateActionState(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   UpdateActionState(
       this
@@ -4220,7 +4046,7 @@ GetDigitalActionData(
   , arg3 :: UInt32
   , arg4 :: UInt64
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetDigitalActionData}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetDigitalActionData}}(), this, arg1, arg2, arg3, arg4)
 GetDigitalActionData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetDigitalActionData(
       this
@@ -4238,7 +4064,7 @@ GetAnalogActionData(
   , arg3 :: UInt32
   , arg4 :: UInt64
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetAnalogActionData}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetAnalogActionData}}(), this, arg1, arg2, arg3, arg4)
 GetAnalogActionData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetAnalogActionData(
       this
@@ -4248,28 +4074,6 @@ GetAnalogActionData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput"
     , reinterpret4cxx(UInt64, arg4)
     )
 
-export GetPoseActionData
-GetPoseActionData(
-    this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N
-  , arg1 :: UInt64
-  , arg2 :: CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}
-  , arg3 :: Float32
-  , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::InputPoseActionData_t")},(false, false, false)},(false, false, false)}
-  , arg5 :: UInt32
-  , arg6 :: UInt64
-  )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetPoseActionData}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
-GetPoseActionData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
-  GetPoseActionData(
-      this
-    , reinterpret4cxx(UInt64, arg1)
-    , reinterpret4cxx(CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}, arg2)
-    , reinterpret4cxx(Float32, arg3)
-    , reinterpret4cxx(CppPtr{CxxQualType{CppBaseType{Symbol("vr::InputPoseActionData_t")},(false, false, false)},(false, false, false)}, arg4)
-    , reinterpret4cxx(UInt32, arg5)
-    , reinterpret4cxx(UInt64, arg6)
-    )
-
 export GetSkeletalActionData
 GetSkeletalActionData(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N
@@ -4277,7 +4081,7 @@ GetSkeletalActionData(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::InputSkeletalActionData_t")},(false, false, false)},(false, false, false)}
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSkeletalActionData}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSkeletalActionData}}(), this, arg1, arg2, arg3)
 GetSkeletalActionData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetSkeletalActionData(
       this
@@ -4292,7 +4096,7 @@ GetBoneCount(
   , arg1 :: UInt64
   , arg2 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBoneCount}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBoneCount}}(), this, arg1, arg2)
 GetBoneCount(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
   GetBoneCount(
       this
@@ -4307,7 +4111,7 @@ GetBoneHierarchy(
   , arg2 :: Ptr{Int32}
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBoneHierarchy}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBoneHierarchy}}(), this, arg1, arg2, arg3)
 GetBoneHierarchy(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetBoneHierarchy(
       this
@@ -4324,7 +4128,7 @@ GetBoneName(
   , arg3 :: Ptr{UInt8}
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetBoneName}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetBoneName}}(), this, arg1, arg2, arg3, arg4)
 GetBoneName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetBoneName(
       this
@@ -4343,7 +4147,7 @@ GetSkeletalReferenceTransforms(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRBoneTransform_t")},(false, false, false)},(false, false, false)}
   , arg5 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSkeletalReferenceTransforms}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSkeletalReferenceTransforms}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetSkeletalReferenceTransforms(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetSkeletalReferenceTransforms(
       this
@@ -4360,7 +4164,7 @@ GetSkeletalTrackingLevel(
   , arg1 :: UInt64
   , arg2 :: Ptr{CppEnum{Symbol("vr::EVRSkeletalTrackingLevel"),UInt32}}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSkeletalTrackingLevel}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSkeletalTrackingLevel}}(), this, arg1, arg2)
 GetSkeletalTrackingLevel(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
   GetSkeletalTrackingLevel(
       this
@@ -4377,7 +4181,7 @@ GetSkeletalBoneData(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRBoneTransform_t")},(false, false, false)},(false, false, false)}
   , arg5 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSkeletalBoneData}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSkeletalBoneData}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetSkeletalBoneData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetSkeletalBoneData(
       this
@@ -4392,14 +4196,16 @@ export GetSkeletalSummaryData
 GetSkeletalSummaryData(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N
   , arg1 :: UInt64
-  , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRSkeletalSummaryData_t")},(false, false, false)},(false, false, false)}
+  , arg2 :: CppEnum{Symbol("vr::EVRSummaryType"),UInt32}
+  , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRSkeletalSummaryData_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSkeletalSummaryData}}(), this, arg1, arg2)
-GetSkeletalSummaryData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSkeletalSummaryData}}(), this, arg1, arg2, arg3)
+GetSkeletalSummaryData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetSkeletalSummaryData(
       this
     , reinterpret4cxx(UInt64, arg1)
-    , reinterpret4cxx(CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRSkeletalSummaryData_t")},(false, false, false)},(false, false, false)}, arg2)
+    , reinterpret4cxx(CppEnum{Symbol("vr::EVRSummaryType"),UInt32}, arg2)
+    , reinterpret4cxx(CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRSkeletalSummaryData_t")},(false, false, false)},(false, false, false)}, arg3)
     )
 
 export GetSkeletalBoneDataCompressed
@@ -4411,7 +4217,7 @@ GetSkeletalBoneDataCompressed(
   , arg4 :: UInt32
   , arg5 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSkeletalBoneDataCompressed}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSkeletalBoneDataCompressed}}(), this, arg1, arg2, arg3, arg4, arg5)
 GetSkeletalBoneDataCompressed(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   GetSkeletalBoneDataCompressed(
       this
@@ -4431,7 +4237,7 @@ DecompressSkeletalBoneData(
   , arg4 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::VRBoneTransform_t")},(false, false, false)},(false, false, false)}
   , arg5 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :DecompressSkeletalBoneData}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:DecompressSkeletalBoneData}}(), this, arg1, arg2, arg3, arg4, arg5)
 DecompressSkeletalBoneData(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   DecompressSkeletalBoneData(
       this
@@ -4452,7 +4258,7 @@ TriggerHapticVibrationAction(
   , arg5 :: Float32
   , arg6 :: UInt64
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :TriggerHapticVibrationAction}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:TriggerHapticVibrationAction}}(), this, arg1, arg2, arg3, arg4, arg5, arg6)
 TriggerHapticVibrationAction(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5, arg6) =
   TriggerHapticVibrationAction(
       this
@@ -4472,7 +4278,7 @@ GetActionOrigins(
   , arg3 :: Ptr{UInt64}
   , arg4 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetActionOrigins}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetActionOrigins}}(), this, arg1, arg2, arg3, arg4)
 GetActionOrigins(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetActionOrigins(
       this
@@ -4490,7 +4296,7 @@ GetOriginLocalizedName(
   , arg3 :: UInt32
   , arg4 :: Int32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOriginLocalizedName}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOriginLocalizedName}}(), this, arg1, arg2, arg3, arg4)
 GetOriginLocalizedName(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   GetOriginLocalizedName(
       this
@@ -4507,7 +4313,7 @@ GetOriginTrackedDeviceInfo(
   , arg2 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::InputOriginInfo_t")},(false, false, false)},(false, false, false)}
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetOriginTrackedDeviceInfo}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetOriginTrackedDeviceInfo}}(), this, arg1, arg2, arg3)
 GetOriginTrackedDeviceInfo(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetOriginTrackedDeviceInfo(
       this
@@ -4522,7 +4328,7 @@ ShowActionOrigins(
   , arg1 :: UInt64
   , arg2 :: UInt64
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowActionOrigins}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowActionOrigins}}(), this, arg1, arg2)
 ShowActionOrigins(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2) =
   ShowActionOrigins(
       this
@@ -4538,7 +4344,7 @@ ShowBindingsForActionSet(
   , arg3 :: UInt32
   , arg4 :: UInt64
   )      :: CppEnum{Symbol("vr::EVRInputError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :ShowBindingsForActionSet}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:ShowBindingsForActionSet}}(), this, arg1, arg2, arg3, arg4)
 ShowBindingsForActionSet(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   ShowBindingsForActionSet(
       this
@@ -4557,7 +4363,7 @@ Open(
   , arg4 :: UInt32
   , arg5 :: Ptr{UInt64}
   )      :: CppEnum{Symbol("vr::EIOBufferError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Open}}(), this, arg1, arg2, arg3, arg4, arg5)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:Open}}(), this, arg1, arg2, arg3, arg4, arg5)
 Open(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4, arg5) =
   Open(
       this
@@ -4573,7 +4379,7 @@ Close(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: CppEnum{Symbol("vr::EIOBufferError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Close}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:Close}}(), this, arg1)
 Close(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N, arg1) =
   Close(
       this
@@ -4588,7 +4394,7 @@ Read(
   , arg3 :: UInt32
   , arg4 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EIOBufferError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Read}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:Read}}(), this, arg1, arg2, arg3, arg4)
 Read(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   Read(
       this
@@ -4605,7 +4411,7 @@ Write(
   , arg2 :: Ptr{Nothing}
   , arg3 :: UInt32
   )      :: CppEnum{Symbol("vr::EIOBufferError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Write}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:Write}}(), this, arg1, arg2, arg3)
 Write(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   Write(
       this
@@ -4619,7 +4425,7 @@ PropertyContainer(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N
   , arg1 :: UInt64
   )      :: UInt64 =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :PropertyContainer}}(), this, arg1)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:PropertyContainer}}(), this, arg1)
 PropertyContainer(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},N} where N, arg1) =
   PropertyContainer(
       this
@@ -4632,7 +4438,7 @@ CreateSpatialAnchorFromDescriptor(
   , arg1 :: Ptr{UInt8}
   , arg2 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRSpatialAnchorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CreateSpatialAnchorFromDescriptor}}(), this, arg1, arg2)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CreateSpatialAnchorFromDescriptor}}(), this, arg1, arg2)
 CreateSpatialAnchorFromDescriptor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSpatialAnchors")},(false, false, false)},N} where N, arg1, arg2) =
   CreateSpatialAnchorFromDescriptor(
       this
@@ -4648,7 +4454,7 @@ CreateSpatialAnchorFromPose(
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::SpatialAnchorPose_t")},(false, false, false)},(false, false, false)}
   , arg4 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRSpatialAnchorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CreateSpatialAnchorFromPose}}(), this, arg1, arg2, arg3, arg4)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CreateSpatialAnchorFromPose}}(), this, arg1, arg2, arg3, arg4)
 CreateSpatialAnchorFromPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSpatialAnchors")},(false, false, false)},N} where N, arg1, arg2, arg3, arg4) =
   CreateSpatialAnchorFromPose(
       this
@@ -4665,7 +4471,7 @@ GetSpatialAnchorPose(
   , arg2 :: CppEnum{Symbol("vr::ETrackingUniverseOrigin"),UInt32}
   , arg3 :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::SpatialAnchorPose_t")},(false, false, false)},(false, false, false)}
   )      :: CppEnum{Symbol("vr::EVRSpatialAnchorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSpatialAnchorPose}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSpatialAnchorPose}}(), this, arg1, arg2, arg3)
 GetSpatialAnchorPose(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSpatialAnchors")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetSpatialAnchorPose(
       this
@@ -4681,7 +4487,7 @@ GetSpatialAnchorDescriptor(
   , arg2 :: Ptr{UInt8}
   , arg3 :: Ptr{UInt32}
   )      :: CppEnum{Symbol("vr::EVRSpatialAnchorError"),UInt32} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :GetSpatialAnchorDescriptor}}(), this, arg1, arg2, arg3)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:GetSpatialAnchorDescriptor}}(), this, arg1, arg2, arg3)
 GetSpatialAnchorDescriptor(this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSpatialAnchors")},(false, false, false)},N} where N, arg1, arg2, arg3) =
   GetSpatialAnchorDescriptor(
       this
@@ -4694,107 +4500,107 @@ export Clear
 Clear(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :Clear}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:Clear}}(), this)
 
 export CheckClear
 CheckClear(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: Nothing =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :CheckClear}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:CheckClear}}(), this)
 
 export VRSystem
 VRSystem(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSystem")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRSystem}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRSystem}}(), this)
 
 export VRChaperone
 VRChaperone(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperone")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRChaperone}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRChaperone}}(), this)
 
 export VRChaperoneSetup
 VRChaperoneSetup(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRChaperoneSetup")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRChaperoneSetup}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRChaperoneSetup}}(), this)
 
 export VRCompositor
 VRCompositor(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRCompositor")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRCompositor}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRCompositor}}(), this)
 
 export VROverlay
 VROverlay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVROverlay")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VROverlay}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VROverlay}}(), this)
 
 export VRResources
 VRResources(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRResources")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRResources}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRResources}}(), this)
 
 export VRScreenshots
 VRScreenshots(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRScreenshots")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRScreenshots}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRScreenshots}}(), this)
 
 export VRRenderModels
 VRRenderModels(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRRenderModels")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRRenderModels}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRRenderModels}}(), this)
 
 export VRExtendedDisplay
 VRExtendedDisplay(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRExtendedDisplay")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRExtendedDisplay}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRExtendedDisplay}}(), this)
 
 export VRSettings
 VRSettings(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSettings")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRSettings}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRSettings}}(), this)
 
 export VRApplications
 VRApplications(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRApplications")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRApplications}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRApplications}}(), this)
 
 export VRTrackedCamera
 VRTrackedCamera(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRTrackedCamera")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRTrackedCamera}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRTrackedCamera}}(), this)
 
 export VRDriverManager
 VRDriverManager(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRDriverManager")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRDriverManager}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRDriverManager}}(), this)
 
 export VRInput
 VRInput(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRInput")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRInput}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRInput}}(), this)
 
 export VRIOBuffer
 VRIOBuffer(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRIOBuffer")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRIOBuffer}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRIOBuffer}}(), this)
 
 export VRSpatialAnchors
 VRSpatialAnchors(
     this :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::COpenVRContext")},(false, false, false)},N} where N
   )      :: CppPtr{CxxQualType{CppBaseType{Symbol("vr::IVRSpatialAnchors")},(false, false, false)},(false, false, false)} =
-  cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :VRSpatialAnchors}}(), this)
+  cppcall_member(__current_compiler__, CppNNS{(Tuple){:VRSpatialAnchors}}(), this)
 

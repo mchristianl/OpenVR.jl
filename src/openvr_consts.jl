@@ -70,7 +70,7 @@
 @mkCppConst k_pch_SteamVR_ActivateMultipleDrivers_Bool
 @mkCppConst k_pch_SteamVR_UsingSpeakers_Bool
 @mkCppConst k_pch_SteamVR_SpeakersForwardYawOffsetDegrees_Float
-@mkCppConst k_pch_SteamVR_BaseStationPowerManagement_Bool
+# @mkCppConst k_pch_SteamVR_BaseStationPowerManagement_Bool
 @mkCppConst k_pch_SteamVR_NeverKillProcesses_Bool
 @mkCppConst k_pch_SteamVR_SupersampleScale_Float
 @mkCppConst k_pch_SteamVR_MaxRecommendedResolution_Int32
@@ -78,7 +78,7 @@
 @mkCppConst k_pch_SteamVR_MotionSmoothingOverride_Int32
 @mkCppConst k_pch_SteamVR_ForceFadeOnBadTracking_Bool
 @mkCppConst k_pch_SteamVR_DefaultMirrorView_Int32
-@mkCppConst k_pch_SteamVR_ShowMirrorView_Bool
+# @mkCppConst k_pch_SteamVR_ShowMirrorView_Bool
 @mkCppConst k_pch_SteamVR_MirrorViewGeometry_String
 @mkCppConst k_pch_SteamVR_MirrorViewGeometryMaximized_String
 @mkCppConst k_pch_SteamVR_StartMonitorFromAppLaunch
@@ -95,9 +95,9 @@
 @mkCppConst k_pch_SteamVR_AllowDisplayLockedMode_Bool
 @mkCppConst k_pch_SteamVR_HaveStartedTutorialForNativeChaperoneDriver_Bool
 @mkCppConst k_pch_SteamVR_ForceWindows32bitVRMonitor
-@mkCppConst k_pch_SteamVR_DebugInput
-@mkCppConst k_pch_SteamVR_DebugInputBinding
-@mkCppConst k_pch_SteamVR_InputBindingUIBlock
+# @mkCppConst k_pch_SteamVR_DebugInput
+# @mkCppConst k_pch_SteamVR_DebugInputBinding
+# @mkCppConst k_pch_SteamVR_InputBindingUIBlock
 @mkCppConst k_pch_SteamVR_RenderCameraMode
 @mkCppConst k_pch_SteamVR_EnableSharedResourceJournaling
 @mkCppConst k_pch_SteamVR_EnableSafeMode
@@ -152,7 +152,7 @@
 @mkCppConst k_pch_Perf_AllowTimingStore_Bool
 @mkCppConst k_pch_Perf_SaveTimingsOnExit_Bool
 @mkCppConst k_pch_Perf_TestData_Float
-@mkCppConst k_pch_Perf_LinuxGPUProfiling_Bool
+# @mkCppConst k_pch_Perf_LinuxGPUProfiling_Bool
 @mkCppConst k_pch_CollisionBounds_Section
 @mkCppConst k_pch_CollisionBounds_Style_Int32
 @mkCppConst k_pch_CollisionBounds_GroundPerimeterOn_Bool
@@ -175,12 +175,12 @@
 @mkCppConst k_pch_Camera_BoundsStrength_Int32
 @mkCppConst k_pch_Camera_RoomViewMode_Int32
 @mkCppConst k_pch_audio_Section
-@mkCppConst k_pch_audio_OnPlaybackDevice_String
-@mkCppConst k_pch_audio_OnRecordDevice_String
-@mkCppConst k_pch_audio_OnPlaybackMirrorDevice_String
-@mkCppConst k_pch_audio_OffPlaybackDevice_String
-@mkCppConst k_pch_audio_OffRecordDevice_String
-@mkCppConst k_pch_audio_VIVEHDMIGain
+# @mkCppConst k_pch_audio_OnPlaybackDevice_String
+# @mkCppConst k_pch_audio_OnRecordDevice_String
+# @mkCppConst k_pch_audio_OnPlaybackMirrorDevice_String
+# @mkCppConst k_pch_audio_OffPlaybackDevice_String
+# @mkCppConst k_pch_audio_OffRecordDevice_String
+# @mkCppConst k_pch_audio_VIVEHDMIGain
 @mkCppConst k_pch_Power_Section
 @mkCppConst k_pch_Power_PowerOffOnExit_Bool
 @mkCppConst k_pch_Power_TurnOffScreensTimeout_Float
@@ -191,14 +191,14 @@
 @mkCppConst k_pch_Dashboard_Section
 @mkCppConst k_pch_Dashboard_EnableDashboard_Bool
 @mkCppConst k_pch_Dashboard_ArcadeMode_Bool
-@mkCppConst k_pch_Dashboard_EnableWebUI
-@mkCppConst k_pch_Dashboard_EnableWebUIDevTools
-@mkCppConst k_pch_Dashboard_EnableWebUIDashboardReplacement
+# @mkCppConst k_pch_Dashboard_EnableWebUI
+# @mkCppConst k_pch_Dashboard_EnableWebUIDevTools
+# @mkCppConst k_pch_Dashboard_EnableWebUIDashboardReplacement
 @mkCppConst k_pch_modelskin_Section
 @mkCppConst k_pch_Driver_Enable_Bool
 @mkCppConst k_pch_WebInterface_Section
-@mkCppConst k_pch_WebInterface_WebEnable_Bool
-@mkCppConst k_pch_WebInterface_WebPort_String
+# @mkCppConst k_pch_WebInterface_WebEnable_Bool
+# @mkCppConst k_pch_WebInterface_WebPort_String
 @mkCppConst k_pch_VRWebHelper_Section
 @mkCppConst k_pch_VRWebHelper_DebuggerEnabled_Bool
 @mkCppConst k_pch_VRWebHelper_DebuggerPort_Int32

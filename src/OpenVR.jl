@@ -28,8 +28,8 @@ module OpenVR
   const openvr_bin_relpath =
     if     Sys.islinux()   && Sys.ARCH == :x86_32; "linux32/libopenvr_api.so"
     elseif Sys.islinux()   && Sys.ARCH == :x86_64; "linux64/libopenvr_api.so"
-    elseif Sys.iswindows() && Sys.ARCH == :x86_32; "win32/openvr_api.lib"
-    elseif Sys.iswindows() && Sys.ARCH == :x86_64; "win64/openvr_api.lib"
+    elseif Sys.iswindows() && Sys.ARCH == :x86_32; "win32/openvr_api.dll"
+    elseif Sys.iswindows() && Sys.ARCH == :x86_64; "win64/openvr_api.dll"
     elseif Sys.isapple()   && Sys.ARCH == :x86_32; "osx32/libopenvr_api.dylib"
     elseif Sys.isapple()   && Sys.ARCH == :x86_64; "osx64/OpenVR.framework/OpenVR"
     else error("system not detected or unsupported")
@@ -244,14 +244,14 @@ module OpenVR
           # $Cxx.@cxx vr::$fname( $(arglist...) )
           ($(Cxx.CxxCore.cppcall_member))(
                $(__current_compiler__)
-            , ($(Cxx.CxxCore.CppNNS)){(Tuple){:GetStringTrackedDeviceProperty}}()
+            , ($(Cxx.CxxCore.CppNNS)){(Tuple){$fname}}()
             , $(arglist...)
             )
         end
       end
       s1 = """
       $(string(fname))($(joinargstrindent(argstyp_str,", ",2; forcenl=true)))      :: $rtype =
-        cppcall(__current_compiler__, CppNNS{(Tuple){:vr, :$(string(fname))}}()$(length(arglist_str) > 0 ? ", " : "")$(join(arglist_str,", ")))"""
+        cppcall_member(__current_compiler__, CppNNS{(Tuple){:$(string(fname))}}()$(length(arglist_str) > 0 ? ", " : "")$(join(arglist_str,", ")))"""
       s1 = replace(s1, "Cxx.CxxCore." => "")
       GENERATE_BINDINGS && println(cur_output_file,"export $fname")
       GENERATE_BINDINGS && println(cur_output_file,s1)

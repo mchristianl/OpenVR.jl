@@ -42,10 +42,10 @@
 @mkCppMethod IVRSystem IsSteamVRDrawingControllers
 @mkCppMethod IVRSystem ShouldApplicationPause
 @mkCppMethod IVRSystem ShouldApplicationReduceRenderingWork
-@mkCppMethod IVRSystem DriverDebugRequest
+# @mkCppMethod IVRSystem DriverDebugRequest
 @mkCppMethod IVRSystem PerformFirmwareUpdate
 @mkCppMethod IVRSystem AcknowledgeQuit_Exiting
-@mkCppMethod IVRSystem AcknowledgeQuit_UserPrompt
+# @mkCppMethod IVRSystem AcknowledgeQuit_UserPrompt
 
 @mkCppMethod IVRApplications AddApplicationManifest
 @mkCppMethod IVRApplications RemoveApplicationManifest
@@ -72,15 +72,15 @@
 @mkCppMethod IVRApplications GetApplicationsThatSupportMimeType
 @mkCppMethod IVRApplications GetApplicationLaunchArguments
 @mkCppMethod IVRApplications GetStartingApplication
-@mkCppMethod IVRApplications GetTransitionState
+# @mkCppMethod IVRApplications GetTransitionState
 @mkCppMethod IVRApplications PerformApplicationPrelaunchCheck
-@mkCppMethod IVRApplications GetApplicationsTransitionStateNameFromEnum
-@mkCppMethod IVRApplications IsQuitUserPromptRequested
+# @mkCppMethod IVRApplications GetApplicationsTransitionStateNameFromEnum
+# @mkCppMethod IVRApplications IsQuitUserPromptRequested
 @mkCppMethod IVRApplications LaunchInternalProcess
 @mkCppMethod IVRApplications GetCurrentSceneProcessId
 
 @mkCppMethod IVRSettings GetSettingsErrorNameFromEnum
-@mkCppMethod IVRSettings Sync
+# @mkCppMethod IVRSettings Sync
 @mkCppMethod IVRSettings SetBool
 @mkCppMethod IVRSettings SetInt32
 @mkCppMethod IVRSettings SetFloat
@@ -93,7 +93,7 @@
 @mkCppMethod IVRSettings RemoveKeyInSection
 
 @mkCppMethod CVRSettingHelper GetSettingsErrorNameFromEnum
-@mkCppMethod CVRSettingHelper Sync
+# @mkCppMethod CVRSettingHelper Sync
 @mkCppMethod CVRSettingHelper SetBool
 @mkCppMethod CVRSettingHelper SetInt32
 @mkCppMethod CVRSettingHelper SetFloat
@@ -187,8 +187,8 @@
 @mkCppMethod IVROverlay FindOverlay
 @mkCppMethod IVROverlay CreateOverlay
 @mkCppMethod IVROverlay DestroyOverlay
-@mkCppMethod IVROverlay SetHighQualityOverlay
-@mkCppMethod IVROverlay GetHighQualityOverlay
+# @mkCppMethod IVROverlay SetHighQualityOverlay
+# @mkCppMethod IVROverlay GetHighQualityOverlay
 @mkCppMethod IVROverlay GetOverlayKey
 @mkCppMethod IVROverlay GetOverlayName
 @mkCppMethod IVROverlay SetOverlayName
@@ -208,8 +208,8 @@
 @mkCppMethod IVROverlay GetOverlaySortOrder
 @mkCppMethod IVROverlay SetOverlayWidthInMeters
 @mkCppMethod IVROverlay GetOverlayWidthInMeters
-@mkCppMethod IVROverlay SetOverlayAutoCurveDistanceRangeInMeters
-@mkCppMethod IVROverlay GetOverlayAutoCurveDistanceRangeInMeters
+# @mkCppMethod IVROverlay SetOverlayAutoCurveDistanceRangeInMeters
+# @mkCppMethod IVROverlay GetOverlayAutoCurveDistanceRangeInMeters
 @mkCppMethod IVROverlay SetOverlayTextureColorSpace
 @mkCppMethod IVROverlay GetOverlayTextureColorSpace
 @mkCppMethod IVROverlay SetOverlayTextureBounds
@@ -236,10 +236,10 @@
 @mkCppMethod IVROverlay SetOverlayMouseScale
 @mkCppMethod IVROverlay ComputeOverlayIntersection
 @mkCppMethod IVROverlay IsHoverTargetOverlay
-@mkCppMethod IVROverlay GetGamepadFocusOverlay
-@mkCppMethod IVROverlay SetGamepadFocusOverlay
-@mkCppMethod IVROverlay SetOverlayNeighbor
-@mkCppMethod IVROverlay MoveGamepadFocusToNeighbor
+# @mkCppMethod IVROverlay GetGamepadFocusOverlay
+# @mkCppMethod IVROverlay SetGamepadFocusOverlay
+# @mkCppMethod IVROverlay SetOverlayNeighbor
+# @mkCppMethod IVROverlay MoveGamepadFocusToNeighbor
 @mkCppMethod IVROverlay SetOverlayDualAnalogTransform
 @mkCppMethod IVROverlay GetOverlayDualAnalogTransform
 @mkCppMethod IVROverlay SetOverlayTexture
@@ -326,7 +326,7 @@
 @mkCppMethod IVRInput UpdateActionState
 @mkCppMethod IVRInput GetDigitalActionData
 @mkCppMethod IVRInput GetAnalogActionData
-@mkCppMethod IVRInput GetPoseActionData
+# @mkCppMethod IVRInput GetPoseActionData
 @mkCppMethod IVRInput GetSkeletalActionData
 @mkCppMethod IVRInput GetBoneCount
 @mkCppMethod IVRInput GetBoneHierarchy
